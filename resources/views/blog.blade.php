@@ -35,102 +35,25 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="ayur-blog-box">
-                        <div class="ayur-blog-img">
-                            <img src="https://dummyimage.com/366x201/" alt="image">
-                        </div>
-                        <div class="ayur-blog-text">
-                            <div class="ayur-blog-date">
-                                <h4>Ayurveda Medicine</h4>
-                                <p>June 17,2024</p>
+
+                @foreach ($data as $list)
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="ayur-blog-box">
+                            <div class="ayur-blog-img">
+                                <img src="{{ asset($list->blog_image) }}" alt="image">
                             </div>
-                            <h3><a href="blog-single.html">Duis aute irure dolor in velit voluptate esse</a></h3>
-                            <p>It is a long established was a fact that a reader will be distracted by the readable content.
-                            </p>
+                            <div class="ayur-blog-text">
+                                <div class="ayur-blog-date">
+                                    <h4>{{ $list->blog_type }}</h4>
+                                    <p>{{ $list->created_at->format('F d, Y') }}</p>
+                                </div>
+                                <h3><a href="{{ url('/blog/' . $list->blog_slug) }}">{{ $list->blog_name }}</a></h3>
+                                <p>{{ $list->blog_shortdesc }}
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="ayur-blog-box">
-                        <div class="ayur-blog-img">
-                            <img src="https://dummyimage.com/366x201/" alt="image">
-                        </div>
-                        <div class="ayur-blog-text">
-                            <div class="ayur-blog-date">
-                                <h4>Ayurveda Medicine</h4>
-                                <p>June 17,2024</p>
-                            </div>
-                            <h3><a href="blog-single.html">Duis aute irure dolor in velit voluptate esse</a></h3>
-                            <p>It is a long established was a fact that a reader will be distracted by the readable content.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="ayur-blog-box">
-                        <div class="ayur-blog-img">
-                            <img src="https://dummyimage.com/366x201/" alt="image">
-                        </div>
-                        <div class="ayur-blog-text">
-                            <div class="ayur-blog-date">
-                                <h4>Ayurveda Medicine</h4>
-                                <p>June 17,2024</p>
-                            </div>
-                            <h3><a href="blog-single.html">Duis aute irure dolor in velit voluptate esse</a></h3>
-                            <p>It is a long established was a fact that a reader will be distracted by the readable content.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="ayur-blog-box">
-                        <div class="ayur-blog-img">
-                            <img src="https://dummyimage.com/366x201/" alt="image">
-                        </div>
-                        <div class="ayur-blog-text">
-                            <div class="ayur-blog-date">
-                                <h4>Ayurveda Medicine</h4>
-                                <p>June 17,2024</p>
-                            </div>
-                            <h3><a href="blog-single.html">Color in velit duis aute irure dolor in velit </a></h3>
-                            <p>It is a long established was a fact that a reader will be distracted by the readable content.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="ayur-blog-box">
-                        <div class="ayur-blog-img">
-                            <img src="https://dummyimage.com/366x201/" alt="image">
-                        </div>
-                        <div class="ayur-blog-text">
-                            <div class="ayur-blog-date">
-                                <h4>Ayurveda Medicine</h4>
-                                <p>June 17,2024</p>
-                            </div>
-                            <h3><a href="blog-single.html">Irure dolor duis aute in velit voluptate esse</a></h3>
-                            <p>It is a long established was a fact that a reader will be distracted by the readable content.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="ayur-blog-box">
-                        <div class="ayur-blog-img">
-                            <img src="https://dummyimage.com/366x201/" alt="image">
-                        </div>
-                        <div class="ayur-blog-text">
-                            <div class="ayur-blog-date">
-                                <h4>Ayurveda Medicine</h4>
-                                <p>June 17,2024</p>
-                            </div>
-                            <h3><a href="blog-single.html">Voluptate esse duis aute irure dolor in velit</a></h3>
-                            <p>It is a long established was a fact that a reader will be distracted by the readable content.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12">

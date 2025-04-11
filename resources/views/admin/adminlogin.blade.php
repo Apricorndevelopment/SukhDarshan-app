@@ -139,49 +139,17 @@
                         <div class="authfy-panel panel-login text-center active">
                             <div class="authfy-heading">
                                 <h3 class="auth-title">Login to your account</h3>
-                                <p>Don’t have an account? <a class="lnk-toggler" data-panel=".panel-signup"
-                                        href="{{ route('Auth.register') }}">Sign Up </a></p>
+                                {{-- <p>Don’t have an account? <a class="lnk-toggler" data-panel=".panel-signup"
+                                        href="{{ route('Auth.register') }}">Sign Up </a></p> --}}
                             </div>
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12">
-                                    {{-- <form name="loginForm" class="loginForm" action="#" method="POST">
-                                        <div class="form-group">
-                                            <input type="email" class="form-control email" name="username"
-                                                placeholder="Email address">
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="pwdMask">
-                                                <input type="password" class="form-control password" name="password"
-                                                    placeholder="Password">
-                                                <span class="fa fa-eye-slash pwd-toggle"></span>
-                                            </div>
-                                        </div>
-                                        <!-- start remember-row -->
-                                        <div class="row remember-row">
-                                            <div class="col-xs-6 col-sm-6">
-                                                <label class="checkbox text-left">
-                                                    <input type="checkbox" value="remember-me">
-                                                    <span class="label-text">Remember me</span>
-                                                </label>
-                                            </div>
-                                            <div class="col-xs-6 col-sm-6">
-                                                <p class="forgotPwd">
-                                                    <a class="lnk-toggler" data-panel=".panel-forgot"
-                                                        href="#">Forgot password?</a>
-                                                </p>
-                                            </div>
-                                        </div> <!-- ./remember-row -->
-                                        <div class="form-group">
-                                            <a href="" target="_blank" class="btn btn-lg btn-primary btn-block"
-                                                style="border-radius: 10px" type="button">Login</a>
 
-                                        </div>
-                                    </form> --}}
                                     <form name="loginForm" class="loginForm" action="{{ route('admin.login.submit') }}"
                                         method="POST">
                                         @csrf
                                         <div class="form-group">
-                                            <input type="email" class="form-control email" name="username"
+                                            <input type="email" class="form-control email" name="email"
                                                 placeholder="Email address" required>
                                         </div>
                                         <div class="form-group">
@@ -191,9 +159,7 @@
                                             </div>
                                         </div>
 
-                                        <label>
-                                            <input type="checkbox" name="remember"> Remember Me
-                                        </label>
+
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-lg btn-primary btn-block"
                                                 style="border-radius: 10px">Login</button>

@@ -108,27 +108,7 @@
                                 <img src="../assets/images/Logo.png" alt="brand-logo">
                             </div><!-- ./brand-logo -->
                             <p>Login using social media to get quick access</p>
-                            <!-- social login buttons start -->
-                            {{-- <div class="row social-buttons">
-                                <div class="col-xs-4 col-sm-4 col-md-12">
-                                    <a href="#" class="btn btn-block btn-facebook">
-                                        <i class="fa fa-facebook"></i> <span class="hidden-xs hidden-sm">Signin with
-                                            facebook</span>
-                                    </a>
-                                </div>
-                                <div class="col-xs-4 col-sm-4 col-md-12">
-                                    <a href="#" class="btn btn-block btn-twitter">
-                                        <i class="fa fa-twitter"></i> <span class="hidden-xs hidden-sm">Signin with
-                                            twitter</span>
-                                    </a>
-                                </div>
-                                <div class="col-xs-4 col-sm-4 col-md-12">
-                                    <a href="#" class="btn btn-block btn-google">
-                                        <i class="fa fa-google-plus"></i> <span class="hidden-xs hidden-sm">Signin with
-                                            google</span>
-                                    </a>
-                                </div>
-                            </div> --}}
+
                         </div>
                     </div>
                 </div>
@@ -144,44 +124,12 @@
                             </div>
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12">
-                                    {{-- <form name="loginForm" class="loginForm" action="#" method="POST">
-                                        <div class="form-group">
-                                            <input type="email" class="form-control email" name="username"
-                                                placeholder="Email address">
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="pwdMask">
-                                                <input type="password" class="form-control password" name="password"
-                                                    placeholder="Password">
-                                                <span class="fa fa-eye-slash pwd-toggle"></span>
-                                            </div>
-                                        </div>
-                                        <!-- start remember-row -->
-                                        <div class="row remember-row">
-                                            <div class="col-xs-6 col-sm-6">
-                                                <label class="checkbox text-left">
-                                                    <input type="checkbox" value="remember-me">
-                                                    <span class="label-text">Remember me</span>
-                                                </label>
-                                            </div>
-                                            <div class="col-xs-6 col-sm-6">
-                                                <p class="forgotPwd">
-                                                    <a class="lnk-toggler" data-panel=".panel-forgot"
-                                                        href="#">Forgot password?</a>
-                                                </p>
-                                            </div>
-                                        </div> <!-- ./remember-row -->
-                                        <div class="form-group">
-                                            <a href="" target="_blank" class="btn btn-lg btn-primary btn-block"
-                                                style="border-radius: 10px" type="button">Login</a>
 
-                                        </div>
-                                    </form> --}}
                                     <form name="loginForm" class="loginForm" action="{{ route('login.submit') }}"
                                         method="POST">
                                         @csrf
                                         <div class="form-group">
-                                            <input type="email" class="form-control email" name="username"
+                                            <input type="email" class="form-control email" name="email"
                                                 placeholder="Email address" required>
                                         </div>
                                         <div class="form-group">
@@ -191,14 +139,12 @@
                                             </div>
                                         </div>
 
-                                        {{-- <label>
-                                            <input type="checkbox" name="remember"> Remember Me
-                                        </label> --}}
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-lg btn-primary btn-block"
                                                 style="border-radius: 10px">Login</button>
                                         </div>
                                     </form>
+
 
 
                                 </div>
@@ -260,6 +206,8 @@
                                             <button class="btn btn-lg btn-primary btn-block" type="submit">Recover your
                                                 password</button>
                                         </div>
+
+
                                         <div class="form-group">
                                             <a class="lnk-toggler" data-panel=".panel-login" href="#">Already have
                                                 an account?</a>
@@ -283,4 +231,9 @@
 
 
     </div>
+
+    <!-- Include Anime.js before your loginform.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="{{ asset('js/loginform.js') }}"></script>
+
 @endsection

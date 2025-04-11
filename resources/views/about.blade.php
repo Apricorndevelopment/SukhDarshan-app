@@ -12,7 +12,7 @@
                             <h2>About Us</h2>
                             <div class="ayur-bread-list">
                                 <span>
-                                    <a href="index.html">Home</a>
+                                    <a href="/">Home</a>
                                 </span>
                                 <span class="ayur-active-page">About Us</span>
                             </div>
@@ -29,8 +29,10 @@
             <div class="row">
                 <div class="col-lg-6 col-md-12 col-sm-12">
                     <div class="ayur-about-img">
-                        <img src="https://dummyimage.com/561x348/.png" alt="img" data-tilt data-tilt-max="10"
-                            data-tilt-speed="1000" data-tilt-perspective="1000" />
+                        {{-- src="https://dummyimage.com/561x348/.png" --}}
+                        <img src="{{ asset('assets/images/ayurveda.jpeg') }}" style="width: 561px; height: 348px;"
+                            alt="img" data-tilt data-tilt-max="10" data-tilt-speed="1000"
+                            data-tilt-perspective="1000" />
                         <div class="ayur-about-exp">
                             <p>10</p>
                             <p>Years of Experience</p>
@@ -41,11 +43,12 @@
                     <div class="ayur-heading-wrap ayur-about-head">
                         <h5>Who We Are</h5>
                         <h3>The Natural Way To Achieving Balance And Optimal Health</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                            voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                        <a href="about.html" class="ayur-btn">Know More</a>
+                        <p>True wellness begins with balance—and nature provides the path. Through time-tested Ayurvedic
+                            practices, mindful living, and natural remedies, you can restore harmony within your body and
+                            mind. By aligning with nature’s rhythms, you support your body’s natural ability to heal,
+                            energize, and thrive. Embrace a lifestyle that nurtures your well-being the natural way—for
+                            health that’s lasting, balanced, and deeply rooted in tradition</p>
+                        <a href="{{ route('about') }}" class="ayur-btn">Know More</a>
                     </div>
                 </div>
             </div>
@@ -63,17 +66,20 @@
                     <div class="ayur-heading-wrap ayur-about-head">
                         <h5>Why Choose Us</h5>
                         <h3>Nature's secret for your truly health</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua.</p>
+                        <p>Discover the power of nature in nurturing your well-being. Our Ayurvedic products harness the
+                            wisdom of ancient traditions, offering you a holistic approach to health. Experience the harmony
+                            of natural ingredients that promote balance, vitality, and overall wellness.</p>
                         <div class="ayur-whycho-boxwrapper">
                             <div class="ayur-whycho-box">
                                 <div class="ayur-whycho-boximg">
                                     <img src="assets/images/checkmark.png" alt="checkmark">
                                 </div>
                                 <div class="ayur-whycho-boxtext">
-                                    <h3>100% Organic Herbal</h3>
-                                    <p>Duis aute irure dolor in reprehenderit in
-                                        voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                                    <h3>100% Organic Herbal Products</h3>
+                                    <p>Experience the purity of nature with our 100% organic herbal offerings. Each product
+                                        is carefully crafted to ensure you receive the highest quality, free from harmful
+                                        additives. Embrace the natural path to wellness and enjoy the benefits of holistic
+                                        healing.</p>
                                 </div>
                             </div>
                             <div class="ayur-whycho-box">
@@ -82,9 +88,11 @@
 
                                 </div>
                                 <div class="ayur-whycho-boxtext">
-                                    <h3>Professional Therapist</h3>
-                                    <p>Duis aute irure dolor in reprehenderit in
-                                        voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                                    <h3>Expert Ayurvedic Therapists</h3>
+                                    <p>Our team of professional therapists is dedicated to guiding you on your wellness
+                                        journey. With extensive training in Ayurvedic practices, they provide personalized
+                                        care tailored to your unique needs, ensuring a holistic approach to health and
+                                        well-being.</p>
                                 </div>
                             </div>
                         </div>
@@ -92,8 +100,9 @@
                 </div>
                 <div class="col-lg-6 col-md-12 col-sm-12">
                     <div class="ayur-about-img">
-                        <img src="https://dummyimage.com/561x394/" alt="img" data-tilt data-tilt-max="8"
-                            data-tilt-speed="1000" data-tilt-perspective="1000" />
+                        <img src="{{ asset('assets/images/aboutmid.jpg') }}" style="width: 561px; height: 394px;"
+                            alt="img" data-tilt data-tilt-max="8" data-tilt-speed="1000"
+                            data-tilt-perspective="1000" />
                     </div>
                 </div>
             </div>
@@ -176,67 +185,70 @@
                                 <img src="assets/images/why-icon1.png" alt="icon" />
                             </div>
                             <div class="ayur-why-boxtext">
-                                <h4>100 % Organic</h4>
-                                <p>Duis aute irure dolor in reprehenderit in voluptate velit</p>
+                                <h4>100% Organic</h4>
+                                <p>Our products are crafted from 100% organic ingredients, ensuring that you receive the
+                                    purest and most natural solutions for your health and wellness.</p>
                             </div>
                         </div>
                         <div class="ayur-why-box">
                             <div class="ayur-why-boxicon">
-                                <img src="assets/images/why-icon2.png" alt="icon" />
+                                <img src="assets/images/why-icon2.png" alt="Best Quality Icon" />
                             </div>
                             <div class="ayur-why-boxtext">
                                 <h4>Best Quality</h4>
-                                <p>Duis aute irure dolor in reprehenderit in voluptate velit</p>
+                                <p>We prioritize excellence in every product, ensuring that you receive only the finest
+                                    organic ingredients for your health and wellness.</p>
                             </div>
                         </div>
                         <div class="ayur-why-box">
                             <div class="ayur-why-boxicon">
-                                <img src="assets/images/why-icon3.png" alt="icon" />
+                                <img src="assets/images/why-icon3.png" alt="Hygienic Product Icon" />
                             </div>
                             <div class="ayur-why-boxtext">
-                                <h4>Hygienic Product</h4>
-                                <p>Duis aute irure dolor in reprehenderit in voluptate velit</p>
+                                <h4>Hygienic Products</h4>
+                                <p>Our products are manufactured under strict hygiene standards, guaranteeing safety and
+                                    purity for your peace of mind.</p>
                             </div>
                         </div>
                         <div class="ayur-why-box">
                             <div class="ayur-why-boxicon">
-                                <img src="assets/images/why-icon4.png" alt="icon" />
+                                <img src="assets/images/why-icon4.png" alt="Health Care Icon" />
                             </div>
                             <div class="ayur-why-boxtext">
-                                <h4>Health Care</h4>
-                                <p>Duis aute irure dolor in reprehenderit in voluptate velit</p>
+                                <h4>Comprehensive Health Care</h4>
+                                <p>Our holistic approach to health care combines traditional wisdom with modern practices,
+                                    promoting overall well-being and vitality.</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-12 col-sm-12">
                     <div class="ayur-why-textheading">
-                        <h3>Solve Your Problem with The Power of Nature</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,it's sed do eiusmod tempor incididunt ut
-                            labore et dolore was a magna aliqua.Ut enim ad minim veniam,quis nostrud exercitation that is
-                            ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in to
-                            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                        <h3>Harness the Power of Nature to Solve Your Health Problems</h3>
+                        <p>Discover how nature's remedies can address your health concerns. Our Ayurvedic solutions are
+                            designed to promote balance and well-being, utilizing the wisdom of ancient practices.
+                            Experience the transformative effects of natural ingredients that work in harmony with your
+                            body.</p>
                         <ul>
                             <li>
                                 <img src="assets/images/tick.png" alt="icon">
-                                <p>Quis nostrud was exercitation.</p>
+                                <p>Personalized wellness solutions tailored to your needs.</p>
                             </li>
                             <li>
                                 <img src="assets/images/tick.png" alt="icon">
-                                <p>Quis nostrud was exercitation.</p>
+                                <p>Natural ingredients that support holistic health.</p>
                             </li>
                             <li>
                                 <img src="assets/images/tick.png" alt="icon">
-                                <p>Quis nostrud was exercitation.</p>
+                                <p>Expert guidance from trained Ayurvedic practitioners.</p>
                             </li>
                             <li>
                                 <img src="assets/images/tick.png" alt="icon">
-                                <p>Quis nostrud was exercitation.</p>
+                                <p>Commitment to quality and sustainability in every product.</p>
                             </li>
                         </ul>
-                        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                            fugiat nulla pariatur.</p>
+                        <p>Join us on a journey to better health through the power of nature. Our products are crafted with
+                            care, ensuring you receive the best that Ayurveda has to offer.</p>
                         <div class="ayur-why-btn">
                             <a href="services.html" class="ayur-btn">Read More</a>
                         </div>

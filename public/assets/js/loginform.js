@@ -25,3 +25,14 @@ var design = anime({
       return (l - i) * 100;
     }
   });
+
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const loginForm = document.querySelector('.loginForm');
+    if (loginForm) {
+        loginForm.addEventListener('submit', function (e) {
+            console.log('Login form submitted');
+            // add your anime.js animations here if needed
+        });
+    }
+});

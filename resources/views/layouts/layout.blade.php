@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="../assets/css/responsive.css">
     <link rel="stylesheet" href="../assets/css/loginform.css">
     <!-- favicon -->
-    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
@@ -31,7 +31,7 @@
     <!------------- Loader start ----------->
     <div class="ayur-loader">
         <div class="ayur-spin">
-            <img src="assets/images/loader.gif" alt="loader">
+            <img src="../assets/images/loader.gif" alt="loader">
         </div>
     </div>
     <!------------- Loader End ----------->
@@ -41,7 +41,8 @@
             <div class="row align-items-center">
                 <div class="col-lg-2 col-md-4 col-sm-5 col-6">
                     <div class="ayur-menu-logo">
-                        <a href="index.html"><img src="../assets/images/Logo.png"></a>
+                        <a href="/"><img style="height: 60px; width:60%"
+                                src="{{ asset('../adminassets/images/SDP LOGO.png') }}"></a>
                     </div>
                 </div>
                 <div class="col-lg-10 col-md-8 col-sm-7 col-6">
@@ -51,7 +52,7 @@
                                 <li class="active"><a href="/">Home</a></li>
                                 <li><a href="{{ route('about') }}">About</a></li>
                                 <li><a href="{{ route('shop') }}">Shop</a></li>
-                                <li><a href="{{ route('services') }}">Services</a></li>
+                                {{-- <li><a href="{{ route('services') }}">Services</a></li> --}}
                                 <li><a href="{{ route('blog') }}">Blog</a></li>
                                 <li><a href="{{ route('contact') }}">Contact</a></li>
                             </ul>
@@ -70,7 +71,7 @@
                                 </a>
                             </div>
                             <div class="ayur-nav-product">
-                                <a href="cart.html">
+                                <a href="{{ route('cart') }}">
                                     <span class="icon">
                                         <svg width="16" height="17" viewBox="0 0 16 17" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
@@ -145,10 +146,11 @@
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="ayur-footer-logosec">
                             <div class="ayur-footer-logo">
-                                <img src="assets/images/footer-logo.svg" alt="logo" />
+                                <img src="{{ asset('../adminassets/images/SDP LOGO.png') }}" style="height:100px;"
+                                    alt="logo" />
                             </div>
-                            <p>Amet minim mollit non deserunt ullamco est sit Velit officia consequat duis enim velit
-                                mollit. sunt nostrud amet. Excepteur sint occaecat.</p>
+                            <p>our mission is to promote natural healing and holistic wellness. We offer authentic
+                                Ayurvedic solutions that restore balance to the body, mind.</p>
                             <ul class="ayur-social-link">
                                 <li>
                                     <a href="javascript:void(0)">
@@ -201,13 +203,16 @@
                     </div>
                     <div class="col-lg-2 col-md-6 col-sm-6">
                         <div class="ayur-footer-box">
-                            <h4>Useful Links</h4>
+                            <h4>Pages</h4>
                             <ul class="ayur-links">
-                                <li><a href="javascript:void(0)">Shipping Options</a></li>
-                                <li><a href="wishlist.html">My Wishlist</a></li>
-                                <li><a href="profile.html">My Account</a></li>
-                                <li><a href="javascript:void(0)">Return Policy</a></li>
-                                <li><a href="javascript:void(0)">Shopping FAQss</a></li>
+                                <li><a href="{{ route('shippinganddelivery') }}">Shipping and Delivery
+                                    </a></li>
+                                <li><a href="{{ route('cancellationandrefund') }}">Cancellation and Refund
+                                    </a></li>
+                                <li><a href="{{ route('termandconditions') }}">Term and Conditions
+                                    </a></li>
+                                <li><a href="{{ route('privacypolicy') }}">Privacy Policy</a></li>
+                                <li><a href="{{ route('faq') }}"> FAQ</a></li>
                             </ul>
                         </div>
                     </div>
@@ -216,16 +221,16 @@
                             <h4>Contact Info</h4>
                             <ul class="ayur-contact-list">
                                 <li class="ayur-contact-box">
-                                    <img src="assets/images/location.png" alt="icon" />
-                                    <p>4517 Washington Ave. <br /> Manchester, Kentucky 39495</p>
+                                    <img src="../assets/images/location.png" alt="icon" />
+                                    <p>Plot No.-1847, HSIIDC Rai, G. T. Karnal Road, Rai, Haryana 131029</p>
                                 </li>
                                 <li class="ayur-contact-box">
-                                    <img src="assets/images/mobile.png" alt="icon" />
-                                    <p>(208) 555-0112</p>
+                                    <img src="../assets/images/mobile.png" alt="icon" />
+                                    <p>+91-822285608, +91-8222856502</p>
                                 </li>
                                 <li class="ayur-contact-box">
-                                    <img src="assets/images/email.png" alt="icon" />
-                                    <p>example@gmail.com</p>
+                                    <img src="../assets/images/email.png" alt="icon" />
+                                    <p>sukhdarshanpharmacy@gmail.com </p>
                                 </li>
                             </ul>
                         </div>
@@ -234,7 +239,21 @@
                         <div class="ayur-footer-box">
                             <h4>Recent Blog</h4>
                             <ul class="ayur-recent-blog">
-                                <li class="ayur-recentblog-box">
+
+                                {{-- @foreach ($recentBlogs as $blog)
+                                    <li class="ayur-recentblog-box">
+                                        <div class="ayur-recentblog-boximg">
+                                            <img src="{{ asset($blog->blog_image) }}" alt="image">
+                                        </div>
+                                        <div class="ayur-recentblog-text">
+                                            <p class="date">{{ $blog->created_at->format('F d, Y') }}</p>
+                                            <h3 class="text">{{ $blog->blog_name }}
+                                            </h3>
+                                        </div>
+                                    </li>
+                                @endforeach --}}
+
+                                {{-- <li class="ayur-recentblog-box">
                                     <div class="ayur-recentblog-boximg">
                                         <img src="https://dummyimage.com/91x91/.png" alt="image">
                                     </div>
@@ -244,18 +263,7 @@
                                             consequat.
                                         </h3>
                                     </div>
-                                </li>
-                                <li class="ayur-recentblog-box">
-                                    <div class="ayur-recentblog-boximg">
-                                        <img src="https://dummyimage.com/91x91/.png" alt="image">
-                                    </div>
-                                    <div class="ayur-recentblog-text">
-                                        <p class="date">Jun 10,2024</p>
-                                        <h3 class="text">Amet minim mollit non deserunt est sit Velit officia
-                                            consequat.
-                                        </h3>
-                                    </div>
-                                </li>
+                                </li> --}}
                             </ul>
                         </div>
                     </div>
@@ -264,14 +272,14 @@
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="ayur-copyright-para">
-                        <p>Copyright © 2024. All Right Reserved. Pure Ayurveda</p>
+                        <p>Copyright © 2024. All Right Reserved. Sukh Darshan</p>
                     </div>
                 </div>
             </div>
         </div>
         <div class="ayur-bgshape ayur-footer-bgshape">
             <img src="https://dummyimage.com/325x284/" alt="img" />
-            <img src="assets/images/footer-right.png" alt="img" />
+            <img src="../assets/images/footer-right.png" alt="img" />
         </div>
     </div>
     <!------------- footer Section end ----------->
@@ -285,6 +293,28 @@
     <script src="../assets/js/vanilla-tilt.min.js"></script>
     <script src="../assets/js/custom.js"></script>
     <script src="../assets/js/loginform.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $('.add-to-cart-btn').click(function() {
+            let productId = $(this).data('id');
+
+            $.ajax({
+                url: '{{ route('add.to.cart') }}',
+                method: 'POST',
+                data: {
+                    product_id: productId,
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function(response) {
+                    if (response.redirect) {
+                        window.location.href = response.redirect;
+                    } else if (response.success) {
+                        alert('Product added to cart!');
+                    }
+                }
+            });
+        });
+    </script>
     <script>
         const popup = document.getElementById("popup");
         const close = document.getElementById("close");

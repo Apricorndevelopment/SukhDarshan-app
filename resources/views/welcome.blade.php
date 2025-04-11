@@ -3,15 +3,15 @@
 @section('container')
 
 
-    <!------------- Banner Section start ----------->
     <div class="ayur-banner-section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="ayur-banner-heading">
                         <h1>We Are Here To Give You The Best <span>Herb Products</span> </h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
+                        <p>True wellness begins with balance and nature provides the path.
+                            Through time-tested Ayurvedic practices, mindful living, and natural remedies,
+                            you can restore harmony within your body and mind.</p>
                         <a href="shop.html" class="ayur-btn">Shop Now</a>
                     </div>
                 </div>
@@ -23,27 +23,27 @@
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
                                     <div class="ayur-ban-slide">
-                                        <img src="https://dummyimage.com/558x454/" alt="headerimage">
+                                        <img src="../assets/images/ban-head-image.png" alt="headerimage">
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="ayur-ban-slide">
-                                        <img src="https://dummyimage.com/558x454/" alt="headerimage">
+                                        <img src="../assets/images/ban-head-image.png" alt="headerimage">
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="ayur-ban-slide">
-                                        <img src="https://dummyimage.com/558x454/" alt="headerimage">
+                                        <img src="../assets/images/ban-head-image.png" alt="headerimage">
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="ayur-ban-slide">
-                                        <img src="https://dummyimage.com/558x454/" alt="headerimage">
+                                        <img src="../assets/images/ban-head-image.png" alt="headerimage">
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="ayur-ban-slide">
-                                        <img src="https://dummyimage.com/558x454/" alt="headerimage">
+                                        <img src="../assets/images/ban-head-image.png" alt="headerimage">
                                     </div>
                                 </div>
                             </div>
@@ -73,22 +73,26 @@
             <img src="assets/images/ban-leafright.png" alt="leaf-image">
         </div>
     </div>
-    <!------------- Banner Section end ----------->
-    <!------------- Care Section start ----------->
+
     <div class="ayur-care-slider-wrapper">
         <div class="container-fluid">
             <div class="ayur-care-slider-sec">
                 <div class="swiper ayur-care-slider">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="ayur-careslide-box">
-                                <div class="ayur-careslider-img">
-                                    <img src="https://dummyimage.com/140x180/" alt="img">
+
+                        @foreach ($subcategory as $list)
+                            <div class="swiper-slide">
+                                <div class="ayur-careslide-box">
+                                    <div class="ayur-careslider-img">
+                                        <img src="{{ asset($list->subcategory_image) }}" alt="img"
+                                            class="w-full h-full object-cover">
+                                    </div>
+                                    <h3>{{ $list->subcategory_name }}</h3>
                                 </div>
-                                <h3>Eye Care</h3>
                             </div>
-                        </div>
-                        <div class="swiper-slide">
+                        @endforeach
+
+                        {{-- <div class="swiper-slide">
                             <div class="ayur-careslide-box">
                                 <div class="ayur-careslider-img">
                                     <img src="https://dummyimage.com/140x180/" alt="img">
@@ -159,7 +163,7 @@
                                 </div>
                                 <h3>Hair Care</h3>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
 
                 </div>
@@ -195,243 +199,52 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="ayur-tpro-box">
-                        <div class="ayur-tpro-img">
-                            <img src="https://dummyimage.com/356x244/" alt="img">
-                            <div class="ayur-tpro-sale">
-                                <p>Sale</p>
-                                <div class="ayur-tpro-like">
-                                    <a href="javascript:void(0)" class="ayur-tpor-click">
-                                        <img src="assets/images/like.svg" class="unlike" />
-                                        <img src="assets/images/like-fill.svg" class="like" />
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ayur-tpro-text">
-                            <h3><a href="shop-single.html">Black Organic Tea</a></h3>
-                            <div class="ayur-tpro-price">
-                                <p><del>$100</del>$50</p>
-                                <div class="ayur-tpro-star">
-                                    <img src="assets/images/star-icon.png" alt="star">
-                                    <p>4.5/5</p>
-                                </div>
-                            </div>
 
-                            <div class="ayur-tpro-btn">
-                                <a href="cart.html" class="ayur-btn">
-                                    <span>
-                                        <svg width="20" height="19" viewBox="0 0 20 19" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M0.826087 2.39643e-08C0.606995 2.39643e-08 0.396877 0.0870339 0.241955 0.241955C0.0870339 0.396877 0 0.606995 0 0.826087C0 1.04518 0.0870339 1.2553 0.241955 1.41022C0.396877 1.56514 0.606995 1.65217 0.826087 1.65217H2.29652C2.4166 1.65238 2.53358 1.69029 2.63096 1.76054C2.72834 1.8308 2.8012 1.92986 2.83926 2.04374L5.56287 10.2162C5.6843 10.5797 5.69917 10.9696 5.60665 11.3413L5.38278 12.2393C5.05317 13.5561 6.07835 14.8696 7.43478 14.8696H17.3478C17.5669 14.8696 17.777 14.7825 17.932 14.6276C18.0869 14.4727 18.1739 14.2626 18.1739 14.0435C18.1739 13.8244 18.0869 13.6143 17.932 13.4593C17.777 13.3044 17.5669 13.2174 17.3478 13.2174H7.43478C7.11261 13.2174 6.90609 12.953 6.98457 12.6416L7.15391 11.9659C7.18244 11.8516 7.24833 11.7501 7.34112 11.6775C7.43391 11.6049 7.54828 11.5654 7.66609 11.5652H16.5217C16.6953 11.5654 16.8646 11.511 17.0055 11.4095C17.1463 11.3081 17.2517 11.1649 17.3065 11.0002L19.508 4.39148C19.5494 4.26729 19.5607 4.13505 19.5409 4.00566C19.5211 3.87626 19.4709 3.75342 19.3943 3.64725C19.3178 3.54108 19.2171 3.45463 19.1005 3.39501C18.984 3.33539 18.855 3.30432 18.7241 3.30435H5.415C5.29478 3.30431 5.17762 3.26649 5.08007 3.19622C4.98253 3.12595 4.90954 3.0268 4.87143 2.91278L4.0883 0.565043C4.03349 0.400482 3.92828 0.257348 3.78757 0.15593C3.64686 0.0545128 3.4778 -4.17427e-05 3.30435 2.39643e-08H0.826087ZM6.6087 15.6957C6.17051 15.6957 5.75028 15.8697 5.44043 16.1796C5.13059 16.4894 4.95652 16.9096 4.95652 17.3478C4.95652 17.786 5.13059 18.2062 5.44043 18.5161C5.75028 18.8259 6.17051 19 6.6087 19C7.04688 19 7.46712 18.8259 7.77696 18.5161C8.0868 18.2062 8.26087 17.786 8.26087 17.3478C8.26087 16.9096 8.0868 16.4894 7.77696 16.1796C7.46712 15.8697 7.04688 15.6957 6.6087 15.6957ZM16.5217 15.6957C16.0836 15.6957 15.6633 15.8697 15.3535 16.1796C15.0436 16.4894 14.8696 16.9096 14.8696 17.3478C14.8696 17.786 15.0436 18.2062 15.3535 18.5161C15.6633 18.8259 16.0836 19 16.5217 19C16.9599 19 17.3802 18.8259 17.69 18.5161C17.9998 18.2062 18.1739 17.786 18.1739 17.3478C18.1739 16.9096 17.9998 16.4894 17.69 16.1796C17.3802 15.8697 16.9599 15.6957 16.5217 15.6957Z"
-                                                fill="white" />
-                                        </svg>
-                                    </span>
-                                    Add to Cart
-                                </a>
+                @foreach ($is_top as $data)
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="ayur-tpro-box">
+                            <div class="ayur-tpro-img">
+                                <img src="{{ asset($data->product_image) }}" alt="img">
+                                <div class="ayur-tpro-sale">
+                                    {{-- <p>Sale</p> --}}
+                                    <div class="ayur-tpro-like">
+                                        <a href="javascript:void(0)" class="ayur-tpor-click">
+                                            <img src="assets/images/like.svg" class="unlike" />
+                                            <img src="assets/images/like-fill.svg" class="like" />
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="ayur-tpro-box">
-                        <div class="ayur-tpro-img">
-                            <img src="https://dummyimage.com/356x244/" alt="img">
-                            <div class="ayur-tpro-sale ayur-tpro-sale-off">
-                                <p>30% Off</p>
-                                <div class="ayur-tpro-like">
-                                    <a href="javascript:void(0)" class="ayur-tpor-click">
-                                        <img src="assets/images/like.svg" class="unlike" />
-                                        <img src="assets/images/like-fill.svg" class="like" />
+                            <div class="ayur-tpro-text">
+                                <h3><a href="shop-single.html">{{ $data->product_name }}</a></h3>
+                                <div class="ayur-tpro-price">
+                                    <p><del>${{ $data->mrp }}</del>${{ $data->price }}</p>
+                                    <div class="ayur-tpro-star">
+                                        <img src="assets/images/star-icon.png" alt="star">
+                                        <p>4.5/5</p>
+                                    </div>
+                                </div>
+
+                                <div class="ayur-tpro-btn">
+                                    <a href="javascript:void(0);" class="ayur-btn add-to-cart-btn"
+                                        data-id="{{ $data->id }}">
+                                        <span>
+                                            <svg width="20" height="19" viewBox="0 0 20 19" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M0.826087 2.39643e-08C0.606995 2.39643e-08 0.396877 0.0870339 0.241955 0.241955C0.0870339 0.396877 0 0.606995 0 0.826087C0 1.04518 0.0870339 1.2553 0.241955 1.41022C0.396877 1.56514 0.606995 1.65217 0.826087 1.65217H2.29652C2.4166 1.65238 2.53358 1.69029 2.63096 1.76054C2.72834 1.8308 2.8012 1.92986 2.83926 2.04374L5.56287 10.2162C5.6843 10.5797 5.69917 10.9696 5.60665 11.3413L5.38278 12.2393C5.05317 13.5561 6.07835 14.8696 7.43478 14.8696H17.3478C17.5669 14.8696 17.777 14.7825 17.932 14.6276C18.0869 14.4727 18.1739 14.2626 18.1739 14.0435C18.1739 13.8244 18.0869 13.6143 17.932 13.4593C17.777 13.3044 17.5669 13.2174 17.3478 13.2174H7.43478C7.11261 13.2174 6.90609 12.953 6.98457 12.6416L7.15391 11.9659C7.18244 11.8516 7.24833 11.7501 7.34112 11.6775C7.43391 11.6049 7.54828 11.5654 7.66609 11.5652H16.5217C16.6953 11.5654 16.8646 11.511 17.0055 11.4095C17.1463 11.3081 17.2517 11.1649 17.3065 11.0002L19.508 4.39148C19.5494 4.26729 19.5607 4.13505 19.5409 4.00566C19.5211 3.87626 19.4709 3.75342 19.3943 3.64725C19.3178 3.54108 19.2171 3.45463 19.1005 3.39501C18.984 3.33539 18.855 3.30432 18.7241 3.30435H5.415C5.29478 3.30431 5.17762 3.26649 5.08007 3.19622C4.98253 3.12595 4.90954 3.0268 4.87143 2.91278L4.0883 0.565043C4.03349 0.400482 3.92828 0.257348 3.78757 0.15593C3.64686 0.0545128 3.4778 -4.17427e-05 3.30435 2.39643e-08H0.826087ZM6.6087 15.6957C6.17051 15.6957 5.75028 15.8697 5.44043 16.1796C5.13059 16.4894 4.95652 16.9096 4.95652 17.3478C4.95652 17.786 5.13059 18.2062 5.44043 18.5161C5.75028 18.8259 6.17051 19 6.6087 19C7.04688 19 7.46712 18.8259 7.77696 18.5161C8.0868 18.2062 8.26087 17.786 8.26087 17.3478C8.26087 16.9096 8.0868 16.4894 7.77696 16.1796C7.46712 15.8697 7.04688 15.6957 6.6087 15.6957ZM16.5217 15.6957C16.0836 15.6957 15.6633 15.8697 15.3535 16.1796C15.0436 16.4894 14.8696 16.9096 14.8696 17.3478C14.8696 17.786 15.0436 18.2062 15.3535 18.5161C15.6633 18.8259 16.0836 19 16.5217 19C16.9599 19 17.3802 18.8259 17.69 18.5161C17.9998 18.2062 18.1739 17.786 18.1739 17.3478C18.1739 16.9096 17.9998 16.4894 17.69 16.1796C17.3802 15.8697 16.9599 15.6957 16.5217 15.6957Z"
+                                                    fill="white" />
+                                            </svg>
+                                        </span>
+                                        Add to Cart
                                     </a>
                                 </div>
                             </div>
                         </div>
-                        <div class="ayur-tpro-text">
-                            <h3><a href="shop-single.html">Loose Leaf Tea</a></h3>
-                            <div class="ayur-tpro-price">
-                                <p><del>$100</del>$50</p>
-                                <div class="ayur-tpro-star">
-                                    <img src="assets/images/star-icon.png" alt="star">
-                                    <p>4.5/5</p>
-                                </div>
-                            </div>
-                            <div class="ayur-tpro-btn">
-                                <a href="cart.html" class="ayur-btn">
-                                    <span>
-                                        <svg width="20" height="19" viewBox="0 0 20 19" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M0.826087 2.39643e-08C0.606995 2.39643e-08 0.396877 0.0870339 0.241955 0.241955C0.0870339 0.396877 0 0.606995 0 0.826087C0 1.04518 0.0870339 1.2553 0.241955 1.41022C0.396877 1.56514 0.606995 1.65217 0.826087 1.65217H2.29652C2.4166 1.65238 2.53358 1.69029 2.63096 1.76054C2.72834 1.8308 2.8012 1.92986 2.83926 2.04374L5.56287 10.2162C5.6843 10.5797 5.69917 10.9696 5.60665 11.3413L5.38278 12.2393C5.05317 13.5561 6.07835 14.8696 7.43478 14.8696H17.3478C17.5669 14.8696 17.777 14.7825 17.932 14.6276C18.0869 14.4727 18.1739 14.2626 18.1739 14.0435C18.1739 13.8244 18.0869 13.6143 17.932 13.4593C17.777 13.3044 17.5669 13.2174 17.3478 13.2174H7.43478C7.11261 13.2174 6.90609 12.953 6.98457 12.6416L7.15391 11.9659C7.18244 11.8516 7.24833 11.7501 7.34112 11.6775C7.43391 11.6049 7.54828 11.5654 7.66609 11.5652H16.5217C16.6953 11.5654 16.8646 11.511 17.0055 11.4095C17.1463 11.3081 17.2517 11.1649 17.3065 11.0002L19.508 4.39148C19.5494 4.26729 19.5607 4.13505 19.5409 4.00566C19.5211 3.87626 19.4709 3.75342 19.3943 3.64725C19.3178 3.54108 19.2171 3.45463 19.1005 3.39501C18.984 3.33539 18.855 3.30432 18.7241 3.30435H5.415C5.29478 3.30431 5.17762 3.26649 5.08007 3.19622C4.98253 3.12595 4.90954 3.0268 4.87143 2.91278L4.0883 0.565043C4.03349 0.400482 3.92828 0.257348 3.78757 0.15593C3.64686 0.0545128 3.4778 -4.17427e-05 3.30435 2.39643e-08H0.826087ZM6.6087 15.6957C6.17051 15.6957 5.75028 15.8697 5.44043 16.1796C5.13059 16.4894 4.95652 16.9096 4.95652 17.3478C4.95652 17.786 5.13059 18.2062 5.44043 18.5161C5.75028 18.8259 6.17051 19 6.6087 19C7.04688 19 7.46712 18.8259 7.77696 18.5161C8.0868 18.2062 8.26087 17.786 8.26087 17.3478C8.26087 16.9096 8.0868 16.4894 7.77696 16.1796C7.46712 15.8697 7.04688 15.6957 6.6087 15.6957ZM16.5217 15.6957C16.0836 15.6957 15.6633 15.8697 15.3535 16.1796C15.0436 16.4894 14.8696 16.9096 14.8696 17.3478C14.8696 17.786 15.0436 18.2062 15.3535 18.5161C15.6633 18.8259 16.0836 19 16.5217 19C16.9599 19 17.3802 18.8259 17.69 18.5161C17.9998 18.2062 18.1739 17.786 18.1739 17.3478C18.1739 16.9096 17.9998 16.4894 17.69 16.1796C17.3802 15.8697 16.9599 15.6957 16.5217 15.6957Z"
-                                                fill="white" />
-                                        </svg>
-                                    </span>
-                                    Add to Cart
-                                </a>
-                            </div>
-                        </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="ayur-tpro-box">
-                        <div class="ayur-tpro-img">
-                            <img src="https://dummyimage.com/356x244/" alt="img">
-                            <div class="ayur-tpro-sale ayur-tpro-sale-star">
-                                <div class="ayur-tpro-like" class="ayur-tpor-click">
-                                    <a href="javascript:void(0)">
-                                        <img src="assets/images/like.svg" class="unlike" />
-                                        <img src="assets/images/like-fill.svg" class="like" />
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ayur-tpro-text">
-                            <h3><a href="shop-single.html">Oolong Tea</a></h3>
-                            <div class="ayur-tpro-price">
-                                <p><del>$100</del>$50</p>
-                                <div class="ayur-tpro-star">
-                                    <img src="assets/images/star-icon.png" alt="star">
-                                    <p>4.5/5</p>
-                                </div>
-                            </div>
-                            <div class="ayur-tpro-btn">
-                                <a href="cart.html" class="ayur-btn">
-                                    <span>
-                                        <svg width="20" height="19" viewBox="0 0 20 19" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M0.826087 2.39643e-08C0.606995 2.39643e-08 0.396877 0.0870339 0.241955 0.241955C0.0870339 0.396877 0 0.606995 0 0.826087C0 1.04518 0.0870339 1.2553 0.241955 1.41022C0.396877 1.56514 0.606995 1.65217 0.826087 1.65217H2.29652C2.4166 1.65238 2.53358 1.69029 2.63096 1.76054C2.72834 1.8308 2.8012 1.92986 2.83926 2.04374L5.56287 10.2162C5.6843 10.5797 5.69917 10.9696 5.60665 11.3413L5.38278 12.2393C5.05317 13.5561 6.07835 14.8696 7.43478 14.8696H17.3478C17.5669 14.8696 17.777 14.7825 17.932 14.6276C18.0869 14.4727 18.1739 14.2626 18.1739 14.0435C18.1739 13.8244 18.0869 13.6143 17.932 13.4593C17.777 13.3044 17.5669 13.2174 17.3478 13.2174H7.43478C7.11261 13.2174 6.90609 12.953 6.98457 12.6416L7.15391 11.9659C7.18244 11.8516 7.24833 11.7501 7.34112 11.6775C7.43391 11.6049 7.54828 11.5654 7.66609 11.5652H16.5217C16.6953 11.5654 16.8646 11.511 17.0055 11.4095C17.1463 11.3081 17.2517 11.1649 17.3065 11.0002L19.508 4.39148C19.5494 4.26729 19.5607 4.13505 19.5409 4.00566C19.5211 3.87626 19.4709 3.75342 19.3943 3.64725C19.3178 3.54108 19.2171 3.45463 19.1005 3.39501C18.984 3.33539 18.855 3.30432 18.7241 3.30435H5.415C5.29478 3.30431 5.17762 3.26649 5.08007 3.19622C4.98253 3.12595 4.90954 3.0268 4.87143 2.91278L4.0883 0.565043C4.03349 0.400482 3.92828 0.257348 3.78757 0.15593C3.64686 0.0545128 3.4778 -4.17427e-05 3.30435 2.39643e-08H0.826087ZM6.6087 15.6957C6.17051 15.6957 5.75028 15.8697 5.44043 16.1796C5.13059 16.4894 4.95652 16.9096 4.95652 17.3478C4.95652 17.786 5.13059 18.2062 5.44043 18.5161C5.75028 18.8259 6.17051 19 6.6087 19C7.04688 19 7.46712 18.8259 7.77696 18.5161C8.0868 18.2062 8.26087 17.786 8.26087 17.3478C8.26087 16.9096 8.0868 16.4894 7.77696 16.1796C7.46712 15.8697 7.04688 15.6957 6.6087 15.6957ZM16.5217 15.6957C16.0836 15.6957 15.6633 15.8697 15.3535 16.1796C15.0436 16.4894 14.8696 16.9096 14.8696 17.3478C14.8696 17.786 15.0436 18.2062 15.3535 18.5161C15.6633 18.8259 16.0836 19 16.5217 19C16.9599 19 17.3802 18.8259 17.69 18.5161C17.9998 18.2062 18.1739 17.786 18.1739 17.3478C18.1739 16.9096 17.9998 16.4894 17.69 16.1796C17.3802 15.8697 16.9599 15.6957 16.5217 15.6957Z"
-                                                fill="white" />
-                                        </svg>
-                                    </span>
-                                    Add to Cart
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="ayur-tpro-box">
-                        <div class="ayur-tpro-img">
-                            <img src="https://dummyimage.com/356x244/" alt="img">
-                            <div class="ayur-tpro-sale ayur-tpro-sale-star">
-                                <div class="ayur-tpro-like">
-                                    <a href="javascript:void(0)" class="ayur-tpor-click">
-                                        <img src="assets/images/like.svg" class="unlike" />
-                                        <img src="assets/images/like-fill.svg" class="like" />
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ayur-tpro-text">
-                            <h3><a href="shop-single.html">Black Organic Tea</a></h3>
-                            <div class="ayur-tpro-price">
-                                <p><del>$100</del>$50</p>
-                                <div class="ayur-tpro-star">
-                                    <img src="assets/images/star-icon.png" alt="star">
-                                    <p>4.5/5</p>
-                                </div>
-                            </div>
-                            <div class="ayur-tpro-btn">
-                                <a href="cart.html" class="ayur-btn">
-                                    <span>
-                                        <svg width="20" height="19" viewBox="0 0 20 19" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M0.826087 2.39643e-08C0.606995 2.39643e-08 0.396877 0.0870339 0.241955 0.241955C0.0870339 0.396877 0 0.606995 0 0.826087C0 1.04518 0.0870339 1.2553 0.241955 1.41022C0.396877 1.56514 0.606995 1.65217 0.826087 1.65217H2.29652C2.4166 1.65238 2.53358 1.69029 2.63096 1.76054C2.72834 1.8308 2.8012 1.92986 2.83926 2.04374L5.56287 10.2162C5.6843 10.5797 5.69917 10.9696 5.60665 11.3413L5.38278 12.2393C5.05317 13.5561 6.07835 14.8696 7.43478 14.8696H17.3478C17.5669 14.8696 17.777 14.7825 17.932 14.6276C18.0869 14.4727 18.1739 14.2626 18.1739 14.0435C18.1739 13.8244 18.0869 13.6143 17.932 13.4593C17.777 13.3044 17.5669 13.2174 17.3478 13.2174H7.43478C7.11261 13.2174 6.90609 12.953 6.98457 12.6416L7.15391 11.9659C7.18244 11.8516 7.24833 11.7501 7.34112 11.6775C7.43391 11.6049 7.54828 11.5654 7.66609 11.5652H16.5217C16.6953 11.5654 16.8646 11.511 17.0055 11.4095C17.1463 11.3081 17.2517 11.1649 17.3065 11.0002L19.508 4.39148C19.5494 4.26729 19.5607 4.13505 19.5409 4.00566C19.5211 3.87626 19.4709 3.75342 19.3943 3.64725C19.3178 3.54108 19.2171 3.45463 19.1005 3.39501C18.984 3.33539 18.855 3.30432 18.7241 3.30435H5.415C5.29478 3.30431 5.17762 3.26649 5.08007 3.19622C4.98253 3.12595 4.90954 3.0268 4.87143 2.91278L4.0883 0.565043C4.03349 0.400482 3.92828 0.257348 3.78757 0.15593C3.64686 0.0545128 3.4778 -4.17427e-05 3.30435 2.39643e-08H0.826087ZM6.6087 15.6957C6.17051 15.6957 5.75028 15.8697 5.44043 16.1796C5.13059 16.4894 4.95652 16.9096 4.95652 17.3478C4.95652 17.786 5.13059 18.2062 5.44043 18.5161C5.75028 18.8259 6.17051 19 6.6087 19C7.04688 19 7.46712 18.8259 7.77696 18.5161C8.0868 18.2062 8.26087 17.786 8.26087 17.3478C8.26087 16.9096 8.0868 16.4894 7.77696 16.1796C7.46712 15.8697 7.04688 15.6957 6.6087 15.6957ZM16.5217 15.6957C16.0836 15.6957 15.6633 15.8697 15.3535 16.1796C15.0436 16.4894 14.8696 16.9096 14.8696 17.3478C14.8696 17.786 15.0436 18.2062 15.3535 18.5161C15.6633 18.8259 16.0836 19 16.5217 19C16.9599 19 17.3802 18.8259 17.69 18.5161C17.9998 18.2062 18.1739 17.786 18.1739 17.3478C18.1739 16.9096 17.9998 16.4894 17.69 16.1796C17.3802 15.8697 16.9599 15.6957 16.5217 15.6957Z"
-                                                fill="white" />
-                                        </svg>
-                                    </span>
-                                    Add to Cart
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="ayur-tpro-box">
-                        <div class="ayur-tpro-img">
-                            <img src="https://dummyimage.com/356x244/" alt="img">
-                            <div class="ayur-tpro-sale ayur-tpro-sale-star">
-                                <div class="ayur-tpro-like">
-                                    <a href="javascript:void(0)" class="ayur-tpor-click">
-                                        <img src="assets/images/like.svg" class="unlike" />
-                                        <img src="assets/images/like-fill.svg" class="like" />
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ayur-tpro-text">
-                            <h3><a href="shop-single.html">Green Tea</a></h3>
-                            <div class="ayur-tpro-price">
-                                <p><del>$100</del>$50</p>
-                                <div class="ayur-tpro-star">
-                                    <img src="assets/images/star-icon.png" alt="star">
-                                    <p>4.5/5</p>
-                                </div>
-                            </div>
-                            <div class="ayur-tpro-btn">
-                                <a href="cart.html" class="ayur-btn">
-                                    <span>
-                                        <svg width="20" height="19" viewBox="0 0 20 19" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M0.826087 2.39643e-08C0.606995 2.39643e-08 0.396877 0.0870339 0.241955 0.241955C0.0870339 0.396877 0 0.606995 0 0.826087C0 1.04518 0.0870339 1.2553 0.241955 1.41022C0.396877 1.56514 0.606995 1.65217 0.826087 1.65217H2.29652C2.4166 1.65238 2.53358 1.69029 2.63096 1.76054C2.72834 1.8308 2.8012 1.92986 2.83926 2.04374L5.56287 10.2162C5.6843 10.5797 5.69917 10.9696 5.60665 11.3413L5.38278 12.2393C5.05317 13.5561 6.07835 14.8696 7.43478 14.8696H17.3478C17.5669 14.8696 17.777 14.7825 17.932 14.6276C18.0869 14.4727 18.1739 14.2626 18.1739 14.0435C18.1739 13.8244 18.0869 13.6143 17.932 13.4593C17.777 13.3044 17.5669 13.2174 17.3478 13.2174H7.43478C7.11261 13.2174 6.90609 12.953 6.98457 12.6416L7.15391 11.9659C7.18244 11.8516 7.24833 11.7501 7.34112 11.6775C7.43391 11.6049 7.54828 11.5654 7.66609 11.5652H16.5217C16.6953 11.5654 16.8646 11.511 17.0055 11.4095C17.1463 11.3081 17.2517 11.1649 17.3065 11.0002L19.508 4.39148C19.5494 4.26729 19.5607 4.13505 19.5409 4.00566C19.5211 3.87626 19.4709 3.75342 19.3943 3.64725C19.3178 3.54108 19.2171 3.45463 19.1005 3.39501C18.984 3.33539 18.855 3.30432 18.7241 3.30435H5.415C5.29478 3.30431 5.17762 3.26649 5.08007 3.19622C4.98253 3.12595 4.90954 3.0268 4.87143 2.91278L4.0883 0.565043C4.03349 0.400482 3.92828 0.257348 3.78757 0.15593C3.64686 0.0545128 3.4778 -4.17427e-05 3.30435 2.39643e-08H0.826087ZM6.6087 15.6957C6.17051 15.6957 5.75028 15.8697 5.44043 16.1796C5.13059 16.4894 4.95652 16.9096 4.95652 17.3478C4.95652 17.786 5.13059 18.2062 5.44043 18.5161C5.75028 18.8259 6.17051 19 6.6087 19C7.04688 19 7.46712 18.8259 7.77696 18.5161C8.0868 18.2062 8.26087 17.786 8.26087 17.3478C8.26087 16.9096 8.0868 16.4894 7.77696 16.1796C7.46712 15.8697 7.04688 15.6957 6.6087 15.6957ZM16.5217 15.6957C16.0836 15.6957 15.6633 15.8697 15.3535 16.1796C15.0436 16.4894 14.8696 16.9096 14.8696 17.3478C14.8696 17.786 15.0436 18.2062 15.3535 18.5161C15.6633 18.8259 16.0836 19 16.5217 19C16.9599 19 17.3802 18.8259 17.69 18.5161C17.9998 18.2062 18.1739 17.786 18.1739 17.3478C18.1739 16.9096 17.9998 16.4894 17.69 16.1796C17.3802 15.8697 16.9599 15.6957 16.5217 15.6957Z"
-                                                fill="white" />
-                                        </svg>
-                                    </span>
-                                    Add to Cart
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="ayur-tpro-box">
-                        <div class="ayur-tpro-img">
-                            <img src="https://dummyimage.com/356x244/" alt="img">
-                            <div class="ayur-tpro-sale ayur-tpro-sale-trend">
-                                <p>Trending</p>
-                                <div class="ayur-tpro-like">
-                                    <a href="javascript:void(0)" class="ayur-tpor-click">
-                                        <img src="assets/images/like.svg" class="unlike" />
-                                        <img src="assets/images/like-fill.svg" class="like" />
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ayur-tpro-text">
-                            <h3><a href="shop-single.html">Sencha Tea</a></h3>
-                            <div class="ayur-tpro-price">
-                                <p><del>$100</del>$50</p>
-                                <div class="ayur-tpro-star">
-                                    <img src="assets/images/star-icon.png" alt="star">
-                                    <p>4.5/5</p>
-                                </div>
-                            </div>
-                            <div class="ayur-tpro-btn">
-                                <a href="cart.html" class="ayur-btn">
-                                    <span>
-                                        <svg width="20" height="19" viewBox="0 0 20 19" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M0.826087 2.39643e-08C0.606995 2.39643e-08 0.396877 0.0870339 0.241955 0.241955C0.0870339 0.396877 0 0.606995 0 0.826087C0 1.04518 0.0870339 1.2553 0.241955 1.41022C0.396877 1.56514 0.606995 1.65217 0.826087 1.65217H2.29652C2.4166 1.65238 2.53358 1.69029 2.63096 1.76054C2.72834 1.8308 2.8012 1.92986 2.83926 2.04374L5.56287 10.2162C5.6843 10.5797 5.69917 10.9696 5.60665 11.3413L5.38278 12.2393C5.05317 13.5561 6.07835 14.8696 7.43478 14.8696H17.3478C17.5669 14.8696 17.777 14.7825 17.932 14.6276C18.0869 14.4727 18.1739 14.2626 18.1739 14.0435C18.1739 13.8244 18.0869 13.6143 17.932 13.4593C17.777 13.3044 17.5669 13.2174 17.3478 13.2174H7.43478C7.11261 13.2174 6.90609 12.953 6.98457 12.6416L7.15391 11.9659C7.18244 11.8516 7.24833 11.7501 7.34112 11.6775C7.43391 11.6049 7.54828 11.5654 7.66609 11.5652H16.5217C16.6953 11.5654 16.8646 11.511 17.0055 11.4095C17.1463 11.3081 17.2517 11.1649 17.3065 11.0002L19.508 4.39148C19.5494 4.26729 19.5607 4.13505 19.5409 4.00566C19.5211 3.87626 19.4709 3.75342 19.3943 3.64725C19.3178 3.54108 19.2171 3.45463 19.1005 3.39501C18.984 3.33539 18.855 3.30432 18.7241 3.30435H5.415C5.29478 3.30431 5.17762 3.26649 5.08007 3.19622C4.98253 3.12595 4.90954 3.0268 4.87143 2.91278L4.0883 0.565043C4.03349 0.400482 3.92828 0.257348 3.78757 0.15593C3.64686 0.0545128 3.4778 -4.17427e-05 3.30435 2.39643e-08H0.826087ZM6.6087 15.6957C6.17051 15.6957 5.75028 15.8697 5.44043 16.1796C5.13059 16.4894 4.95652 16.9096 4.95652 17.3478C4.95652 17.786 5.13059 18.2062 5.44043 18.5161C5.75028 18.8259 6.17051 19 6.6087 19C7.04688 19 7.46712 18.8259 7.77696 18.5161C8.0868 18.2062 8.26087 17.786 8.26087 17.3478C8.26087 16.9096 8.0868 16.4894 7.77696 16.1796C7.46712 15.8697 7.04688 15.6957 6.6087 15.6957ZM16.5217 15.6957C16.0836 15.6957 15.6633 15.8697 15.3535 16.1796C15.0436 16.4894 14.8696 16.9096 14.8696 17.3478C14.8696 17.786 15.0436 18.2062 15.3535 18.5161C15.6633 18.8259 16.0836 19 16.5217 19C16.9599 19 17.3802 18.8259 17.69 18.5161C17.9998 18.2062 18.1739 17.786 18.1739 17.3478C18.1739 16.9096 17.9998 16.4894 17.69 16.1796C17.3802 15.8697 16.9599 15.6957 16.5217 15.6957Z"
-                                                fill="white" />
-                                        </svg>
-                                    </span>
-                                    Add to Cart
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12 col-md-12 col-sm-12">
-                    <div class="ayur-tpro-viewbtn">
-                        <a href="shop.html" class="ayur-btn">View More</a>
-                    </div>
-                </div>
+                @endforeach
+
+
             </div>
         </div>
         <div class="ayur-bgshape ayur-tpro-bgshape">
@@ -446,7 +259,7 @@
             <div class="row">
                 <div class="col-lg-6 col-md-12 col-sm-12">
                     <div class="ayur-about-img">
-                        <img src="https://dummyimage.com/561x348/" alt="img" data-tilt data-tilt-max="10"
+                        <img src="{{ asset('assets/images/about-img.png') }}" alt="img" data-tilt data-tilt-max="10"
                             data-tilt-speed="1000" data-tilt-perspective="1000" />
                         <div class="ayur-about-exp">
                             <p>10</p>
@@ -458,18 +271,18 @@
                     <div class="ayur-heading-wrap ayur-about-head">
                         <h5>Who We Are</h5>
                         <h3>The Natural Way To Achieving Balance And Optimal Health</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                            voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                        <a href="about.html" class="ayur-btn">Know More</a>
+                        <p>In today’s fast-paced world, true wellness goes beyond treating symptoms—it’s about nurturing
+                            your body, mind, and spirit in harmony with nature. Achieving balance and optimal health
+                            naturally means embracing holistic practices that align with your body’s innate ability to heal
+                            and thrive.</p>
+                        <a href="{{ route('about') }}" class="ayur-btn">Know More</a>
                     </div>
                 </div>
             </div>
         </div>
         <div class="ayur-bgshape ayur-about-bgshape">
-            <img src="assets/images/bg-shape2.png" alt="img" />
-            <img src="assets/images/bg-leaf2.png" alt="img" />
+            <img src="../assets/images/bg-shape2.png" alt="img" />
+            <img src="../assets/images/bg-leaf2.png" alt="img" />
         </div>
     </div>
     <!------------- About Section end ----------->
@@ -539,160 +352,52 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="ayur-tpro-box ayur-trepro-box">
-                        <div class="ayur-tpro-img">
-                            <img src="https://dummyimage.com/259x244/" alt="img">
-                            <div class="ayur-tpro-sale">
-                                <p>Sale</p>
-                                <div class="ayur-tpro-like">
-                                    <a href="javascript:void(0)" class="ayur-tpor-click">
-                                        <img src="assets/images/like.svg" class="unlike" />
-                                        <img src="assets/images/like-fill.svg" class="like" />
+
+                @foreach ($is_tren as $tren)
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="ayur-tpro-box ayur-trepro-box">
+                            <div class="ayur-tpro-img">
+                                <img src="{{ asset($tren->product_image) }}" alt="img">
+                                <div class="ayur-tpro-sale">
+                                    {{-- <p>Sale</p> --}}
+                                    <div class="ayur-tpro-like">
+                                        <a href="javascript:void(0)" class="ayur-tpor-click">
+                                            <img src="assets/images/like.svg" class="unlike" />
+                                            <img src="assets/images/like-fill.svg" class="like" />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ayur-tpro-text">
+                                <h3><a href="shop-single.html">{{ $tren->product_name }}</a></h3>
+                                <div class="ayur-tpro-price">
+                                    <p><del>Rs{{ $tren->mrp }}</del>${{ $tren->mrp }}</p>
+                                    <div class="ayur-tpro-star">
+                                        <img src="assets/images/star-icon.png" alt="star">
+                                        <p>4.5/5</p>
+                                    </div>
+                                </div>
+
+                                <div class="ayur-tpro-btn">
+                                    <a href="javascript:void(0);" class="ayur-btn add-to-cart-btn"
+                                        data-id="{{ $tren->id }}">
+                                        <span><svg width="20" height="19" viewBox="0 0 20 19" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M0.826087 2.39643e-08C0.606995 2.39643e-08 0.396877 0.0870339 0.241955 0.241955C0.0870339 0.396877 0 0.606995 0 0.826087C0 1.04518 0.0870339 1.2553 0.241955 1.41022C0.396877 1.56514 0.606995 1.65217 0.826087 1.65217H2.29652C2.4166 1.65238 2.53358 1.69029 2.63096 1.76054C2.72834 1.8308 2.8012 1.92986 2.83926 2.04374L5.56287 10.2162C5.6843 10.5797 5.69917 10.9696 5.60665 11.3413L5.38278 12.2393C5.05317 13.5561 6.07835 14.8696 7.43478 14.8696H17.3478C17.5669 14.8696 17.777 14.7825 17.932 14.6276C18.0869 14.4727 18.1739 14.2626 18.1739 14.0435C18.1739 13.8244 18.0869 13.6143 17.932 13.4593C17.777 13.3044 17.5669 13.2174 17.3478 13.2174H7.43478C7.11261 13.2174 6.90609 12.953 6.98457 12.6416L7.15391 11.9659C7.18244 11.8516 7.24833 11.7501 7.34112 11.6775C7.43391 11.6049 7.54828 11.5654 7.66609 11.5652H16.5217C16.6953 11.5654 16.8646 11.511 17.0055 11.4095C17.1463 11.3081 17.2517 11.1649 17.3065 11.0002L19.508 4.39148C19.5494 4.26729 19.5607 4.13505 19.5409 4.00566C19.5211 3.87626 19.4709 3.75342 19.3943 3.64725C19.3178 3.54108 19.2171 3.45463 19.1005 3.39501C18.984 3.33539 18.855 3.30432 18.7241 3.30435H5.415C5.29478 3.30431 5.17762 3.26649 5.08007 3.19622C4.98253 3.12595 4.90954 3.0268 4.87143 2.91278L4.0883 0.565043C4.03349 0.400482 3.92828 0.257348 3.78757 0.15593C3.64686 0.0545128 3.4778 -4.17427e-05 3.30435 2.39643e-08H0.826087ZM6.6087 15.6957C6.17051 15.6957 5.75028 15.8697 5.44043 16.1796C5.13059 16.4894 4.95652 16.9096 4.95652 17.3478C4.95652 17.786 5.13059 18.2062 5.44043 18.5161C5.75028 18.8259 6.17051 19 6.6087 19C7.04688 19 7.46712 18.8259 7.77696 18.5161C8.0868 18.2062 8.26087 17.786 8.26087 17.3478C8.26087 16.9096 8.0868 16.4894 7.77696 16.1796C7.46712 15.8697 7.04688 15.6957 6.6087 15.6957ZM16.5217 15.6957C16.0836 15.6957 15.6633 15.8697 15.3535 16.1796C15.0436 16.4894 14.8696 16.9096 14.8696 17.3478C14.8696 17.786 15.0436 18.2062 15.3535 18.5161C15.6633 18.8259 16.0836 19 16.5217 19C16.9599 19 17.3802 18.8259 17.69 18.5161C17.9998 18.2062 18.1739 17.786 18.1739 17.3478C18.1739 16.9096 17.9998 16.4894 17.69 16.1796C17.3802 15.8697 16.9599 15.6957 16.5217 15.6957Z"
+                                                    fill="white" />
+                                            </svg>
+                                        </span>
+                                        Add to Cart
                                     </a>
                                 </div>
                             </div>
                         </div>
-                        <div class="ayur-tpro-text">
-                            <h3><a href="shop-single.html">Herbal Oil Medicine</a></h3>
-                            <div class="ayur-tpro-price">
-                                <p><del>$100</del>$50</p>
-                                <div class="ayur-tpro-star">
-                                    <img src="assets/images/star-icon.png" alt="star">
-                                    <p>4.5/5</p>
-                                </div>
-                            </div>
-
-                            <div class="ayur-tpro-btn">
-                                <a href="cart.html" class="ayur-btn">
-                                    <span><svg width="20" height="19" viewBox="0 0 20 19" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M0.826087 2.39643e-08C0.606995 2.39643e-08 0.396877 0.0870339 0.241955 0.241955C0.0870339 0.396877 0 0.606995 0 0.826087C0 1.04518 0.0870339 1.2553 0.241955 1.41022C0.396877 1.56514 0.606995 1.65217 0.826087 1.65217H2.29652C2.4166 1.65238 2.53358 1.69029 2.63096 1.76054C2.72834 1.8308 2.8012 1.92986 2.83926 2.04374L5.56287 10.2162C5.6843 10.5797 5.69917 10.9696 5.60665 11.3413L5.38278 12.2393C5.05317 13.5561 6.07835 14.8696 7.43478 14.8696H17.3478C17.5669 14.8696 17.777 14.7825 17.932 14.6276C18.0869 14.4727 18.1739 14.2626 18.1739 14.0435C18.1739 13.8244 18.0869 13.6143 17.932 13.4593C17.777 13.3044 17.5669 13.2174 17.3478 13.2174H7.43478C7.11261 13.2174 6.90609 12.953 6.98457 12.6416L7.15391 11.9659C7.18244 11.8516 7.24833 11.7501 7.34112 11.6775C7.43391 11.6049 7.54828 11.5654 7.66609 11.5652H16.5217C16.6953 11.5654 16.8646 11.511 17.0055 11.4095C17.1463 11.3081 17.2517 11.1649 17.3065 11.0002L19.508 4.39148C19.5494 4.26729 19.5607 4.13505 19.5409 4.00566C19.5211 3.87626 19.4709 3.75342 19.3943 3.64725C19.3178 3.54108 19.2171 3.45463 19.1005 3.39501C18.984 3.33539 18.855 3.30432 18.7241 3.30435H5.415C5.29478 3.30431 5.17762 3.26649 5.08007 3.19622C4.98253 3.12595 4.90954 3.0268 4.87143 2.91278L4.0883 0.565043C4.03349 0.400482 3.92828 0.257348 3.78757 0.15593C3.64686 0.0545128 3.4778 -4.17427e-05 3.30435 2.39643e-08H0.826087ZM6.6087 15.6957C6.17051 15.6957 5.75028 15.8697 5.44043 16.1796C5.13059 16.4894 4.95652 16.9096 4.95652 17.3478C4.95652 17.786 5.13059 18.2062 5.44043 18.5161C5.75028 18.8259 6.17051 19 6.6087 19C7.04688 19 7.46712 18.8259 7.77696 18.5161C8.0868 18.2062 8.26087 17.786 8.26087 17.3478C8.26087 16.9096 8.0868 16.4894 7.77696 16.1796C7.46712 15.8697 7.04688 15.6957 6.6087 15.6957ZM16.5217 15.6957C16.0836 15.6957 15.6633 15.8697 15.3535 16.1796C15.0436 16.4894 14.8696 16.9096 14.8696 17.3478C14.8696 17.786 15.0436 18.2062 15.3535 18.5161C15.6633 18.8259 16.0836 19 16.5217 19C16.9599 19 17.3802 18.8259 17.69 18.5161C17.9998 18.2062 18.1739 17.786 18.1739 17.3478C18.1739 16.9096 17.9998 16.4894 17.69 16.1796C17.3802 15.8697 16.9599 15.6957 16.5217 15.6957Z"
-                                                fill="white" />
-                                        </svg>
-                                    </span>
-                                    Add to Cart
-                                </a>
-                            </div>
-                        </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="ayur-tpro-box ayur-trepro-box">
-                        <div class="ayur-tpro-img">
-                            <img src="https://dummyimage.com/259x244/" alt="img">
-                            <div class="ayur-tpro-sale ayur-tpro-sale-off">
-                                <p>30% Off</p>
-                                <div class="ayur-tpro-like">
-                                    <a href="javascript:void(0)" class="ayur-tpor-click">
-                                        <img src="assets/images/like.svg" class="unlike" />
-                                        <img src="assets/images/like-fill.svg" class="like" />
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ayur-tpro-text">
-                            <h3><a href="shop-single.html">Herbal Oil Medicine</a></h3>
-                            <div class="ayur-tpro-price">
-                                <p><del>$100</del>$50</p>
-                                <div class="ayur-tpro-star">
-                                    <img src="assets/images/star-icon.png" alt="star">
-                                    <p>4.5/5</p>
-                                </div>
-                            </div>
+                @endforeach
 
-                            <div class="ayur-tpro-btn">
-                                <a href="cart.html" class="ayur-btn">
-                                    <span><svg width="20" height="19" viewBox="0 0 20 19" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M0.826087 2.39643e-08C0.606995 2.39643e-08 0.396877 0.0870339 0.241955 0.241955C0.0870339 0.396877 0 0.606995 0 0.826087C0 1.04518 0.0870339 1.2553 0.241955 1.41022C0.396877 1.56514 0.606995 1.65217 0.826087 1.65217H2.29652C2.4166 1.65238 2.53358 1.69029 2.63096 1.76054C2.72834 1.8308 2.8012 1.92986 2.83926 2.04374L5.56287 10.2162C5.6843 10.5797 5.69917 10.9696 5.60665 11.3413L5.38278 12.2393C5.05317 13.5561 6.07835 14.8696 7.43478 14.8696H17.3478C17.5669 14.8696 17.777 14.7825 17.932 14.6276C18.0869 14.4727 18.1739 14.2626 18.1739 14.0435C18.1739 13.8244 18.0869 13.6143 17.932 13.4593C17.777 13.3044 17.5669 13.2174 17.3478 13.2174H7.43478C7.11261 13.2174 6.90609 12.953 6.98457 12.6416L7.15391 11.9659C7.18244 11.8516 7.24833 11.7501 7.34112 11.6775C7.43391 11.6049 7.54828 11.5654 7.66609 11.5652H16.5217C16.6953 11.5654 16.8646 11.511 17.0055 11.4095C17.1463 11.3081 17.2517 11.1649 17.3065 11.0002L19.508 4.39148C19.5494 4.26729 19.5607 4.13505 19.5409 4.00566C19.5211 3.87626 19.4709 3.75342 19.3943 3.64725C19.3178 3.54108 19.2171 3.45463 19.1005 3.39501C18.984 3.33539 18.855 3.30432 18.7241 3.30435H5.415C5.29478 3.30431 5.17762 3.26649 5.08007 3.19622C4.98253 3.12595 4.90954 3.0268 4.87143 2.91278L4.0883 0.565043C4.03349 0.400482 3.92828 0.257348 3.78757 0.15593C3.64686 0.0545128 3.4778 -4.17427e-05 3.30435 2.39643e-08H0.826087ZM6.6087 15.6957C6.17051 15.6957 5.75028 15.8697 5.44043 16.1796C5.13059 16.4894 4.95652 16.9096 4.95652 17.3478C4.95652 17.786 5.13059 18.2062 5.44043 18.5161C5.75028 18.8259 6.17051 19 6.6087 19C7.04688 19 7.46712 18.8259 7.77696 18.5161C8.0868 18.2062 8.26087 17.786 8.26087 17.3478C8.26087 16.9096 8.0868 16.4894 7.77696 16.1796C7.46712 15.8697 7.04688 15.6957 6.6087 15.6957ZM16.5217 15.6957C16.0836 15.6957 15.6633 15.8697 15.3535 16.1796C15.0436 16.4894 14.8696 16.9096 14.8696 17.3478C14.8696 17.786 15.0436 18.2062 15.3535 18.5161C15.6633 18.8259 16.0836 19 16.5217 19C16.9599 19 17.3802 18.8259 17.69 18.5161C17.9998 18.2062 18.1739 17.786 18.1739 17.3478C18.1739 16.9096 17.9998 16.4894 17.69 16.1796C17.3802 15.8697 16.9599 15.6957 16.5217 15.6957Z"
-                                                fill="white" />
-                                        </svg>
-                                    </span>
-                                    Add to Cart
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="ayur-tpro-box ayur-trepro-box">
-                        <div class="ayur-tpro-img">
-                            <img src="https://dummyimage.com/259x244/" alt="img">
-                            <div class="ayur-tpro-sale ayur-tpro-sale-star">
-                                <div class="ayur-tpro-like">
-                                    <a href="javascript:void(0)" class="ayur-tpor-click">
-                                        <img src="assets/images/like.svg" class="unlike" />
-                                        <img src="assets/images/like-fill.svg" class="like" />
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ayur-tpro-text">
-                            <h3><a href="shop-single.html">Herbal Oil Medicine</a></h3>
-                            <div class="ayur-tpro-price">
-                                <p><del>$100</del>$50</p>
-                                <div class="ayur-tpro-star">
-                                    <img src="assets/images/star-icon.png" alt="star">
-                                    <p>4.5/5</p>
-                                </div>
-                            </div>
 
-                            <div class="ayur-tpro-btn">
-                                <a href="cart.html" class="ayur-btn">
-                                    <span><svg width="20" height="19" viewBox="0 0 20 19" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M0.826087 2.39643e-08C0.606995 2.39643e-08 0.396877 0.0870339 0.241955 0.241955C0.0870339 0.396877 0 0.606995 0 0.826087C0 1.04518 0.0870339 1.2553 0.241955 1.41022C0.396877 1.56514 0.606995 1.65217 0.826087 1.65217H2.29652C2.4166 1.65238 2.53358 1.69029 2.63096 1.76054C2.72834 1.8308 2.8012 1.92986 2.83926 2.04374L5.56287 10.2162C5.6843 10.5797 5.69917 10.9696 5.60665 11.3413L5.38278 12.2393C5.05317 13.5561 6.07835 14.8696 7.43478 14.8696H17.3478C17.5669 14.8696 17.777 14.7825 17.932 14.6276C18.0869 14.4727 18.1739 14.2626 18.1739 14.0435C18.1739 13.8244 18.0869 13.6143 17.932 13.4593C17.777 13.3044 17.5669 13.2174 17.3478 13.2174H7.43478C7.11261 13.2174 6.90609 12.953 6.98457 12.6416L7.15391 11.9659C7.18244 11.8516 7.24833 11.7501 7.34112 11.6775C7.43391 11.6049 7.54828 11.5654 7.66609 11.5652H16.5217C16.6953 11.5654 16.8646 11.511 17.0055 11.4095C17.1463 11.3081 17.2517 11.1649 17.3065 11.0002L19.508 4.39148C19.5494 4.26729 19.5607 4.13505 19.5409 4.00566C19.5211 3.87626 19.4709 3.75342 19.3943 3.64725C19.3178 3.54108 19.2171 3.45463 19.1005 3.39501C18.984 3.33539 18.855 3.30432 18.7241 3.30435H5.415C5.29478 3.30431 5.17762 3.26649 5.08007 3.19622C4.98253 3.12595 4.90954 3.0268 4.87143 2.91278L4.0883 0.565043C4.03349 0.400482 3.92828 0.257348 3.78757 0.15593C3.64686 0.0545128 3.4778 -4.17427e-05 3.30435 2.39643e-08H0.826087ZM6.6087 15.6957C6.17051 15.6957 5.75028 15.8697 5.44043 16.1796C5.13059 16.4894 4.95652 16.9096 4.95652 17.3478C4.95652 17.786 5.13059 18.2062 5.44043 18.5161C5.75028 18.8259 6.17051 19 6.6087 19C7.04688 19 7.46712 18.8259 7.77696 18.5161C8.0868 18.2062 8.26087 17.786 8.26087 17.3478C8.26087 16.9096 8.0868 16.4894 7.77696 16.1796C7.46712 15.8697 7.04688 15.6957 6.6087 15.6957ZM16.5217 15.6957C16.0836 15.6957 15.6633 15.8697 15.3535 16.1796C15.0436 16.4894 14.8696 16.9096 14.8696 17.3478C14.8696 17.786 15.0436 18.2062 15.3535 18.5161C15.6633 18.8259 16.0836 19 16.5217 19C16.9599 19 17.3802 18.8259 17.69 18.5161C17.9998 18.2062 18.1739 17.786 18.1739 17.3478C18.1739 16.9096 17.9998 16.4894 17.69 16.1796C17.3802 15.8697 16.9599 15.6957 16.5217 15.6957Z"
-                                                fill="white" />
-                                        </svg>
-                                    </span>
-                                    Add to Cart
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="ayur-tpro-box ayur-trepro-box">
-                        <div class="ayur-tpro-img">
-                            <img src="https://dummyimage.com/259x244/" alt="img">
-                            <div class="ayur-tpro-sale ayur-tpro-sale-star">
-                                <div class="ayur-tpro-like">
-                                    <a href="javascript:void(0)" class="ayur-tpor-click">
-                                        <img src="assets/images/like.svg" class="unlike" />
-                                        <img src="assets/images/like-fill.svg" class="like" />
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ayur-tpro-text">
-                            <h3><a href="shop-single.html">Herbal Oil Medicine</a></h3>
-                            <div class="ayur-tpro-price">
-                                <p><del>$100</del>$50</p>
-                                <div class="ayur-tpro-star">
-                                    <img src="assets/images/star-icon.png" alt="star">
-                                    <p>4.5/5</p>
-                                </div>
-                            </div>
 
-                            <div class="ayur-tpro-btn">
-                                <a href="cart.html" class="ayur-btn">
-                                    <span><svg width="20" height="19" viewBox="0 0 20 19" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M0.826087 2.39643e-08C0.606995 2.39643e-08 0.396877 0.0870339 0.241955 0.241955C0.0870339 0.396877 0 0.606995 0 0.826087C0 1.04518 0.0870339 1.2553 0.241955 1.41022C0.396877 1.56514 0.606995 1.65217 0.826087 1.65217H2.29652C2.4166 1.65238 2.53358 1.69029 2.63096 1.76054C2.72834 1.8308 2.8012 1.92986 2.83926 2.04374L5.56287 10.2162C5.6843 10.5797 5.69917 10.9696 5.60665 11.3413L5.38278 12.2393C5.05317 13.5561 6.07835 14.8696 7.43478 14.8696H17.3478C17.5669 14.8696 17.777 14.7825 17.932 14.6276C18.0869 14.4727 18.1739 14.2626 18.1739 14.0435C18.1739 13.8244 18.0869 13.6143 17.932 13.4593C17.777 13.3044 17.5669 13.2174 17.3478 13.2174H7.43478C7.11261 13.2174 6.90609 12.953 6.98457 12.6416L7.15391 11.9659C7.18244 11.8516 7.24833 11.7501 7.34112 11.6775C7.43391 11.6049 7.54828 11.5654 7.66609 11.5652H16.5217C16.6953 11.5654 16.8646 11.511 17.0055 11.4095C17.1463 11.3081 17.2517 11.1649 17.3065 11.0002L19.508 4.39148C19.5494 4.26729 19.5607 4.13505 19.5409 4.00566C19.5211 3.87626 19.4709 3.75342 19.3943 3.64725C19.3178 3.54108 19.2171 3.45463 19.1005 3.39501C18.984 3.33539 18.855 3.30432 18.7241 3.30435H5.415C5.29478 3.30431 5.17762 3.26649 5.08007 3.19622C4.98253 3.12595 4.90954 3.0268 4.87143 2.91278L4.0883 0.565043C4.03349 0.400482 3.92828 0.257348 3.78757 0.15593C3.64686 0.0545128 3.4778 -4.17427e-05 3.30435 2.39643e-08H0.826087ZM6.6087 15.6957C6.17051 15.6957 5.75028 15.8697 5.44043 16.1796C5.13059 16.4894 4.95652 16.9096 4.95652 17.3478C4.95652 17.786 5.13059 18.2062 5.44043 18.5161C5.75028 18.8259 6.17051 19 6.6087 19C7.04688 19 7.46712 18.8259 7.77696 18.5161C8.0868 18.2062 8.26087 17.786 8.26087 17.3478C8.26087 16.9096 8.0868 16.4894 7.77696 16.1796C7.46712 15.8697 7.04688 15.6957 6.6087 15.6957ZM16.5217 15.6957C16.0836 15.6957 15.6633 15.8697 15.3535 16.1796C15.0436 16.4894 14.8696 16.9096 14.8696 17.3478C14.8696 17.786 15.0436 18.2062 15.3535 18.5161C15.6633 18.8259 16.0836 19 16.5217 19C16.9599 19 17.3802 18.8259 17.69 18.5161C17.9998 18.2062 18.1739 17.786 18.1739 17.3478C18.1739 16.9096 17.9998 16.4894 17.69 16.1796C17.3802 15.8697 16.9599 15.6957 16.5217 15.6957Z"
-                                                fill="white" />
-                                        </svg>
-                                    </span>
-                                    Add to Cart
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
         <div class="ayur-bgshape ayur-trenpro-bgshape">
@@ -721,7 +426,7 @@
                             </div>
                             <div class="ayur-why-boxtext">
                                 <h4>100 % Organic</h4>
-                                <p>Duis aute irure dolor in reprehenderit in voluptate velit</p>
+                                <p>our products are made with ingredients grown without synthetic pesticides.</p>
                             </div>
                         </div>
                         <div class="ayur-why-box">
@@ -730,7 +435,8 @@
                             </div>
                             <div class="ayur-why-boxtext">
                                 <h4>Best Quality</h4>
-                                <p>Duis aute irure dolor in reprehenderit in voluptate velit</p>
+                                <p>Most natural products—crafted with care, backed by tradition, and trusted for their
+                                    purity </p>
                             </div>
                         </div>
                         <div class="ayur-why-box">
@@ -739,7 +445,7 @@
                             </div>
                             <div class="ayur-why-boxtext">
                                 <h4>Hygienic Product</h4>
-                                <p>Duis aute irure dolor in reprehenderit in voluptate velit</p>
+                                <p>Stay protected with our hygienic products, designed to promote cleanliness.</p>
                             </div>
                         </div>
                         <div class="ayur-why-box">
@@ -748,7 +454,8 @@
                             </div>
                             <div class="ayur-why-boxtext">
                                 <h4>Health Care</h4>
-                                <p>Duis aute irure dolor in reprehenderit in voluptate velit</p>
+                                <p>Health care is the support and services provided to maintain or improve a person's
+                                    health.</p>
                             </div>
                         </div>
                     </div>
@@ -756,14 +463,14 @@
                 <div class="col-lg-6 col-md-12 col-sm-12">
                     <div class="ayur-why-textheading">
                         <h3>Solve Your Problem with The Power of Nature</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,it's sed do eiusmod tempor incididunt
-                            ut labore et dolore was a magna aliqua.Ut enim ad minim veniam,quis nostrud exercitation
-                            that is ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in to
-                            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                        <p>Nature offers powerful solutions to modern challenges. Whether it’s boosting your immunity,
+                            improving digestion, calming your mind, or relieving everyday discomforts, there’s a natural
+                            path to wellness waiting for you,and holistic care, you can restore balance, reduce stress, and
+                            improve your overall quality of life—gently and effectively.</p>
                         <ul>
                             <li>
                                 <img src="assets/images/tick.png" alt="icon">
-                                <p>Quis nostrud was exercitation.</p>
+                                <p>Drawn from nature to help you.</p>
                             </li>
                             <li>
                                 <img src="assets/images/tick.png" alt="icon">
@@ -778,9 +485,9 @@
                                 <p>Quis nostrud was exercitation.</p>
                             </li>
                         </ul>
-                        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                            commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                            dolore eu fugiat nulla pariatur.</p>
+                        <p>Discover how nature’s wisdom can be the key to your well-being. Harnessing the healing potential
+                            of natural remedies, ancient practices, and holistic care, you can restore balance, reduce
+                            stress.</p>
                         <div class="ayur-why-btn">
                             <a href="services.html" class="ayur-btn">Read More</a>
                         </div>
@@ -828,15 +535,16 @@
                         <div class="swiper-slide">
                             <div class="ayur-test-box">
                                 <div class="ayur-test-text">
-                                    <p>Amet minim mollit non deserunt ullamco est sit aliqua as dolor do amet. officia
-                                        consequat duis enim velit mollit. Exercitation it’s veam consequat sunt nostrud
-                                        amet. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                                        deserunt mollit anim id es.</p>
+                                    <p>"I've never felt more balanced and energized. Their natural approach truly works, and
+                                        the care I received was exceptional. It's rare to find such genuine dedication to
+                                        well-being and delivering holistic care that makes a real difference."
+                                        — Abhinav Arora</p>
                                 </div>
                                 <div class="ayur-test-namesec">
                                     <div class="ayur-testname">
-                                        <img src="https://dummyimage.com/56x56/" alt="image">
-                                        <h3>Leslie Alexander</h3>
+                                        <img src="{{ asset('assets/images/client2-removebg-preview.png') }}"
+                                            style="width: 56%; height: 66px;" alt="image">
+                                        <h3>Abhinav Arora</h3>
                                     </div>
                                     <div class="ayur-testquote">
                                         <svg width="74" height="53" viewBox="0 0 74 53" fill="none"
@@ -852,15 +560,18 @@
                         <div class="swiper-slide">
                             <div class="ayur-test-box">
                                 <div class="ayur-test-text">
-                                    <p>Amet minim mollit non deserunt ullamco est sit aliqua as dolor do amet. officia
-                                        consequat duis enim velit mollit. Exercitation it’s veam consequat sunt nostrud
-                                        amet. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                                        deserunt mollit anim id es.</p>
+                                    <p>"The care and attention I received were exceptional. Their natural methods truly made
+                                        a difference in my health and overall well-being. I feel more balanced, energized,
+                                        and confident in my healing journey."
+                                        Their words reflect the care, quality, and natural approach we bring to everything
+                                        we do.
+                                        — Akriti Sharma</p>
                                 </div>
                                 <div class="ayur-test-namesec">
                                     <div class="ayur-testname">
-                                        <img src="https://dummyimage.com/56x56/" alt="image">
-                                        <h3>Brooklyn Simmons</h3>
+                                        <img src="{{ asset('assets/images/client1.jpg') }}"
+                                            style="width: 56%; height: 66px;" alt="image">
+                                        <h3>Akriti Sharma</h3>
                                     </div>
                                     <div class="ayur-testquote">
                                         <svg width="74" height="53" viewBox="0 0 74 53" fill="none"
@@ -876,15 +587,16 @@
                         <div class="swiper-slide">
                             <div class="ayur-test-box">
                                 <div class="ayur-test-text">
-                                    <p>Amet minim mollit non deserunt ullamco est sit aliqua as dolor do amet. officia
-                                        consequat duis enim velit mollit. Exercitation it’s veam consequat sunt nostrud
-                                        amet. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                                        deserunt mollit anim id es.</p>
+                                    <p>"I had an amazing experience! Their natural approach truly made a difference in my
+                                        overall health. The team was supportive, knowledgeable, and genuinely cared about my
+                                        well-being. I feel more balanced and energized than ever before."
+                                        — Mayank Sindhi</p>
                                 </div>
                                 <div class="ayur-test-namesec">
                                     <div class="ayur-testname">
-                                        <img src="https://dummyimage.com/56x56/" alt="image">
-                                        <h3>Leslie Alexander</h3>
+                                        <img src="{{ asset('assets/images/client3.jpg') }}"
+                                            style="width: 56%; height: 66px;" alt="image">
+                                        <h3>Mayank Sindhi</h3>
                                     </div>
                                     <div class="ayur-testquote">
                                         <svg width="74" height="53" viewBox="0 0 74 53" fill="none"
@@ -920,262 +632,7 @@
     </div>
     <!------------- Testimonial Section end ----------->
     <!------------- Team Section start ----------->
-    <div class="ayur-bgcover ayur-team-sec">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12">
-                    <div class="ayur-heading-wrap">
-                        <h5>Our Team</h5>
-                        <h3>Trusted & Certificated Team</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="ayur-team-box">
-                        <div class="ayur-team-img-wrapper">
-                            <div class="ayur-team-img">
-                                <img src="https://dummyimage.com/259x244/" alt="image">
-                            </div>
-                            <div class="ayur-team-hoverimg">
-                                <div class="ayur-team-hoversmall">
-                                    <img src="https://dummyimage.com/120x120/" alt="image">
-                                </div>
-                                <p>Manager</p>
-                                <div class="ayur-team-sociallink">
-                                    <a href="javacript:;">
-                                        <svg width="11" height="20" viewBox="0 0 11 20" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M6.74157 20V10.8777H9.80231L10.2615 7.32156H6.74157V5.05147C6.74157 4.0222 7.02622 3.32076 8.50386 3.32076L10.3854 3.31999V0.13923C10.06 0.0969453 8.94308 0 7.64308 0C4.92848 0 3.07002 1.65697 3.07002 4.69927V7.32156H0V10.8777H3.07002V20H6.74157Z"
-                                                fill="#E4D4CF" />
-                                        </svg>
-                                    </a>
-                                    <a href="javacript:;">
-                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M11.8138 8.46864L19.0991 0H17.3727L11.0469 7.3532L5.9944 0H0.166992L7.8073 11.1193L0.166992 20H1.89349L8.57377 12.2348L13.9095 20H19.7369L11.8133 8.46864H11.8138ZM9.4491 11.2173L8.67498 10.1101L2.51557 1.29967H5.16736L10.1381 8.40994L10.9122 9.51718L17.3735 18.7594H14.7218L9.4491 11.2177V11.2173Z"
-                                                fill="#E4D4CF" />
-                                        </svg>
-                                    </a>
-                                    <a href="javacript:;">
-                                        <svg width="17" height="20" viewBox="0 0 17 20" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M8.89667 0C3.41417 0.000833333 0.5 3.51333 0.5 7.34333C0.5 9.11917 1.4925 11.335 3.08167 12.0375C3.535 12.2417 3.475 11.9925 3.865 10.5008C3.88295 10.4406 3.88454 10.3766 3.8696 10.3156C3.85466 10.2545 3.82374 10.1985 3.78 10.1533C1.50833 7.52583 3.33667 2.12417 8.5725 2.12417C16.15 2.12417 14.7342 12.6092 9.89083 12.6092C8.6425 12.6092 7.7125 11.6292 8.00667 10.4167C8.36333 8.9725 9.06167 7.42 9.06167 6.37917C9.06167 3.75583 5.15333 4.145 5.15333 7.62083C5.15333 8.695 5.53333 9.42 5.53333 9.42C5.53333 9.42 4.27583 14.5 4.0425 15.4492C3.6475 17.0558 4.09583 19.6567 4.135 19.8808C4.15917 20.0042 4.2975 20.0433 4.375 19.9417C4.49917 19.7792 6.01917 17.6108 6.445 16.0433C6.6 15.4725 7.23583 13.1558 7.23583 13.1558C7.655 13.9125 8.86333 14.5458 10.1508 14.5458C13.9808 14.5458 16.7492 11.1792 16.7492 7.00167C16.7358 2.99667 13.3083 0 8.89667 0Z"
-                                                fill="#E4D4CF" />
-                                        </svg>
-                                    </a>
-                                    <a href="javacript:;">
-                                        <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M15.4996 0H5.49988C2.75019 0 0.5 2.25019 0.5 4.99988V15.0001C0.5 17.7491 2.75019 20 5.49988 20H15.4996C18.2493 20 20.4995 17.7491 20.4995 15.0001V4.99988C20.4995 2.25019 18.2493 0 15.4996 0ZM18.8328 15.0001C18.8328 16.8376 17.3381 18.3333 15.4996 18.3333H5.49988C3.66218 18.3333 2.16671 16.8376 2.16671 15.0001V4.99988C2.16671 3.16193 3.66218 1.66671 5.49988 1.66671H15.4996C17.3381 1.66671 18.8328 3.16193 18.8328 4.99988V15.0001Z"
-                                                fill="#E4D4CF" />
-                                            <path
-                                                d="M15.9172 5.83295C16.6075 5.83295 17.1672 5.27332 17.1672 4.58298C17.1672 3.89264 16.6075 3.33301 15.9172 3.33301C15.2269 3.33301 14.6672 3.89264 14.6672 4.58298C14.6672 5.27332 15.2269 5.83295 15.9172 5.83295Z"
-                                                fill="#E4D4CF" />
-                                            <path
-                                                d="M10.4999 5C7.73793 5 5.5 7.23818 5.5 9.99988C5.5 12.7606 7.73793 15.0002 10.4999 15.0002C13.261 15.0002 15.4998 12.7606 15.4998 9.99988C15.4998 7.23818 13.261 5 10.4999 5ZM10.4999 13.3335C8.65915 13.3335 7.16671 11.8411 7.16671 9.99988C7.16671 8.15866 8.65915 6.66671 10.4999 6.66671C12.3406 6.66671 13.833 8.15866 13.833 9.99988C13.833 11.8411 12.3406 13.3335 10.4999 13.3335Z"
-                                                fill="#E4D4CF" />
-                                        </svg>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ayur-team-name">
-                            <h3>Esther Howard</h3>
-                            <p>Manager</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="ayur-team-box">
-                        <div class="ayur-team-img-wrapper">
-                            <div class="ayur-team-img">
-                                <img src="https://dummyimage.com/259x244/" alt="image">
-                            </div>
-                            <div class="ayur-team-hoverimg">
-                                <div class="ayur-team-hoversmall">
-                                    <img src="https://dummyimage.com/120x120/" alt="image">
-                                </div>
-                                <p>Manager</p>
-                                <div class="ayur-team-sociallink">
-                                    <a href="javacript:;">
-                                        <svg width="11" height="20" viewBox="0 0 11 20" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M6.74157 20V10.8777H9.80231L10.2615 7.32156H6.74157V5.05147C6.74157 4.0222 7.02622 3.32076 8.50386 3.32076L10.3854 3.31999V0.13923C10.06 0.0969453 8.94308 0 7.64308 0C4.92848 0 3.07002 1.65697 3.07002 4.69927V7.32156H0V10.8777H3.07002V20H6.74157Z"
-                                                fill="#E4D4CF" />
-                                        </svg>
-                                    </a>
-                                    <a href="javacript:;">
-                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M11.8138 8.46864L19.0991 0H17.3727L11.0469 7.3532L5.9944 0H0.166992L7.8073 11.1193L0.166992 20H1.89349L8.57377 12.2348L13.9095 20H19.7369L11.8133 8.46864H11.8138ZM9.4491 11.2173L8.67498 10.1101L2.51557 1.29967H5.16736L10.1381 8.40994L10.9122 9.51718L17.3735 18.7594H14.7218L9.4491 11.2177V11.2173Z"
-                                                fill="#E4D4CF" />
-                                        </svg>
-                                    </a>
-                                    <a href="javacript:;">
-                                        <svg width="17" height="20" viewBox="0 0 17 20" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M8.89667 0C3.41417 0.000833333 0.5 3.51333 0.5 7.34333C0.5 9.11917 1.4925 11.335 3.08167 12.0375C3.535 12.2417 3.475 11.9925 3.865 10.5008C3.88295 10.4406 3.88454 10.3766 3.8696 10.3156C3.85466 10.2545 3.82374 10.1985 3.78 10.1533C1.50833 7.52583 3.33667 2.12417 8.5725 2.12417C16.15 2.12417 14.7342 12.6092 9.89083 12.6092C8.6425 12.6092 7.7125 11.6292 8.00667 10.4167C8.36333 8.9725 9.06167 7.42 9.06167 6.37917C9.06167 3.75583 5.15333 4.145 5.15333 7.62083C5.15333 8.695 5.53333 9.42 5.53333 9.42C5.53333 9.42 4.27583 14.5 4.0425 15.4492C3.6475 17.0558 4.09583 19.6567 4.135 19.8808C4.15917 20.0042 4.2975 20.0433 4.375 19.9417C4.49917 19.7792 6.01917 17.6108 6.445 16.0433C6.6 15.4725 7.23583 13.1558 7.23583 13.1558C7.655 13.9125 8.86333 14.5458 10.1508 14.5458C13.9808 14.5458 16.7492 11.1792 16.7492 7.00167C16.7358 2.99667 13.3083 0 8.89667 0Z"
-                                                fill="#E4D4CF" />
-                                        </svg>
-                                    </a>
-                                    <a href="javacript:;">
-                                        <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M15.4996 0H5.49988C2.75019 0 0.5 2.25019 0.5 4.99988V15.0001C0.5 17.7491 2.75019 20 5.49988 20H15.4996C18.2493 20 20.4995 17.7491 20.4995 15.0001V4.99988C20.4995 2.25019 18.2493 0 15.4996 0ZM18.8328 15.0001C18.8328 16.8376 17.3381 18.3333 15.4996 18.3333H5.49988C3.66218 18.3333 2.16671 16.8376 2.16671 15.0001V4.99988C2.16671 3.16193 3.66218 1.66671 5.49988 1.66671H15.4996C17.3381 1.66671 18.8328 3.16193 18.8328 4.99988V15.0001Z"
-                                                fill="#E4D4CF" />
-                                            <path
-                                                d="M15.9172 5.83295C16.6075 5.83295 17.1672 5.27332 17.1672 4.58298C17.1672 3.89264 16.6075 3.33301 15.9172 3.33301C15.2269 3.33301 14.6672 3.89264 14.6672 4.58298C14.6672 5.27332 15.2269 5.83295 15.9172 5.83295Z"
-                                                fill="#E4D4CF" />
-                                            <path
-                                                d="M10.4999 5C7.73793 5 5.5 7.23818 5.5 9.99988C5.5 12.7606 7.73793 15.0002 10.4999 15.0002C13.261 15.0002 15.4998 12.7606 15.4998 9.99988C15.4998 7.23818 13.261 5 10.4999 5ZM10.4999 13.3335C8.65915 13.3335 7.16671 11.8411 7.16671 9.99988C7.16671 8.15866 8.65915 6.66671 10.4999 6.66671C12.3406 6.66671 13.833 8.15866 13.833 9.99988C13.833 11.8411 12.3406 13.3335 10.4999 13.3335Z"
-                                                fill="#E4D4CF" />
-                                        </svg>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ayur-team-name">
-                            <h3>Darlene Robertson</h3>
-                            <p>Manager</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="ayur-team-box">
-                        <div class="ayur-team-img-wrapper">
-                            <div class="ayur-team-img">
-                                <img src="https://dummyimage.com/259x244/" alt="image">
-                            </div>
-                            <div class="ayur-team-hoverimg">
-                                <div class="ayur-team-hoversmall">
-                                    <img src="https://dummyimage.com/120x120/" alt="image">
-                                </div>
-                                <p>Manager</p>
-                                <div class="ayur-team-sociallink">
-                                    <a href="javacript:;">
-                                        <svg width="11" height="20" viewBox="0 0 11 20" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M6.74157 20V10.8777H9.80231L10.2615 7.32156H6.74157V5.05147C6.74157 4.0222 7.02622 3.32076 8.50386 3.32076L10.3854 3.31999V0.13923C10.06 0.0969453 8.94308 0 7.64308 0C4.92848 0 3.07002 1.65697 3.07002 4.69927V7.32156H0V10.8777H3.07002V20H6.74157Z"
-                                                fill="#E4D4CF" />
-                                        </svg>
-                                    </a>
-                                    <a href="javacript:;">
-                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M11.8138 8.46864L19.0991 0H17.3727L11.0469 7.3532L5.9944 0H0.166992L7.8073 11.1193L0.166992 20H1.89349L8.57377 12.2348L13.9095 20H19.7369L11.8133 8.46864H11.8138ZM9.4491 11.2173L8.67498 10.1101L2.51557 1.29967H5.16736L10.1381 8.40994L10.9122 9.51718L17.3735 18.7594H14.7218L9.4491 11.2177V11.2173Z"
-                                                fill="#E4D4CF" />
-                                        </svg>
-                                    </a>
-                                    <a href="javacript:;">
-                                        <svg width="17" height="20" viewBox="0 0 17 20" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M8.89667 0C3.41417 0.000833333 0.5 3.51333 0.5 7.34333C0.5 9.11917 1.4925 11.335 3.08167 12.0375C3.535 12.2417 3.475 11.9925 3.865 10.5008C3.88295 10.4406 3.88454 10.3766 3.8696 10.3156C3.85466 10.2545 3.82374 10.1985 3.78 10.1533C1.50833 7.52583 3.33667 2.12417 8.5725 2.12417C16.15 2.12417 14.7342 12.6092 9.89083 12.6092C8.6425 12.6092 7.7125 11.6292 8.00667 10.4167C8.36333 8.9725 9.06167 7.42 9.06167 6.37917C9.06167 3.75583 5.15333 4.145 5.15333 7.62083C5.15333 8.695 5.53333 9.42 5.53333 9.42C5.53333 9.42 4.27583 14.5 4.0425 15.4492C3.6475 17.0558 4.09583 19.6567 4.135 19.8808C4.15917 20.0042 4.2975 20.0433 4.375 19.9417C4.49917 19.7792 6.01917 17.6108 6.445 16.0433C6.6 15.4725 7.23583 13.1558 7.23583 13.1558C7.655 13.9125 8.86333 14.5458 10.1508 14.5458C13.9808 14.5458 16.7492 11.1792 16.7492 7.00167C16.7358 2.99667 13.3083 0 8.89667 0Z"
-                                                fill="#E4D4CF" />
-                                        </svg>
-                                    </a>
-                                    <a href="javacript:;">
-                                        <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M15.4996 0H5.49988C2.75019 0 0.5 2.25019 0.5 4.99988V15.0001C0.5 17.7491 2.75019 20 5.49988 20H15.4996C18.2493 20 20.4995 17.7491 20.4995 15.0001V4.99988C20.4995 2.25019 18.2493 0 15.4996 0ZM18.8328 15.0001C18.8328 16.8376 17.3381 18.3333 15.4996 18.3333H5.49988C3.66218 18.3333 2.16671 16.8376 2.16671 15.0001V4.99988C2.16671 3.16193 3.66218 1.66671 5.49988 1.66671H15.4996C17.3381 1.66671 18.8328 3.16193 18.8328 4.99988V15.0001Z"
-                                                fill="#E4D4CF" />
-                                            <path
-                                                d="M15.9172 5.83295C16.6075 5.83295 17.1672 5.27332 17.1672 4.58298C17.1672 3.89264 16.6075 3.33301 15.9172 3.33301C15.2269 3.33301 14.6672 3.89264 14.6672 4.58298C14.6672 5.27332 15.2269 5.83295 15.9172 5.83295Z"
-                                                fill="#E4D4CF" />
-                                            <path
-                                                d="M10.4999 5C7.73793 5 5.5 7.23818 5.5 9.99988C5.5 12.7606 7.73793 15.0002 10.4999 15.0002C13.261 15.0002 15.4998 12.7606 15.4998 9.99988C15.4998 7.23818 13.261 5 10.4999 5ZM10.4999 13.3335C8.65915 13.3335 7.16671 11.8411 7.16671 9.99988C7.16671 8.15866 8.65915 6.66671 10.4999 6.66671C12.3406 6.66671 13.833 8.15866 13.833 9.99988C13.833 11.8411 12.3406 13.3335 10.4999 13.3335Z"
-                                                fill="#E4D4CF" />
-                                        </svg>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ayur-team-name">
-                            <h3>Robert Fox</h3>
-                            <p>Manager</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="ayur-team-box">
-                        <div class="ayur-team-img-wrapper">
-                            <div class="ayur-team-img">
-                                <img src="https://dummyimage.com/259x244/" alt="image">
-                            </div>
-                            <div class="ayur-team-hoverimg">
-                                <div class="ayur-team-hoversmall">
-                                    <img src="https://dummyimage.com/120x120/" alt="image">
-                                </div>
-                                <p>Manager</p>
-                                <div class="ayur-team-sociallink">
-                                    <a href="javacript:;">
-                                        <svg width="11" height="20" viewBox="0 0 11 20" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M6.74157 20V10.8777H9.80231L10.2615 7.32156H6.74157V5.05147C6.74157 4.0222 7.02622 3.32076 8.50386 3.32076L10.3854 3.31999V0.13923C10.06 0.0969453 8.94308 0 7.64308 0C4.92848 0 3.07002 1.65697 3.07002 4.69927V7.32156H0V10.8777H3.07002V20H6.74157Z"
-                                                fill="#E4D4CF" />
-                                        </svg>
-                                    </a>
-                                    <a href="javacript:;">
-                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M11.8138 8.46864L19.0991 0H17.3727L11.0469 7.3532L5.9944 0H0.166992L7.8073 11.1193L0.166992 20H1.89349L8.57377 12.2348L13.9095 20H19.7369L11.8133 8.46864H11.8138ZM9.4491 11.2173L8.67498 10.1101L2.51557 1.29967H5.16736L10.1381 8.40994L10.9122 9.51718L17.3735 18.7594H14.7218L9.4491 11.2177V11.2173Z"
-                                                fill="#E4D4CF" />
-                                        </svg>
-                                    </a>
-                                    <a href="javacript:;">
-                                        <svg width="17" height="20" viewBox="0 0 17 20" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M8.89667 0C3.41417 0.000833333 0.5 3.51333 0.5 7.34333C0.5 9.11917 1.4925 11.335 3.08167 12.0375C3.535 12.2417 3.475 11.9925 3.865 10.5008C3.88295 10.4406 3.88454 10.3766 3.8696 10.3156C3.85466 10.2545 3.82374 10.1985 3.78 10.1533C1.50833 7.52583 3.33667 2.12417 8.5725 2.12417C16.15 2.12417 14.7342 12.6092 9.89083 12.6092C8.6425 12.6092 7.7125 11.6292 8.00667 10.4167C8.36333 8.9725 9.06167 7.42 9.06167 6.37917C9.06167 3.75583 5.15333 4.145 5.15333 7.62083C5.15333 8.695 5.53333 9.42 5.53333 9.42C5.53333 9.42 4.27583 14.5 4.0425 15.4492C3.6475 17.0558 4.09583 19.6567 4.135 19.8808C4.15917 20.0042 4.2975 20.0433 4.375 19.9417C4.49917 19.7792 6.01917 17.6108 6.445 16.0433C6.6 15.4725 7.23583 13.1558 7.23583 13.1558C7.655 13.9125 8.86333 14.5458 10.1508 14.5458C13.9808 14.5458 16.7492 11.1792 16.7492 7.00167C16.7358 2.99667 13.3083 0 8.89667 0Z"
-                                                fill="#E4D4CF" />
-                                        </svg>
-                                    </a>
-                                    <a href="javacript:;">
-                                        <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M15.4996 0H5.49988C2.75019 0 0.5 2.25019 0.5 4.99988V15.0001C0.5 17.7491 2.75019 20 5.49988 20H15.4996C18.2493 20 20.4995 17.7491 20.4995 15.0001V4.99988C20.4995 2.25019 18.2493 0 15.4996 0ZM18.8328 15.0001C18.8328 16.8376 17.3381 18.3333 15.4996 18.3333H5.49988C3.66218 18.3333 2.16671 16.8376 2.16671 15.0001V4.99988C2.16671 3.16193 3.66218 1.66671 5.49988 1.66671H15.4996C17.3381 1.66671 18.8328 3.16193 18.8328 4.99988V15.0001Z"
-                                                fill="#E4D4CF" />
-                                            <path
-                                                d="M15.9172 5.83295C16.6075 5.83295 17.1672 5.27332 17.1672 4.58298C17.1672 3.89264 16.6075 3.33301 15.9172 3.33301C15.2269 3.33301 14.6672 3.89264 14.6672 4.58298C14.6672 5.27332 15.2269 5.83295 15.9172 5.83295Z"
-                                                fill="#E4D4CF" />
-                                            <path
-                                                d="M10.4999 5C7.73793 5 5.5 7.23818 5.5 9.99988C5.5 12.7606 7.73793 15.0002 10.4999 15.0002C13.261 15.0002 15.4998 12.7606 15.4998 9.99988C15.4998 7.23818 13.261 5 10.4999 5ZM10.4999 13.3335C8.65915 13.3335 7.16671 11.8411 7.16671 9.99988C7.16671 8.15866 8.65915 6.66671 10.4999 6.66671C12.3406 6.66671 13.833 8.15866 13.833 9.99988C13.833 11.8411 12.3406 13.3335 10.4999 13.3335Z"
-                                                fill="#E4D4CF" />
-                                        </svg>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ayur-team-name">
-                            <h3>Jenny Wilson</h3>
-                            <p>Manager</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="ayur-bgshape ayur-team-bgshape">
-            <img src="assets/images/bg-shape5.png" alt="img" />
-            <img src="assets/images/bg-leaf5.png" alt="img" />
-        </div>
-    </div>
-    <!------------- Team Section end ----------->
-    <!------------- Blog Section start ----------->
+
     <div class="ayur-bgcover ayur-blog-sec">
         <div class="container">
             <div class="row">
@@ -1187,80 +644,44 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="ayur-blog-box">
-                        <div class="ayur-blog-img">
-                            <img src="https://dummyimage.com/366x201/" alt="image">
-                        </div>
-                        <div class="ayur-blog-text">
-                            <div class="ayur-blog-date">
-                                <h4>Ayurveda Medicine</h4>
-                                <p>June 17,2024</p>
+
+                @foreach ($blog as $blogs)
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="ayur-blog-box">
+                            <div class="ayur-blog-img">
+                                <img src="{{ asset($blogs->blog_image) }}" alt="image">
                             </div>
-                            <h3><a href="blog-single.html">Duis aute irure dolor in velit voluptate esse</a></h3>
-                            <p>It is a long established was a fact that a reader will be distracted by the readable
-                                content.</p>
+                            <div class="ayur-blog-text">
+                                <div class="ayur-blog-date">
+                                    <h4>{{ $blogs->blog_type }}</h4>
+                                    <p>{{ $blogs->created_at->format('F d, Y') }}</p>
+                                </div>
+                                <h3><a href="{{ url('/blog/' . $blogs->blog_slug) }}">{{ $blogs->blog_name }}</a></h3>
+                                <p>{{ $blogs->blog_shortdesc }}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="ayur-blog-box">
-                        <div class="ayur-blog-img">
-                            <img src="https://dummyimage.com/366x201/" alt="image">
-                        </div>
-                        <div class="ayur-blog-text">
-                            <div class="ayur-blog-date">
-                                <h4>Ayurveda Medicine</h4>
-                                <p>June 17,2024</p>
-                            </div>
-                            <h3><a href="blog-single.html">Duis aute irure dolor in velit voluptate esse</a></h3>
-                            <p>It is a long established was a fact that a reader will be distracted by the readable
-                                content.</p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
                 <div class="col-lg-4 col-md-12 col-sm-12">
-                    <div class="ayur-blog-box ayur-blog-inline">
-                        <div class="ayur-blog-img">
-                            <img src="https://dummyimage.com/91x91/" alt="image">
-                        </div>
-                        <div class="ayur-blog-text">
-                            <div class="ayur-blog-date">
-                                <h4>Ayurveda Medicine</h4>
+                    @foreach ($recentBlogs as $blog)
+                        <div class="ayur-blog-box ayur-blog-inline">
+                            <div class="ayur-blog-img">
+                                <img src="{{ asset($blog->blog_image) }}" alt="image">
                             </div>
-                            <h3><a href="blog-single.html">Duis aute irure dolor in velit voluptate esse</a></h3>
-                        </div>
-                    </div>
-                    <div class="ayur-blog-box ayur-blog-inline">
-                        <div class="ayur-blog-img">
-                            <img src="https://dummyimage.com/91x91/" alt="image">
-                        </div>
-                        <div class="ayur-blog-text">
-                            <div class="ayur-blog-date">
-                                <h4>Ayurveda Medicine</h4>
+                            <div class="ayur-blog-text">
+                                <div class="ayur-blog-date">
+                                    <h4><a href="{{ url('/blog/' . $blog->blog_slug) }}">{{ $blog->blog_name }}</a></h4>
+                                </div>
+                                <h3>{{ $blog->blog_shortdesc }}</h3>
                             </div>
-                            <h3><a href="blog-single.html">Duis aute irure dolor in velit voluptate esse</a></h3>
                         </div>
-                    </div>
-                    <div class="ayur-blog-box ayur-blog-inline">
-                        <div class="ayur-blog-img">
-                            <img src="https://dummyimage.com/91x91/ " alt="image">
-                        </div>
-                        <div class="ayur-blog-text">
-                            <div class="ayur-blog-date">
-                                <h4>Ayurveda Medicine</h4>
-                            </div>
-                            <h3><a href="blog-single.html">Duis aute irure dolor in velit voluptate esse</a></h3>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
         <div class="ayur-bgshape ayur-blog-bgshape">
-            <img src="assets/images/bg-shape6.png" alt="img" />
-            <img src="assets/images/bg-leaf6.png" alt="img" />
+            <img src="../assets/images/bg-shape6.png" alt="img" />
+            <img src="../assets/images/bg-leaf6.png" alt="img" />
         </div>
     </div>
-    <!------------- Blog Section end ----------->
-    <!------------- footer Section start ----------->
 @endsection

@@ -44,14 +44,19 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $credentials = $request->only('username', 'password');
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
 
-        // Admin login
+        $email = $request->email;
+        $password = $request->password;
+
         if ($request->is('admin/login')) {
             if (
-                $credentials['username'] === 'ayurvedaadmin@gmail.com' &&
-                $credentials['password'] === 'admin123456789'
+                Auth::attempt(['email' => $email, 'password' => $password, 'role' => 'admin'])
             ) {
+                $request->session()->regenerate();
                 session(['admin_logged_in' => true]);
                 return redirect()->route('admin.dashboard');
             } else {
@@ -60,10 +65,14 @@ class AuthController extends Controller
         }
 
         // User login
-        if (Auth::attempt(['email' => $credentials['username'], 'password' => $credentials['password']])) {
+        if (Auth::attempt(['email' => $email, 'password' => $password])) {
             $request->session()->regenerate();
+
             if (Auth::user()->role === 'user') {
-                return redirect()->route('user.dashboard');
+                return redirect()->intended(route('user.dashboard')); // 👈 this sends user back to cart or previous page
+            } else {
+                Auth::logout();
+                return back()->withErrors(['Invalid user role.']);
             }
         }
 
@@ -73,14 +82,14 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         if (session('admin_logged_in')) {
-            $request->session()->invalidate();
-            $request->session()->regenerateToken();
-            return redirect()->route('admin.login');
+            $request->session()->forget('admin_logged_in');
+        } else {
+            Auth::logout();
         }
 
-        Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+
         return redirect()->route('Auth.login');
     }
 
@@ -88,7 +97,7 @@ class AuthController extends Controller
     {
         if (session('admin_logged_in')) {
             return view('admin.dashboard');
-        } elseif (Auth::check()) {
+        } elseif (Auth::check() && Auth::user()->role === 'user') {
             return view('user.dashboard');
         }
 
