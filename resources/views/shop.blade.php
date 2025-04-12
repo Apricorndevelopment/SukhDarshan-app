@@ -117,10 +117,12 @@
                                                 {{-- <p>Sale</p> --}}
                                                 <div class="ayur-tpro-like">
                                                     <a href="javascript:void(0)" class="ayur-tpor-click">
-                                                        <img src="../assets/images/like.svg" class="unlike" />
-                                                        <img src="../assets/images/like-fill.svg" class="like" />
+                                                        <img src="{{ asset('assets/images/like.svg') }}" class="unlike" />
+                                                        <img src="{{ asset('assets/images/like-fill.svg') }}"
+                                                            class="like" />
                                                     </a>
                                                 </div>
+
                                             </div>
                                         </div>
                                         <div class="ayur-tpro-text">
@@ -136,7 +138,7 @@
                                             </div>
 
                                             <div class="ayur-tpro-btn">
-                                                <a href="cart.html" class="ayur-btn">
+                                                {{-- <a href="cart.html" class="ayur-btn">
                                                     <span>
                                                         <svg width="20" height="19" viewBox="0 0 20 19"
                                                             fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -146,7 +148,13 @@
                                                         </svg>
                                                     </span>
                                                     Add to Cart
-                                                </a>
+                                                </a> --}}
+                                                <form method="POST" action="{{ route('add.to.cart') }}">
+                                                    @csrf
+                                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                                    <button type="submit" class="ayur-btn">Add to Cart</button>
+                                                </form>
+
                                             </div>
                                         </div>
                                     </div>
@@ -183,10 +191,10 @@
                                 <img src="{{ asset($list->product_image) }}" alt="img">
                                 <div class="ayur-tpro-sale">
                                     {{-- <p>Sale</p> --}}
-                                    <div class="ayur-tpro-like" style="margin-right: 50px">
+                                    <div class="ayur-tpro-like">
                                         <a href="javascript:void(0)" class="ayur-tpor-click">
-                                            <img src="assets/images/like.svg" class="unlike" />
-                                            <img src="assets/images/like-fill.svg" class="like" />
+                                            <img src="{{ asset('assets/images/like.svg') }}" class="unlike" />
+                                            <img src="{{ asset('assets/images/like-fill.svg') }}" class="like" />
                                         </a>
                                     </div>
                                 </div>
@@ -202,7 +210,7 @@
                                 </div>
 
                                 <div class="ayur-tpro-btn">
-                                    <a href="{{ route('cart') }}" class="ayur-btn">
+                                    <a href="#" class="ayur-btn">
                                         <span><svg width="20" height="19" viewBox="0 0 20 19" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -223,4 +231,5 @@
             <img src="assets/images/bg-shape3.png" alt="img" />
         </div>
     </div>
+
 @endsection

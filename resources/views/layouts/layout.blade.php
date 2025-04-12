@@ -4,9 +4,10 @@
 <head>
     <title>Pure Ayurveda</title>
     <meta charset="UTF-8">
-    <meta name="description" content="Free Web tutorials">
+    <meta name="description" content="Web">
     <meta name="keywords" content="HTML, CSS, JavaScript">
-    <meta name="author" content="John Doe">
+    <meta name="author" content="Sukh Darshan">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,7 +60,7 @@
                         </div>
                         <div class="ayur-nav-icons">
                             <div class="ayur-nav-like">
-                                <a href="wishlist.html">
+                                <a href="{{ route('wishlist') }}">
                                     <span class="icon">
                                         <svg width="21" height="17" viewBox="0 0 21 17" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
@@ -71,7 +72,7 @@
                                 </a>
                             </div>
                             <div class="ayur-nav-product">
-                                <a href="{{ route('cart') }}">
+                                <a href="#">
                                     <span class="icon">
                                         <svg width="16" height="17" viewBox="0 0 16 17" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
@@ -240,7 +241,7 @@
                             <h4>Recent Blog</h4>
                             <ul class="ayur-recent-blog">
 
-                                {{-- @foreach ($recentBlogs as $blog)
+                                @foreach ($recentBlogs as $blog)
                                     <li class="ayur-recentblog-box">
                                         <div class="ayur-recentblog-boximg">
                                             <img src="{{ asset($blog->blog_image) }}" alt="image">
@@ -251,7 +252,7 @@
                                             </h3>
                                         </div>
                                     </li>
-                                @endforeach --}}
+                                @endforeach
 
                                 {{-- <li class="ayur-recentblog-box">
                                     <div class="ayur-recentblog-boximg">
@@ -295,26 +296,25 @@
     <script src="../assets/js/loginform.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        $('.add-to-cart-btn').click(function() {
-            let productId = $(this).data('id');
+        $(document).ready(function() {
+            $('.ayur-tpor-click').click(function() {
+                let productId = $(this).closest('.ayur-tpro-box').find('.add-to-cart-btn').data('id');
 
-            $.ajax({
-                url: '{{ route('add.to.cart') }}',
-                method: 'POST',
-                data: {
-                    product_id: productId,
-                    _token: '{{ csrf_token() }}'
-                },
-                success: function(response) {
-                    if (response.redirect) {
-                        window.location.href = response.redirect;
-                    } else if (response.success) {
-                        alert('Product added to cart!');
+                $.ajax({
+                    url: "/wishlist/add",
+                    method: "POST",
+                    data: {
+                        _token: $('meta[name="csrf-token"]').attr('content'),
+                        product_id: productId
+                    },
+                    success: function(response) {
+                        alert("Added to wishlist!");
                     }
-                }
+                });
             });
         });
     </script>
+
     <script>
         const popup = document.getElementById("popup");
         const close = document.getElementById("close");

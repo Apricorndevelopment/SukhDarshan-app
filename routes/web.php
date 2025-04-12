@@ -8,9 +8,9 @@ use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\CartController;
-use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\CartController;
 use App\Models\Customer;
 use App\Models\Product;
 use App\Models\Blog;
@@ -26,7 +26,6 @@ Route::get('/', function () {
 
     return view('welcome', compact('subcategory', 'blog', 'is_top', 'is_tren', 'recentBlogs'));
 });
-
 // PageController---------------
 Route::get('about', [PageController::class, 'about'])->name('about');
 Route::get('shop', [PageController::class, 'shop'])->name('shop');
@@ -39,15 +38,12 @@ Route::get('cancellationandrefund', [PageController::class, 'cancellationandrefu
 Route::get('termandconditions', [PageController::class, 'termandconditions'])->name('termandconditions');
 Route::get('privacypolicy', [PageController::class, 'privacypolicy'])->name('privacypolicy');
 Route::get('faq', [PageController::class, 'faq'])->name('faq');
-
+Route::get('wishlist', [PageController::class, 'wishlist'])->name('wishlist');
 // Authentication--------------
-
 Route::get('/login', [AuthController::class, 'showloginform'])->name('Auth.login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
-
 Route::get('/register', [AuthController::class, 'showregisterform'])->name('Auth.register');
 Route::post('/register', [AuthController::class, 'register'])->name('register.submit');
-
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 // Admin login routes
@@ -90,17 +86,22 @@ Route::get('/admin/manage_blog/{id?}', [BlogController::class, 'manage_blog'])->
 Route::post('/admin/manage_blog_process', [BlogController::class, 'manage_blog_process'])->name('blog.manage_blog_process');
 Route::get('/admin/blog/delete/{id}', [BlogController::class, 'delete'])->name('blog.delete');
 Route::get('/blog/{slug}', [BlogController::class, 'blog_details']);
-// cart--------
-Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('add.to.cart');
-Route::get('/cart', [CartController::class, 'showCart'])->name('cart');
-Route::get('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
-Route::middleware('auth')->group(function () {
-    Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
-});
-Route::middleware('auth')->group(function () {
-    Route::get('/cart', [CartController::class, 'showCart'])->name('cart');
-    Route::get('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
-});
+
 // MailController
 Route::post('send-email', [MailController::class, 'sendEmail']);
 Route::view('send-email', 'contact');
+
+// wishlist---------
+Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist');
+Route::post('/wishlist/add', [WishlistController::class, 'store'])->name('wishlist.add');
+Route::get('/wishlist/remove/{id}', [WishlistController::class, 'destroy'])->name('wishlist.remove');
+Route::get('/wishlist/cart/{id}', [WishlistController::class, 'addToCart'])->name('wishlist.addtocart');
+
+// cart
+
+Route::middleware('auth')->group(function () {
+    Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('add.to.cart');
+    Route::get('/cart', [CartController::class, 'showCart'])->name('show.cart');
+    Route::post('/cart/update', [CartController::class, 'updateCart'])->name('cart.update');
+    Route::post('/cart/remove', [CartController::class, 'removeItem'])->name('cart.remove');
+});

@@ -91,79 +91,6 @@
                                 </div>
                             </div>
                         @endforeach
-
-                        {{-- <div class="swiper-slide">
-                            <div class="ayur-careslide-box">
-                                <div class="ayur-careslider-img">
-                                    <img src="https://dummyimage.com/140x180/" alt="img">
-                                </div>
-                                <h3>Hair Care</h3>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="ayur-careslide-box">
-                                <div class="ayur-careslider-img">
-                                    <img src="https://dummyimage.com/140x180/" alt="img">
-                                </div>
-                                <h3>Skin Care</h3>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="ayur-careslide-box">
-                                <div class="ayur-careslider-img">
-                                    <img src="https://dummyimage.com/140x180/" alt="img">
-                                </div>
-                                <h3>Men's Health</h3>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="ayur-careslide-box">
-                                <div class="ayur-careslider-img">
-                                    <img src="https://dummyimage.com/140x180/" alt="img">
-                                </div>
-                                <h3>Women's Health</h3>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="ayur-careslide-box">
-                                <div class="ayur-careslider-img">
-                                    <img src="https://dummyimage.com/140x180/" alt="img">
-                                </div>
-                                <h3>Memory Health</h3>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="ayur-careslide-box">
-                                <div class="ayur-careslider-img">
-                                    <img src="https://dummyimage.com/140x180/" alt="img">
-                                </div>
-                                <h3>Beauty</h3>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="ayur-careslide-box">
-                                <div class="ayur-careslider-img">
-                                    <img src="https://dummyimage.com/140x180/" alt="img">
-                                </div>
-                                <h3>Brain Health</h3>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="ayur-careslide-box">
-                                <div class="ayur-careslider-img">
-                                    <img src="https://dummyimage.com/140x180/" alt="img">
-                                </div>
-                                <h3>Eye Care</h3>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="ayur-careslide-box">
-                                <div class="ayur-careslider-img">
-                                    <img src="https://dummyimage.com/140x180/" alt="img">
-                                </div>
-                                <h3>Hair Care</h3>
-                            </div>
-                        </div> --}}
                     </div>
 
                 </div>
@@ -362,10 +289,11 @@
                                     {{-- <p>Sale</p> --}}
                                     <div class="ayur-tpro-like">
                                         <a href="javascript:void(0)" class="ayur-tpor-click">
-                                            <img src="assets/images/like.svg" class="unlike" />
-                                            <img src="assets/images/like-fill.svg" class="like" />
+                                            <img src="{{ asset('assets/images/like.svg') }}" class="unlike" />
+                                            <img src="{{ asset('assets/images/like-fill.svg') }}" class="like" />
                                         </a>
                                     </div>
+
                                 </div>
                             </div>
                             <div class="ayur-tpro-text">

@@ -87,4 +87,10 @@ class PageController extends Controller
         $recentBlogs = Blog::orderBy('created_at', 'desc')->take(3)->get();
         return view('faq', compact('recentBlogs'));
     }
+
+    public function wishlist()
+    {
+        $recentBlogs = Blog::orderBy('created_at', 'desc')->take(3)->get();
+        return view('wishlist', compact('recentBlogs'));
+    }
 }
