@@ -61,7 +61,7 @@ class PageController extends Controller
     public function shippinganddelivery()
     {
         $recentBlogs = Blog::orderBy('created_at', 'desc')->take(3)->get();
-        return view('shippinganddelivery', 'recentBlogs');
+        return view('shippinganddelivery', compact('recentBlogs'));
     }
 
     public function cancellationandrefund()
@@ -92,5 +92,11 @@ class PageController extends Controller
     {
         $recentBlogs = Blog::orderBy('created_at', 'desc')->take(3)->get();
         return view('wishlist', compact('recentBlogs'));
+    }
+
+    public function checkout()
+    {
+        $recentBlogs = Blog::orderBy('created_at', 'desc')->take(3)->get();
+        return view('checkout', compact('recentBlogs'));
     }
 }

@@ -11,7 +11,7 @@ class AuthController extends Controller
 {
     public function showloginform()
     {
-        return view('Auth.login');
+        return view('login');
     }
 
     public function showAdminLoginForm()
@@ -90,7 +90,7 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('Auth.login');
+        return redirect()->route('login');
     }
 
     public function dashboard()

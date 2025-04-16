@@ -15,6 +15,8 @@ use App\Models\Customer;
 use App\Models\Product;
 use App\Models\Blog;
 use App\Models\SubCategory;
+use App\Http\Controllers\CheckoutController;
+
 
 
 Route::get('/', function () {
@@ -39,8 +41,10 @@ Route::get('termandconditions', [PageController::class, 'termandconditions'])->n
 Route::get('privacypolicy', [PageController::class, 'privacypolicy'])->name('privacypolicy');
 Route::get('faq', [PageController::class, 'faq'])->name('faq');
 Route::get('wishlist', [PageController::class, 'wishlist'])->name('wishlist');
+Route::get('checkout', [PageController::class, 'checkout'])->name('checkout');
 // Authentication--------------
-Route::get('/login', [AuthController::class, 'showloginform'])->name('Auth.login');
+
+Route::get('/login', [AuthController::class, 'showloginform'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
 Route::get('/register', [AuthController::class, 'showregisterform'])->name('Auth.register');
 Route::post('/register', [AuthController::class, 'register'])->name('register.submit');
@@ -96,12 +100,20 @@ Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist');
 Route::post('/wishlist/add', [WishlistController::class, 'store'])->name('wishlist.add');
 Route::get('/wishlist/remove/{id}', [WishlistController::class, 'destroy'])->name('wishlist.remove');
 Route::get('/wishlist/cart/{id}', [WishlistController::class, 'addToCart'])->name('wishlist.addtocart');
+Route::post('/wishlist/store', [WishlistController::class, 'store'])->name('wishlist.store');
 
-// cart
-
-Route::middleware('auth')->group(function () {
-    Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('add.to.cart');
-    Route::get('/cart', [CartController::class, 'showCart'])->name('show.cart');
-    Route::post('/cart/update', [CartController::class, 'updateCart'])->name('cart.update');
-    Route::post('/cart/remove', [CartController::class, 'removeItem'])->name('cart.remove');
+// cart----------
+Route::get('/carthome', [CartController::class, 'index'])->name('carthome');
+Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('cart.add');
+Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.view');
+Route::post('/cart/update', [CartController::class, 'updateCart'])->name('cart.update');
+Route::post('/cart/remove', [CartController::class, 'removeFromCart'])->name('cart.remove');
+// checkout-----
+Route::middleware(['auth'])->group(function () {
+    Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+    Route::post('/place-order', [CheckoutController::class, 'placeOrder'])->name('place.order');
+    Route::post('/payment-success', [CheckoutController::class, 'paymentSuccess'])->name('payment.success');
 });
+Route::get('/thank-you', function () {
+    return view('thankyou');
+})->name('thankyou.page');

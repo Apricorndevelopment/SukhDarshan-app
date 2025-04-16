@@ -254,7 +254,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-12 col-md-12 col-sm-12">
+                {{-- <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="ayur-video-section">
                         <div class="ayur-video-img">
                             <img src="https://dummyimage.com/1146x380/" alt="img">
@@ -271,7 +271,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
         <div class="ayur-bgshape ayur-why-bgshape">

@@ -51,13 +51,17 @@
                             <p>{{ $product->product_shortdesc }}</p>
                         </div>
                         <div class="ayur-shopsin-quantity">
-                            <input type="number" class="form-control" value="1" min="1" max="3" />
+                            <input type="number" class="form-control product-quantity" value="1" min="1"
+                                max="3" />
+
+                            {{-- <input type="number" class="form-control" value="1" min="1" max="3" /> --}}
                             <button class="shop-add"><span></span></button>
                             <button class="shop-sub"><span></span></button>
 
                         </div>
                         <div class="ayur-shopsin-btn">
-                            <a href="cart.html" class="ayur-btn">Add To Cart</a>
+                            <a href="javascript:void(0);" class="ayur-btn add-to-cart" data-id="{{ $product->id }}">
+                                Add To Cart</a>
                         </div>
                     </div>
                 </div>
@@ -171,8 +175,7 @@
             <img src="assets/images/bg-shape1.png" alt="img">
         </div>
     </div>
-    <!------------- Shop single page Section end ----------->
-    <!------------- Testimonial Section start ----------->
+
     <div class="ayur-bgcover ayur-testimonial-sec">
         <div class="container">
             <div class="row">
@@ -450,5 +453,45 @@
             <img src="assets/images/bg-leaf3.png" alt="img" />
         </div>
     </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    {{-- <script>
+        $('.add-to-cart').on('click', function() {
+            var productId = $(this).data('id');
+
+            $.ajax({
+                url: "{{ route('cart.add') }}",
+                method: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    product_id: productId
+                },
+                success: function(response) {
+                    alert(response.message);
+                }
+            });
+        });
+    </script> --}}
+    <script>
+        $('.add-to-cart').on('click', function() {
+            var productId = $(this).data('id');
+            var quantity = $(this).closest('.ayur-shopsin-details').find('.product-quantity').val();
+
+            $.ajax({
+                url: "{{ route('cart.add') }}",
+                method: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    product_id: productId,
+                    quantity: quantity
+                },
+                success: function(response) {
+                    alert(response.message);
+                    // Optional: Update cart count / total
+                }
+            });
+        });
+    </script>
 
 @endsection

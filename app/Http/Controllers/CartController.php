@@ -3,61 +3,92 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Cart;
 use App\Models\Product;
-use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
+    public function index()
+    {
+        $cartItems = session('cart', []);
+        return view('carthome', compact('cartItems'));
+    }
 
+    // public function addToCart(Request $request)
+    // {
+    //     $product = Product::findOrFail($request->product_id);
+
+    //     $cart = session()->get('cart', []);
+
+    //     if (isset($cart[$product->id])) {
+    //         $cart[$product->id]['quantity']++;
+    //     } else {
+    //         $cart[$product->id] = [
+    //             "product_id" => $product->id,
+    //             "name" => $product->product_name,
+    //             "price" => $product->price,
+    //             "image" => $product->product_image,
+    //             "quantity" => 1
+    //         ];
+    //     }
+
+    //     session()->put('cart', $cart);
+
+    //     return response()->json(['message' => 'Added to cart', 'cart' => $cart]);
+    // }
     public function addToCart(Request $request)
     {
-        // Check if the user is logged in, otherwise redirect to login page
-        if (!Auth::check()) {
-            return redirect()->route('Auth.login');  // Redirecting to the login route
-        }
+        $product = Product::findOrFail($request->product_id);
+        $quantity = (int) $request->input('quantity', 1);
 
-        // Proceed with adding the product to the cart
-        $productId = $request->input('product_id');
+        $cart = session()->get('cart', []);
 
-        $cart = Cart::where('user_id', Auth::id())
-            ->where('product_id', $productId)
-            ->first();
-
-        if ($cart) {
-            $cart->quantity += 1;
-            $cart->save();
+        if (isset($cart[$product->id])) {
+            $cart[$product->id]['quantity'] += $quantity;
         } else {
-            Cart::create([
-                'user_id' => Auth::id(),
-                'product_id' => $productId,
-                'quantity' => 1,
-            ]);
+            $cart[$product->id] = [
+                "serial" => count($cart) + 1, // 👈 Serial number
+                "product_id" => $product->id,
+                "name" => $product->product_name,
+                "price" => $product->price,
+                "image" => $product->product_image,
+                "quantity" => $quantity
+            ];
         }
 
-        // Redirect to the cart page after adding the item
-        return redirect()->route('show.cart')->with('success', 'Product added to cart');
+        session()->put('cart', $cart);
+
+        return response()->json(['message' => 'Added to cart', 'cart' => $cart]);
     }
 
-
-    public function showCart()
+    public function viewCart()
     {
-        $cartItems = Cart::with('product')->where('user_id', Auth::id())->get();
+        $cartItems = session('cart', []);
         return view('cart', compact('cartItems'));
-    }
-
-    public function removeItem(Request $request)
-    {
-        Cart::where('id', $request->input('cart_id'))->delete();
-        return back()->with('success', 'Item removed');
     }
 
     public function updateCart(Request $request)
     {
-        foreach ($request->quantities as $cartId => $quantity) {
-            Cart::where('id', $cartId)->update(['quantity' => $quantity]);
+        $quantities = $request->quantities;
+        $cart = session()->get('cart', []);
+
+        foreach ($quantities as $productId => $qty) {
+            if (isset($cart[$productId])) {
+                $cart[$productId]['quantity'] = $qty;
+            }
         }
 
-        return back()->with('success', 'Cart updated');
+        session()->put('cart', $cart);
+        return redirect()->back()->with('success', 'Cart updated');
+    }
+
+    public function removeFromCart(Request $request)
+    {
+        $cart = session()->get('cart', []);
+        $productId = $request->product_id;
+
+        unset($cart[$productId]);
+        session()->put('cart', $cart);
+
+        return redirect()->back()->with('success', 'Product removed');
     }
 }

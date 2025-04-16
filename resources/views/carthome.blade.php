@@ -19,25 +19,31 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($cartItems as $index => $cartItem)
+                            @php $total = 0; @endphp
+                            @foreach ($cartItems as $index => $item)
+                                @php
+                                    $itemTotal = $item['price'] * $item['quantity'];
+                                    $total += $itemTotal;
+                                @endphp
                                 <tr>
                                     <td>{{ $index + 1 }}</td>
-                                    <td><img src="{{ asset($cartItem->product->product_image) }}" alt="Product Image"></td>
-                                    <td>{{ $cartItem->product->product_name }}</td>
-                                    <td>Rs{{ $cartItem->product->price }}</td>
+                                    {{-- <td>{{ $item['serial'] }}</td> --}}
+                                    <td><img src="{{ asset($item['image']) }}" alt="Product Image" width="60"></td>
+                                    <td>{{ $item['name'] }}</td>
+                                    <td>Rs{{ $item['price'] }}</td>
                                     <td>
                                         <form method="POST" action="{{ route('cart.update') }}">
                                             @csrf
-                                            <input type="number" name="quantities[{{ $cartItem->id }}]"
-                                                value="{{ $cartItem->quantity }}" min="1">
+                                            <input type="number" name="quantities[{{ $item['product_id'] }}]"
+                                                value="{{ $item['quantity'] }}" min="1">
                                             <button type="submit">Update</button>
                                         </form>
                                     </td>
-                                    <td>Rs{{ $cartItem->product->price * $cartItem->quantity }}</td>
+                                    <td>Rs{{ $itemTotal }}</td>
                                     <td>
                                         <form method="POST" action="{{ route('cart.remove') }}">
                                             @csrf
-                                            <input type="hidden" name="cart_id" value="{{ $cartItem->id }}">
+                                            <input type="hidden" name="product_id" value="{{ $item['product_id'] }}">
                                             <button type="submit">Remove</button>
                                         </form>
                                     </td>
@@ -47,17 +53,10 @@
                     </table>
 
                     <div class="cart-total">
-                        <h3>Cart Total: Rs
-                            @php
-                                $total = $cartItems->sum(function ($item) {
-                                    return $item->product->price * $item->quantity;
-                                });
-                            @endphp
-                            {{ $total }}
-                        </h3>
+                        <h3>Cart Total: Rs{{ $total }}</h3>
                     </div>
-
                     <a href="{{ route('checkout') }}" class="ayur-btn">Proceed to Checkout</a>
+                    {{-- <a href="{{ route('checkout') }}" class="ayur-btn">Proceed to Checkout</a> --}}
                 </div>
             </div>
         </div>
