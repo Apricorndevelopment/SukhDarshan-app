@@ -16,8 +16,7 @@ use App\Models\Product;
 use App\Models\Blog;
 use App\Models\SubCategory;
 use App\Http\Controllers\CheckoutController;
-
-
+use App\Http\Controllers\OrderController;
 
 Route::get('/', function () {
     $subcategory = SubCategory::all();
@@ -56,6 +55,7 @@ Route::post('/admin/login', [AuthController::class, 'login'])->name('admin.login
 // Dashboards
 Route::get('/admin/dashboard', [AuthController::class, 'dashboard'])->name('admin.dashboard');
 Route::get('/user/dashboard', [AuthController::class, 'dashboard'])->name('user.dashboard');
+Route::get('admin/users', [AuthController::class, 'index'])->name('admin.users');
 // category routes---------
 Route::get('/admin/category', [CategoryController::class, 'index'])->name('admin.category');
 Route::get('/admin/manage_category', [CategoryController::class, 'manage_category'])->name('admin/manage_category');
@@ -117,3 +117,8 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/thank-you', function () {
     return view('thankyou');
 })->name('thankyou.page');
+
+Route::get('/admin/order', [OrderController::class, 'index'])->name('admin.order');
+Route::get('/admin/orderitem', [OrderController::class, 'orderitem'])->name('admin.orderitem');
+Route::put('admin/order-item/status/{id}', [OrderController::class, 'updateOrderItemStatus'])->name('admin.updateOrderItemStatus');
+Route::delete('admin/order-item/delete/{id}', [OrderController::class, 'deleteOrderItem'])->name('admin.deleteOrderItem');

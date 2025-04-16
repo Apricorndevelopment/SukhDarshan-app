@@ -6,9 +6,37 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Order;
 use Razorpay\Api\Api;
+use App\Models\OrderItem;
 
 class OrderController extends Controller
 {
+    public function index()
+    {
+        $orders = Order::all();
+        return view('admin.order', compact('orders'));
+    }
+    public function orderitem()
+    {
+        $orderItems = OrderItem::with('product', 'order')->get(); // assuming relationships
+        return view('admin.orderitem', compact('orderItems'));
+    }
+
+    public function updateOrderItemStatus(Request $request, $id)
+    {
+        $orderItem = OrderItem::findOrFail($id);
+        $orderItem->status = $request->input('status');
+        $orderItem->save();
+
+        return redirect()->back()->with('success', 'Status updated successfully!');
+    }
+    public function deleteOrderItem($id)
+    {
+        $orderItem = OrderItem::findOrFail($id);
+        $orderItem->delete();
+
+        return redirect()->back()->with('success', 'Order item deleted successfully!');
+    }
+
     public function placeOrder(Request $request)
     {
         $user = Auth::user();
