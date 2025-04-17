@@ -73,7 +73,7 @@
                                 @endforeach
                             </div>
                         </div>
-                        <div class="ayur-widget ayur-shop-tag">
+                        {{-- <div class="ayur-widget ayur-shop-tag">
                             <h3>Tag Clouds</h3>
                             <ul>
                                 <li>
@@ -101,7 +101,7 @@
                                     <a href="javascript:void(0)">Ayurveda</a>
                                 </li>
                             </ul>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div class="col-lg-8 col-md-6 col-sm-12">

@@ -28,7 +28,7 @@
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="ayur-heading-wrap ayur-why-head">
                         <h5>Best For You</h5>
-                        <h3>Why Pure Ayurveda</h3>
+                        <h3>Why Sukh Darshan</h3>
                     </div>
                 </div>
             </div>

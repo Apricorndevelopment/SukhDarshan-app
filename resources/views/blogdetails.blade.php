@@ -34,34 +34,34 @@
                             <div class="ayur-blog-img">
                                 {{-- <img src="{{ asset('') }}" alt="image"> --}}
                                 <img src="{{ asset($blog->blog_image) }}" alt="{{ $blog->blog_name }}" ">
-                                                                                    </div>
-                                                                                    <div class="ayur_blosing-postdata">
-                                                                                        <div class="ayur-blogsingle-title">
-                                                                                            <h3><a href="#">{{ $blog->blog_name }}</a></h3>
-                                                                                        </div>
-                                                                                        <div class="ayur-post-data">
-                                                                                            <span class="post-like">
-                                                                                                <a href="javascript:void(0)">
-                                                                                                    <img src="../assets/images/user-svg.svg" alt="icon">
-                                                                                                    <span>Post by -{{ $blog->post_by }}</span>
-                                                                                                </a>
-                                                                                            </span>
-                                                                                            <span class="post-like">
-                                                                                                <a href="javascript:void(0)">
-                                                                                                    <img src="../assets/images/calender.svg" alt="icon">
-                                                                                                    {{ $blog->created_at->format('F d, Y') }}
-                                                                                                </a>
-                                                                                            </span>
-                                                                                        </div>
-                                                                                        <p>{{ $blog->blog_desc }}</p>
-                                                                                        <div class="ayur-blockquote">
-                                                                                            <blockquote class="blockquote">
-                                                                                                <p>{{ $blog->blog_shotdesc }}</p>
-                                                                                            </blockquote>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                {{-- <div class="ayur-blogsingle-postsec">
+                                                                                                </div>
+                                                                                                <div class="ayur_blosing-postdata">
+                                                                                                    <div class="ayur-blogsingle-title">
+                                                                                                        <h3><a href="#">{{ $blog->blog_name }}</a></h3>
+                                                                                                    </div>
+                                                                                                    <div class="ayur-post-data">
+                                                                                                        <span class="post-like">
+                                                                                                            <a href="javascript:void(0)">
+                                                                                                                <img src="../assets/images/user-svg.svg" alt="icon">
+                                                                                                                <span>Post by -{{ $blog->post_by }}</span>
+                                                                                                            </a>
+                                                                                                        </span>
+                                                                                                        <span class="post-like">
+                                                                                                            <a href="javascript:void(0)">
+                                                                                                                <img src="../assets/images/calender.svg" alt="icon">
+                                                                                                                {{ $blog->created_at->format('F d, Y') }}
+                                                                                                            </a>
+                                                                                                        </span>
+                                                                                                    </div>
+                                                                                                    <p>{{ $blog->blog_desc }}</p>
+                                                                                                    <div class="ayur-blockquote">
+                                                                                                        <blockquote class="blockquote">
+                                                                                                            <p>{{ $blog->blog_shotdesc }}</p>
+                                                                                                        </blockquote>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            {{-- <div class="ayur-blogsingle-postsec">
                                     <div class="ayur-blog-post">
                                         <h3 class="post-heading">Posted by Admin</h3>
                                         <div class="ayur-post-div">
@@ -116,51 +116,52 @@
                                         </div>
                                     </div>
                                 </div> --}}
-                                                                                <div class="ayur-comments-form">
-                                                                                    <h3>Leave A Comments</h3>
-                                                                                    <form method="" class="ayur-leave-form">
-                                                                                        <div class="row">
-                                                                                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                                                <div class="ayur-form-input">
-                                                                                                    <input type="text" class="form-control require"
-                                                                                                        placeholder="Enter Your Name">
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                                                <div class="ayur-form-input">
-                                                                                                    <input type="text" class="form-control require" name="email"
-                                                                                                        placeholder="Enter Your Email" data-valid="email"
-                                                                                                        data-error="Email should be valid.">
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div class="col-lg-12 col-md-12">
-                                                                                                <div class="ayur-form-input">
-                                                                                                    <textarea name="your-message" cols="3" rows="8" class="form-control require"
-                                                                                                        placeholder="Enter Your Message..."></textarea>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div class="col-lg-12 col-md-12">
-                                                                                                <button type="button" class="ayur-btn ayur-con-btn submitForm">Submit</button>
-                                                                                                <div class="response"></div>
+                                                                                            <div class="ayur-comments-form">
+                                                                                                <h3>Leave A Comments</h3>
+                                                                                                <form method="" class="ayur-leave-form">
+                                                                                                    <div class="row">
+                                                                                                        <div class="col-lg-6 col-md-6 col-sm-6">
+                                                                                                            <div class="ayur-form-input">
+                                                                                                                <input type="text" class="form-control require"
+                                                                                                                    placeholder="Enter Your Name">
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="col-lg-6 col-md-6 col-sm-6">
+                                                                                                            <div class="ayur-form-input">
+                                                                                                                <input type="text" class="form-control require" name="email"
+                                                                                                                    placeholder="Enter Your Email" data-valid="email"
+                                                                                                                    data-error="Email should be valid.">
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="col-lg-12 col-md-12">
+                                                                                                            <div class="ayur-form-input">
+                                                                                                                <textarea name="your-message" cols="3" rows="8" class="form-control require"
+                                                                                                                    placeholder="Enter Your Message..."></textarea>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="col-lg-12 col-md-12">
+                                                                                                            <button type="button" class="ayur-btn ayur-con-btn submitForm">Submit</button>
+                                                                                                            <div class="response"></div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </form>
                                                                                             </div>
                                                                                         </div>
-                                                                                    </form>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-lg-4 col-md-12 col-sm-12">
-                                                                            <div class="ayur-shop-sidebar">
-                                                                                <div class="ayur-widget ayur-shop-search">
-                                                                                    <div class="ayur-form-input">
-                                                                                        <input type="text" class="form-control" placeholder="Search Here...">
                                                                                     </div>
-                                                                                    <button class="ayur-btn">search</button>
-                                                                                </div>
-                                                                                <div class="ayur-widget ayur-blog-recent">
-                                                                                    <h3>Recent Blog</h3>
+                                                                                    <div class="col-lg-4 col-md-12 col-sm-12">
+                                                                                        <div class="ayur-shop-sidebar">
+                                                                                            <div class="ayur-widget ayur-shop-search">
+                                                                                                <div class="ayur-form-input">
+                                                                                                    <input type="text" class="form-control" placeholder="Search Here...">
+                                                                                                </div>
+                                                                                                <button class="ayur-btn">search</button>
+                                                                                            </div>
+                                                                                            <div class="ayur-widget ayur-blog-recent">
+                                                                                                <h3>Recent Blog</h3>
 
 
-                                         @foreach ($recentBlogs as $recent)
+                                                        @foreach ($recentBlogs as
+                                    $recent)
                                 <div class="ayur-blog-box ayur-blog-inline">
                                     <div class="ayur-blog-img">
                                         <img src="{{ asset($recent->blog_image) }}" alt="{{ $recent->blog_name }}"
@@ -182,7 +183,7 @@
 
 
                             <!-- </div> -->
-                            <div class="ayur-widget ayur-shop-tag">
+                            {{-- <div class="ayur-widget ayur-shop-tag">
                                 <h3>Tag Clouds</h3>
                                 <ul>
                                     <li>
@@ -210,7 +211,7 @@
                                         <a href="javascript:void(0)">Ayurveda</a>
                                     </li>
                                 </ul>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
