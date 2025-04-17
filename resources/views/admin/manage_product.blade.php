@@ -150,6 +150,27 @@
                                 </div>
                             </div>
 
+                            <div class="form-group mb-3">
+                                <label class="form-label">Product Multiple Images</label>
+                                <div id="multiImageWrapper">
+                                    <div class="input-group mb-2">
+                                        <input type="file" name="images" class="form-control">
+                                        <button type="button" class="btn btn-success add-more">Add More</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @if (isset($images))
+                                <div class="row">
+                                    @foreach ($images as $img)
+                                        <div class="col-3 mb-2">
+                                            <img src="{{ asset($img->image) }}" class="img-thumbnail" width="100">
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @endif
+
+
                             <input type="hidden" name="id" value="{{ $id }}" />
                             <button type="submit" class="btn btn-info w-100 mt-3">Submit</button>
                         </div>
@@ -165,5 +186,25 @@
         CKEDITOR.replace('product_desc');
         CKEDITOR.replace('technical_specification');
     </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const wrapper = document.getElementById("multiImageWrapper");
+
+            wrapper.addEventListener("click", function(e) {
+                if (e.target.classList.contains("add-more")) {
+                    const newInput = document.createElement("div");
+                    newInput.classList.add("input-group", "mb-2");
+                    newInput.innerHTML = `
+                        <input type="file" name="product_images[]" class="form-control">
+                        <button type="button" class="btn btn-danger remove-image">Remove</button>
+                    `;
+                    wrapper.appendChild(newInput);
+                } else if (e.target.classList.contains("remove-image")) {
+                    e.target.closest(".input-group").remove();
+                }
+            });
+        });
+    </script>
+
 
 @endsection

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\ProductImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -28,7 +29,7 @@ class ProductController extends Controller
             $result['sku'] = $arr['0']->sku;
             $result['product_image'] = $arr['0']->product_image;
             $result['subcategory_id'] = $arr['0']->subcategory_id;
-            $result['product_shotdesc'] = $arr['0']->product_shortdesc;
+            $result['product_shortdesc'] = $arr['0']->product_shortdesc;
             $result['product_desc'] = $arr['0']->prduct_desc;
             $result['technical_specification'] = $arr['0']->technical_specification;
             $result['price'] = $arr['0']->price;
@@ -65,8 +66,10 @@ class ProductController extends Controller
         return view('admin/manage_product', $result);
     }
 
+
     public function manage_product_process(Request $request)
     {
+        // Validate the incoming request
         if ($request->post('id') > 0) {
             $image_validation = "mimes:jpeg,jpg,png,tif,avif,webp";
         } else {
@@ -77,8 +80,10 @@ class ProductController extends Controller
             'product_name' => 'required',
             'product_slug' => 'required|unique:products,product_slug,' . $request->post('id'),
             'product_image' => $image_validation,
+            'images.*' => 'mimes:jpeg,jpg,png,tif,avif,webp' // Validation for multiple images
         ]);
 
+        // Handle Product creation or update
         if ($request->post('id') > 0) {
             $model = Product::find($request->post('id'));
             $msg = "Product updated";
@@ -87,7 +92,7 @@ class ProductController extends Controller
             $msg = "Product inserted";
         }
 
-        // Correct field name for image
+        // Handle the main product image
         if ($request->hasFile('product_image')) {
             $image = $request->file('product_image');
             $image_name = time() . '.' . $image->getClientOriginalExtension();
@@ -95,7 +100,7 @@ class ProductController extends Controller
             $model->product_image = 'uploads/products/' . $image_name;
         }
 
-        // Corrected fields based on DB
+        // Save other product details
         $model->subcategory_id = $request->post('subcategory_id');
         $model->product_name = $request->post('product_name');
         $model->product_slug = $request->post('product_slug');
@@ -113,9 +118,90 @@ class ProductController extends Controller
         $model->status = 1;
         $model->save();
 
+        // Handle multiple images
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $image_name = time() . rand(100, 999) . '.' . $image->getClientOriginalExtension();
+                $image->move(public_path('uploads/products'), $image_name);
+
+                // Save each image to the product_images table
+                ProductImage::create([
+                    'product_id' => $model->id,
+                    'product_name' => $model->product_name,
+                    'image_path' => 'uploads/products/' . $image_name,
+                ]);
+            }
+        }
+
         session()->flash('message', $msg);
         return redirect('admin/product');
     }
+
+    // orignal
+    // public function manage_product_process(Request $request)
+    // {
+    //     if ($request->post('id') > 0) {
+    //         $image_validation = "mimes:jpeg,jpg,png,tif,avif,webp";
+    //     } else {
+    //         $image_validation = "required|mimes:jpeg,jpg,png,tif,avif,webp";
+    //     }
+
+    //     $request->validate([
+    //         'product_name' => 'required',
+    //         'product_slug' => 'required|unique:products,product_slug,' . $request->post('id'),
+    //         'product_image' => $image_validation,
+    //     ]);
+
+    //     if ($request->post('id') > 0) {
+    //         $model = Product::find($request->post('id'));
+    //         $msg = "Product updated";
+    //     } else {
+    //         $model = new Product();
+    //         $msg = "Product inserted";
+    //     }
+
+    //     // Correct field name for image
+    //     if ($request->hasFile('product_image')) {
+    //         $image = $request->file('product_image');
+    //         $image_name = time() . '.' . $image->getClientOriginalExtension();
+    //         $image->move(public_path('uploads/products'), $image_name);
+    //         $model->product_image = 'uploads/products/' . $image_name;
+    //     }
+
+    //     // Corrected fields based on DB
+    //     $model->subcategory_id = $request->post('subcategory_id');
+    //     $model->product_name = $request->post('product_name');
+    //     $model->product_slug = $request->post('product_slug');
+    //     $model->sku = $request->post('sku');
+    //     $model->product_shortdesc = $request->post('product_shortdesc');
+    //     $model->prodcut_desc = $request->post('product_desc'); // typo from DB kept as-is
+    //     $model->technical_specification = $request->post('technical_specification');
+    //     $model->price = $request->post('price');
+    //     $model->mrp = $request->post('mrp');
+    //     $model->keyword = $request->post('keyword');
+    //     $model->is_trending = $request->post('is_trending');
+    //     $model->is_promo = $request->post('is_promo');
+    //     $model->is_top = $request->post('is_top');
+    //     $model->tax = $request->post('tax');
+    //     $model->status = 1;
+    //     $model->save();
+
+    //     if ($request->hasFile('product_image')) {
+    //         foreach ($request->file('product_image') as $image) {
+    //             $image_name = time() . rand(100, 999) . '.' . $image->getClientOriginalExtension();
+    //             $image->move(public_path('uploads/products'), $image_name);
+
+    //             ProductImage::create([
+    //                 'product_id' => $model->id,
+    //                 'product_name' => $model->product_name,
+    //                 'image_path' => 'uploads/products/' . $image_name,
+    //             ]);
+    //         }
+    //     }
+
+    //     session()->flash('message', $msg);
+    //     return redirect('admin/product');
+    // }
 
 
     public function delete(Request $request, $id)

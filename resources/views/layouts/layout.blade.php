@@ -2,7 +2,7 @@
 <html lang="zxx">
 
 <head>
-    <title>Pure Ayurveda</title>
+    <title>Sukh Darshan</title>
     <meta charset="UTF-8">
     <meta name="description" content="Web">
     <meta name="keywords" content="HTML, CSS, JavaScript">
@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="../assets/css/responsive.css">
     <link rel="stylesheet" href="../assets/css/loginform.css">
     <!-- favicon -->
-    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+    <link rel="icon" type="image/png" href="{{ asset('../adminassets/images/SDP LOGO.png') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
@@ -32,7 +32,7 @@
     <!------------- Loader start ----------->
     <div class="ayur-loader">
         <div class="ayur-spin">
-            <img src="../assets/images/loader.gif" alt="loader">
+            <img src="{{ asset('assets/images/loader.gif') }}" alt="loader">
         </div>
     </div>
     <!------------- Loader End ----------->
