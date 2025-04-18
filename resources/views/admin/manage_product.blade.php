@@ -154,7 +154,8 @@
                                 <label class="form-label">Product Multiple Images</label>
                                 <div id="multiImageWrapper">
                                     <div class="input-group mb-2">
-                                        <input type="file" name="images" class="form-control">
+                                        {{-- <input type="file" name="images[]" multiple class="form-control"> --}}
+                                        <input type="file" name="images[]" class="form-control" multiple>
                                         <button type="button" class="btn btn-success add-more">Add More</button>
                                     </div>
                                 </div>
@@ -186,7 +187,7 @@
         CKEDITOR.replace('product_desc');
         CKEDITOR.replace('technical_specification');
     </script>
-    <script>
+    {{-- <script>
         document.addEventListener("DOMContentLoaded", function() {
             const wrapper = document.getElementById("multiImageWrapper");
 
@@ -204,7 +205,28 @@
                 }
             });
         });
-    </script>
+    </script> --}}
 
+    @push('scripts')
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                document.querySelector('.add-more').addEventListener('click', function() {
+                    let newInputGroup = document.createElement('div');
+                    newInputGroup.classList.add('input-group', 'mb-2');
+                    newInputGroup.innerHTML = `
+                    <input type="file" name="images[]" class="form-control">
+                    <button type="button" class="btn btn-danger remove-image">Remove</button>
+                `;
+                    document.getElementById('multiImageWrapper').appendChild(newInputGroup);
+                });
+
+                document.getElementById('multiImageWrapper').addEventListener('click', function(e) {
+                    if (e.target.classList.contains('remove-image')) {
+                        e.target.closest('.input-group').remove();
+                    }
+                });
+            });
+        </script>
+    @endpush
 
 @endsection
