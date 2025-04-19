@@ -15,9 +15,25 @@ class OrderController extends Controller
         $orders = Order::all();
         return view('admin.order', compact('orders'));
     }
+    public function orderaccepted()
+    {
+        $orderItems = OrderItem::where('status', 'Accepted')->paginate(10);
+        return view('admin.orderaccepte', compact('orderItems'));
+    }
+    public function orderpending()
+    {
+        $orderItems = OrderItem::where('status', 'Pending')->paginate(10);
+        return view('admin.orderpending', compact('orderItems'));
+    }
+    public function ordercancelled()
+    {
+        $orderItems = OrderItem::where('stauts', 'Cancelled')->getpaginate(10);
+        return view('admin.ordercancelled', compact('orderItems'));
+    }
+
     public function orderitem()
     {
-        $orderItems = OrderItem::with('product', 'order')->get(); // assuming relationships
+        $orderItems = OrderItem::with('product', 'order')->paginate(10); // assuming relationships
         return view('admin.orderitem', compact('orderItems'));
     }
 

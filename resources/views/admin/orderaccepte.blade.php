@@ -1,5 +1,5 @@
 @extends('admin/layout')
-@section('page_title', 'Manage_blog')
+@section('page_title', 'Manage Order Items')
 @section('container')
 
     <style>
@@ -63,19 +63,10 @@
         }
     </style>
 
-    <div class="content-wrapper">
-        @if (session()->has('message'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                {{ session('message') }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        @endif
-
-        <!-- Header and Button -->
+    <div class="container mt-4">
+        {{-- <h2 class="mb-4">Order Items</h2> --}}
         <div class="top-header">
-            <h1 class="h4 mb-0">Blog</h1>
+            <h1 class="h4 mb-0">Order Items</h1>
             <form class="navbar-search">
                 <input type="text" id="searchInput" class="form-control" placeholder="Search...">
 
@@ -89,52 +80,71 @@
                         <a class="dropdown-item" href="#" id="downloadExcel">Download as Excel</a>
                     </div>
                 </div>
-
-                {{-- <a href="{{ url('admin/manage_blog') }}" class="btn btn-success">Add Blog</a> --}}
             </form>
         </div>
 
-        <!-- Table Section -->
+
+
+
         <div class="table-responsive">
-            <table class="table table-bordered table-striped table-hover">
+            <table class="table table-bordered table-striped">
                 <thead class="thead-dark">
                     <tr>
                         <th>ID</th>
-                        <th>Blog Name</th>
-                        <th>Blog Slug</th>
-                        <th>Blog Image</th>
-                        <th style="width: 280px;">Action</th>
+                        <th>Order ID</th>
+                        <th>Product ID</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
-                <tbody id="blogTableBody">
-                    @forelse ($data as $list)
+                <tbody>
+                    @foreach ($orderItems as $item)
                         <tr>
-                            <td data-label="ID">{{ $list->id }}</td>
-                            <td data-label="Blog Name">{{ $list->blog_name }}</td>
-                            <td data-label="Blog Slug">{{ $list->blog_slug }}</td>
-                            <td data-label="Blog Image">
-                                @if ($list->blog_image)
-                                    <img src="{{ asset($list->blog_image) }}" class="img-thumbnail">
-                                @endif
+                            <td>{{ $item->id }}</td>
+                            <td>{{ $item->order_id }}</td>
+                            <td>{{ $item->product_id }}</td>
+                            <td>{{ $item->quantity }}</td>
+                            <td>{{ $item->price }}</td>
+                            <td>
+                                @php
+                                    $statusLabels = [
+                                        0 => 'Cancelled',
+                                        1 => 'Accepted',
+                                        2 => 'Pending',
+                                    ];
+                                @endphp
+                                <form method="POST" action="{{ route('admin.updateOrderItemStatus', $item->id) }}">
+                                    @csrf
+                                    @method('PUT')
+                                    <select name="status" onchange="this.form.submit()" class="form-control">
+                                        @foreach ($statusLabels as $key => $label)
+                                            <option value="{{ $key }}"
+                                                {{ $item->status == $key ? 'selected' : '' }}>
+                                                {{ $label }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </form>
                             </td>
-                            <td data-label="Action">
-                                <a href="{{ url('admin/blog/manage_blog/' . $list->id) }}"
-                                    class="btn btn-sm btn-success">Edit</a>
-                                <a href="{{ url('admin/blog/delete/' . $list->id) }}"
-                                    onclick="return confirm('Are you sure?')" class="btn btn-sm btn-danger">Delete</a>
+                            <td>
+                                <!-- Optional action like view/delete -->
+                                <form action="{{ route('admin.deleteOrderItem', $item->id) }}" method="POST"
+                                    onsubmit="return confirm('Are you sure you want to delete this order item?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                </form>
+
                             </td>
                         </tr>
-                    @empty
-                        <tr>
-                            <td colspan="5" class="text-center text-muted">No Blogs found.</td>
-                        </tr>
-                    @endforelse
+                    @endforeach
                 </tbody>
             </table>
 
-            <!-- Pagination -->
             <div class="d-flex justify-content-end">
-                {{ $data->links('pagination::bootstrap-4') }}
+                {{ $orderItems->links('pagination::bootstrap-4') }}
             </div>
         </div>
     </div>

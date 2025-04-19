@@ -17,6 +17,7 @@ use App\Models\Blog;
 use App\Models\SubCategory;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\Admin\InvoiceController;
 
 Route::get('/', function () {
     $subcategory = SubCategory::all();
@@ -120,5 +121,15 @@ Route::get('/thank-you', function () {
 
 Route::get('/admin/order', [OrderController::class, 'index'])->name('admin.order');
 Route::get('/admin/orderitem', [OrderController::class, 'orderitem'])->name('admin.orderitem');
+Route::get('/admin/orderaccepted', [OrderController::class, 'orderaccepted'])->name('admin.orderaccepted');
+Route::get('/admin/orderpending', [OrderController::class, 'orderpending'])->name('admin.orderpending');
+Route::get('/admin/ordercancelled', [OrderController::class, 'ordercancelled'])->name('admin.ordercancelled');
 Route::put('admin/order-item/status/{id}', [OrderController::class, 'updateOrderItemStatus'])->name('admin.updateOrderItemStatus');
 Route::delete('admin/order-item/delete/{id}', [OrderController::class, 'deleteOrderItem'])->name('admin.deleteOrderItem');
+
+// invoices-------
+Route::prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(function () {
+    Route::get('/invoices', [InvoiceController::class, 'index'])->name('invoices.index');
+    Route::get('/invoices/generate/{orderId}', [InvoiceController::class, 'generate'])->name('invoices.generate');
+    Route::get('/invoices/download/{id}', [InvoiceController::class, 'download'])->name('invoices.download');
+});

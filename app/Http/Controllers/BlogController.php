@@ -10,9 +10,11 @@ class BlogController extends Controller
 
     public function index()
     {
-
-        $result['data'] = Blog::all();
-        return view('admin.blog', $result);
+        // $data = Blog::orderBy('desc')->paginate(10);
+        $data = Blog::paginate(10);
+        return view('admin.blog', compact('data'));
+        // $result['data'] = Blog::all();
+        // return view('admin.blog', $result);
     }
 
 

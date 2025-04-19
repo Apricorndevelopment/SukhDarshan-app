@@ -49,7 +49,7 @@
             <a href="{{ route('admin.dashboard') }}" class="sidebar-logo">
                 <img src="{{ asset('adminassets/images/SDP LOGO.png') }}" alt="site logo" class="light-logo">
                 <img src="{{ asset('adminassets/images/SDP LOGO.png') }}" alt="site logo" class="dark-logo">
-                <img src="{{ asset('adminassets/images/logo-icon.png') }}" alt="site logo" class="logo-icon">
+                <img src="{{ asset('adminassets/images/SDP LOGO.png') }}" alt="site logo" class="logo-icon">
             </a>
         </div>
         <div class="sidebar-menu-area">
@@ -93,23 +93,67 @@
                         <span>Order</span>
                     </a>
                 </li>
-                <li>
-                    <a href="{{ route('admin.orderitem') }}">
+                <li class="dropdown">
+                    <a href="javascript:void(0)">
                         <iconify-icon icon="bi:chat-dots" class="menu-icon"></iconify-icon>
                         <span>Order Item</span>
                     </a>
+                    <ul class="sidebar-submenu">
+                        <li>
+                            <a href="{{ route('admin.orderitem') }}"><i
+                                    class="ri-circle-fill circle-icon text-info-600 w-auto"></i> All Order</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.orderaccepted') }}"><i
+                                    class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Accepted Order</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.orderpending') }}"><i
+                                    class="ri-circle-fill circle-icon text-danger-main w-auto"></i> Pending Order</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.ordercancelled') }}"><i
+                                    class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Cancelled Order</a>
+                        </li>
+
+                    </ul>
                 </li>
-                <li>
-                    <a href="{{ route('admin.blog') }}">
-                        <iconify-icon icon="solar:calendar-outline" class="menu-icon"></iconify-icon>
-                        <span>Add Blog</span>
+
+                <li class="dropdown">
+                    <a href="javascript:void(0)">
+                        <iconify-icon icon="hugeicons:invoice-03" class="menu-icon"></iconify-icon>
+                        <span>Manage Blog</span>
                     </a>
+                    <ul class="sidebar-submenu">
+                        <li>
+                            <a href="{{ route('admin.blog') }}"><i
+                                    class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> All Blog</a>
+                        </li>
+                        <li>
+                            <a href="{{ url('admin/manage_blog') }}"><i
+                                    class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Create New
+                                Blog</a>
+                        </li>
+
+                    </ul>
                 </li>
-                <li>
-                    <a href="{{ route('admin.product') }}">
-                        <iconify-icon icon="material-symbols:map-outline" class="menu-icon"></iconify-icon>
-                        <span>Add Product</span>
+
+                <li class="dropdown">
+                    <a href="javascript:void(0)">
+                        <iconify-icon icon="solar:folder-with-files-broken"class="menu-icon"></iconify-icon>
+                        <span>Manage Product</span>
                     </a>
+                    <ul class="sidebar-submenu">
+                        <li>
+                            <a href="{{ route('admin.product') }}"><i
+                                    class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Product List</a>
+                        </li>
+                        <li>
+                            <a href=" {{ url('admin/manage_product') }}"><i
+                                    class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Add Product</a>
+                        </li>
+
+                    </ul>
                 </li>
 
                 <li class="dropdown">
@@ -127,7 +171,24 @@
                     </ul>
                 </li>
 
-                <li class="sidebar-menu-group-title">Application</li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)">
+                        <iconify-icon icon="solar:bill-list-broken" class="menu-icon"></iconify-icon>
+                        <span>Invoice</span>
+                    </a>
+                    <ul class="sidebar-submenu">
+                        <li>
+                            <a href="#"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
+                                All Invoices</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
+                                Create New Invoices</a>
+                        </li>
+
+                    </ul>
+                </li>
+
 
 
             </ul>
@@ -147,10 +208,7 @@
                         <button type="button" class="sidebar-mobile-toggle">
                             <iconify-icon icon="heroicons:bars-3-solid" class="icon"></iconify-icon>
                         </button>
-                        <form class="navbar-search">
-                            <input type="text" name="search" placeholder="Search">
-                            <iconify-icon icon="ion:search-outline" class="icon"></iconify-icon>
-                        </form>
+
                     </div>
                 </div>
                 <div class="col-auto">
@@ -260,27 +318,7 @@
                                     </button>
                                 </div>
                                 <ul class="to-top-list">
-                                    {{-- <li>
-                                        <a class="dropdown-item text-black px-0 py-8 hover-bg-transparent hover-text-primary d-flex align-items-center gap-3"
-                                            href="view-profile.php">
-                                            <iconify-icon icon="solar:user-linear"
-                                                class="icon text-xl"></iconify-icon> My Profile
-                                        </a>
-                                    </li> --}}
-                                    {{-- <li>
-                                        <a class="dropdown-item text-black px-0 py-8 hover-bg-transparent hover-text-primary d-flex align-items-center gap-3"
-                                            href="email.php">
-                                            <iconify-icon icon="tabler:message-check"
-                                                class="icon text-xl"></iconify-icon> Inbox
-                                        </a>
-                                    </li> --}}
-                                    {{-- <li>
-                                        <a class="dropdown-item text-black px-0 py-8 hover-bg-transparent hover-text-primary d-flex align-items-center gap-3"
-                                            href="#">
-                                            <iconify-icon icon="icon-park-outline:setting-two"
-                                                class="icon text-xl"></iconify-icon> Setting
-                                        </a>
-                                    </li> --}}
+
                                     <li>
                                         <a class="dropdown-item text-black px-0 py-8 hover-bg-transparent hover-text-danger d-flex align-items-center gap-3"
                                             href="{{ route('logout') }}">
@@ -365,6 +403,42 @@
     <script src="{{ asset('adminassets/js/app.js') }}"></script>
     <script src="{{ asset('adminassets/js/homeThreeChart.js') }}"></script>
     <!-- <?php echo isset($script) ? $script : ''; ?> -->
+    <script>
+        // SEARCH FUNCTIONALITY
+        $('#searchInput').on('keyup', function() {
+            var value = $(this).val().toLowerCase();
+            $("table tbody tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+
+        // CSV DOWNLOAD FUNCTIONALITY
+        $('#downloadCsv').click(function() {
+            let csv = [];
+            let rows = document.querySelectorAll("table tr");
+
+            for (let i = 0; i < rows.length; i++) {
+                let row = [],
+                    cols = rows[i].querySelectorAll("td, th");
+                for (let j = 0; j < cols.length - 1; j++) { // exclude Action column
+                    row.push('"' + cols[j].innerText + '"');
+                }
+                csv.push(row.join(","));
+            }
+
+            // Download CSV
+            let csvFile = new Blob([csv.join("\n")], {
+                type: "text/csv"
+            });
+            let downloadLink = document.createElement("a");
+            downloadLink.download = "blogs.csv";
+            downloadLink.href = window.URL.createObjectURL(csvFile);
+            downloadLink.style.display = "none";
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+        });
+    </script>
+
 
 
 </body>
