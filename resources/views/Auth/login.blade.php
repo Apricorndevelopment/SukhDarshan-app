@@ -103,9 +103,6 @@
                         <div class="headline">
                             <!-- brand-logo start -->
                             <div class="brand-logo">
-                                {{-- <img src="https://1.bp.blogspot.com/-3he0CGCSWHA/XyqopZcixRI/AAAAAAAAVM8/Mdfk_mPQa0Ydb7IAH0Iir8F4Ge7xxF0ygCLcBGAsYHQ/s0/logo.png"
-                                    width="150" alt="brand-logo"> --}}
-                                <img src="{{ asset('../adminassets/images/SDP LOGO.png') }}" alt="brand-logo">
                             </div><!-- ./brand-logo -->
                             <p>Login using social media to get quick access</p>
 
@@ -174,8 +171,8 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <p class="term-policy text-muted small">I agree to the <a
-                                                    href="#">privacy policy</a> and <a href="#">terms of
+                                            <p class="term-policy text-muted small">I agree to the <a href="#">privacy
+                                                    policy</a> and <a href="#">terms of
                                                     service</a>.</p>
                                         </div>
                                         <div class="form-group">
