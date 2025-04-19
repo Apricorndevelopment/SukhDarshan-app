@@ -1,6 +1,6 @@
-@extends('layouts/layout')
-
-@section('content')
+@extends('admin/layout')
+@section('page_title', 'Category')
+@section('container')
     <h2>All Invoices</h2>
     <table class="table">
         <thead>

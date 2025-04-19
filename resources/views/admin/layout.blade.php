@@ -178,13 +178,14 @@
                     </a>
                     <ul class="sidebar-submenu">
                         <li>
-                            <a href="#"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
+                            <a href="{{ route('invoices.index') }}"><i
+                                    class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
                                 All Invoices</a>
                         </li>
-                        <li>
+                        {{-- <li>
                             <a href="#"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
                                 Create New Invoices</a>
-                        </li>
+                        </li> --}}
 
                     </ul>
                 </li>

@@ -128,8 +128,8 @@ Route::put('admin/order-item/status/{id}', [OrderController::class, 'updateOrder
 Route::delete('admin/order-item/delete/{id}', [OrderController::class, 'deleteOrderItem'])->name('admin.deleteOrderItem');
 
 // invoices-------
-Route::prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(function () {
-    Route::get('/invoices', [InvoiceController::class, 'index'])->name('invoices.index');
-    Route::get('/invoices/generate/{orderId}', [InvoiceController::class, 'generate'])->name('invoices.generate');
-    Route::get('/invoices/download/{id}', [InvoiceController::class, 'download'])->name('invoices.download');
-});
+// Route::prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(function () {
+Route::get('/admin/invoices', [InvoiceController::class, 'index'])->name('invoices.index');
+Route::get('/admin/invoices/generate/{orderId}', [InvoiceController::class, 'generate'])->name('invoices.generate');
+Route::get('/admin/invoices/download/{id}', [InvoiceController::class, 'download'])->name('invoices.download');
+// });
