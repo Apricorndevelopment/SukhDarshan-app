@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Blog;
 
 class CartController extends Controller
 {
     public function index()
     {
         $cartItems = session('cart', []);
-        return view('carthome', compact('cartItems'));
+        $recentBlogs = Blog::orderBy('created_at', 'desc')->take(3)->get();
+        return view('carthome', compact('cartItems', 'recentBlogs'));
     }
 
     // public function addToCart(Request $request)

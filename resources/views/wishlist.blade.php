@@ -40,7 +40,7 @@
                             </thead>
 
                             <tbody>
-                                @forelse ($wishlistItems as $key => $item)
+                                {{-- @forelse ($wishlistItems as $key => $item)
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
                                         <td><img src="{{ asset($item->product->product_image) }}" width="80"></td>
@@ -61,7 +61,31 @@
                                     <tr>
                                         <td colspan="6">No items in wishlist</td>
                                     </tr>
+                                @endforelse --}}
+                                @forelse ($wishlistItems as $key => $item)
+                                    @if ($item->product)
+                                        <tr>
+                                            <td>{{ $key + 1 }}</td>
+                                            <td><img src="{{ asset($item->product->product_image) }}" width="80"></td>
+                                            <td>{{ $item->product->product_name }}</td>
+                                            <td>${{ $item->product->price }}</td>
+                                            <td>
+                                                <a href="{{ route('wishlist.addtocart', $item->id) }}" class="ayur-btn">Add
+                                                    To Cart</a>
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('wishlist.remove', $item->id) }}"
+                                                    class="ayur-tab-delete"><img src="assets/images/delete.png"
+                                                        alt="delete"></a>
+                                            </td>
+                                        </tr>
+                                    @endif
+                                @empty
+                                    <tr>
+                                        <td colspan="6">No items in wishlist</td>
+                                    </tr>
                                 @endforelse
+
                             </tbody>
                         </table>
                     </div>

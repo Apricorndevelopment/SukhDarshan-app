@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\Blog;
 
 class AuthController extends Controller
 {
@@ -17,17 +18,20 @@ class AuthController extends Controller
 
     public function showloginform()
     {
-        return view('login');
+        $recentBlogs = Blog::orderBy('created_at', 'desc')->take(3)->get();
+        return view('login', compact('recentBlogs'));
     }
 
     public function showAdminLoginForm()
     {
-        return view('admin.adminlogin');
+        $recentBlogs = Blog::orderBy('created_at', 'desc')->take(3)->get();
+        return view('admin.adminlogin', compact('recentBlogs'));
     }
 
     public function showregisterform()
     {
-        return view('Auth.register');
+        $recentBlogs = Blog::orderBy('created_at', 'desc')->take(3)->get();
+        return view('Auth.register', compact('recentBlogs'));
     }
 
     public function register(Request $request)

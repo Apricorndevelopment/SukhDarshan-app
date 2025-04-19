@@ -55,7 +55,7 @@ class PageController extends Controller
     public function cart()
     {
         $recentBlogs = Blog::orderBy('created_at', 'desc')->take(3)->get();
-        return view('cart', 'recentBlogs');
+        return view('cart', compact('recentBlogs'));
     }
 
     public function shippinganddelivery()

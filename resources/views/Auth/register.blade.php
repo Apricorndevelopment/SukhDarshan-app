@@ -140,7 +140,7 @@
                             <div class="authfy-heading">
                                 <h3 class="auth-title">Login to your account</h3>
                                 <p>Already have an account? <a class="lnk-toggler" data-panel=".panel-login"
-                                        href="{{ route('Auth.login') }}">Login</a></p>
+                                        href="{{ route('login') }}">Login</a></p>
                             </div>
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12">
