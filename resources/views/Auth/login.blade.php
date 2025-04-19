@@ -105,7 +105,7 @@
                             <div class="brand-logo">
                                 {{-- <img src="https://1.bp.blogspot.com/-3he0CGCSWHA/XyqopZcixRI/AAAAAAAAVM8/Mdfk_mPQa0Ydb7IAH0Iir8F4Ge7xxF0ygCLcBGAsYHQ/s0/logo.png"
                                     width="150" alt="brand-logo"> --}}
-                                <img src="../assets/images/Logo.png" alt="brand-logo">
+                                <img src="{{ asset('../adminassets/images/SDP LOGO.png') }}" alt="brand-logo">
                             </div><!-- ./brand-logo -->
                             <p>Login using social media to get quick access</p>
 
