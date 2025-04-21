@@ -27,7 +27,7 @@ class OrderController extends Controller
     }
     public function ordercancelled()
     {
-        $orderItems = OrderItem::where('stauts', 'Cancelled')->getpaginate(10);
+        $orderItems = OrderItem::where('status', 'Cancelled')->paginate(10);
         return view('admin.ordercancelled', compact('orderItems'));
     }
 
