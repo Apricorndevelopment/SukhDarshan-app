@@ -51,13 +51,16 @@
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             margin-top: 20px;
+            width: 100%;
+            height: 100vh;
+            /* Full screen height */
+            overflow: auto;
         }
 
         .content-main h1 {
             font-size: 24px;
             margin-bottom: 20px;
             font-weight: bold;
-            /* color: black; */
         }
 
         .btn {
@@ -66,11 +69,13 @@
         }
 
         .table-responsive {
-            overflow-x: auto;
-            margin-top: 20px;
+            width: 100%;
+            height: calc(100vh - 180px);
+            /* Adjust this value if needed */
+            overflow: auto;
         }
     </style>
-    <section class="content-main" style="margin-right: 90px">
+    <section class="content-main">
         <div class="container">
             <!-- Flash message -->
             @if (session()->has('message'))
@@ -95,7 +100,6 @@
                             <th> Category Name</th>
                             <th> Category Slug</th>
                             <th> Category Image</th>
-
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -112,7 +116,6 @@
                                 </td>
 
                                 <td>
-
                                     <a href="{{ url('admin/category/manage_category/') }}/{{ $list->id }}">
                                         <button type="button" class="btn btn-success">Edit</button>
                                     </a>
@@ -129,7 +132,6 @@
                                             <button type="button" class="btn btn-warning">Deactive</button>
                                         </a>
                                     @endif
-
                                 </td>
                             </tr>
                         @endforeach

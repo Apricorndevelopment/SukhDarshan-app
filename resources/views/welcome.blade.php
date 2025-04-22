@@ -2,7 +2,126 @@
 @section('page_title', 'Welcome To Ayurveda')
 @section('container')
 
+    <style>
+        /* PRODUCT BOX STYLING */
+        .ayur-tpro-box {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-radius: 12px;
+            overflow: hidden;
+            background-color: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            padding: 15px;
+            transition: transform 0.3s ease;
+        }
 
+        .ayur-tpro-box:hover {
+            transform: translateY(-5px);
+        }
+
+        /* PRODUCT IMAGE WRAPPER */
+        .ayur-tpro-img {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        /* PRODUCT IMAGE */
+        .ayur-tpro-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        /* LIKE BUTTON AREA */
+        .ayur-tpro-like {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .ayur-tpro-like img {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+        }
+
+        /* PRODUCT TEXT */
+        .ayur-tpro-text {
+            padding-top: 15px;
+            text-align: center;
+        }
+
+        .ayur-tpro-text h3 {
+            font-size: 16px;
+            font-weight: 600;
+            height: 45px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .ayur-tpro-text a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .ayur-tpro-text a:hover {
+            color: #5cb85c;
+        }
+
+        /* PRODUCT PRICE & RATING */
+        .ayur-tpro-price {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+        }
+
+        .ayur-tpro-price del {
+            color: #999;
+        }
+
+        .ayur-tpro-price p {
+            color: #e74c3c;
+            font-weight: bold;
+            margin-bottom: 0;
+        }
+
+        .ayur-tpro-star {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 13px;
+            color: #f39c12;
+        }
+
+        /* PRODUCT BUTTON */
+        .ayur-tpro-btn {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .ayur-tpro-btn a {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #5cb85c;
+            color: #fff;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .ayur-tpro-btn a:hover {
+            background-color: #4cae4c;
+        }
+    </style>
     <div class="ayur-banner-section">
         <div class="container">
             <div class="row">
@@ -150,7 +269,7 @@
                             <div class="ayur-tpro-text">
                                 <h3><a href="shop-single.html">{{ $data->product_name }}</a></h3>
                                 <div class="ayur-tpro-price">
-                                    <p><del>${{ $data->mrp }}</del>${{ $data->price }}</p>
+                                    {{-- <p><del>${{ $data->mrp }}</del>${{ $data->price }}</p> --}}
                                     <div class="ayur-tpro-star">
                                         <img src="assets/images/star-icon.png" alt="star">
                                         <p>4.5/5</p>

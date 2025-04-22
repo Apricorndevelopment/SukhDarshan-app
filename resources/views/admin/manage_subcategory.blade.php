@@ -3,8 +3,10 @@
 @section('container')
 
     <style>
+        /* Form Wrapper Styling */
         .form-wrapper {
-            max-width: 600px;
+            width: 100%;
+            max-width: 100%;
             margin: 0 auto;
             padding: 30px;
             background: #f9f9f9;
@@ -23,7 +25,7 @@
             display: inline-block;
         }
 
-        h1.mb10 {
+        h2.mb10 {
             margin-bottom: 20px;
             text-align: left;
         }
@@ -38,17 +40,38 @@
         .top-header h1 {
             margin: 0;
         }
+
+        /* Full Width Section Styling */
+        .content-main {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 30px;
+        }
+
+        .btn {
+            font-size: 14px;
+            padding: 8px 12px;
+        }
+
+        /* Full Width for Form */
+        .container {
+            width: 100%;
+            padding: 0;
+            margin: 0;
+        }
+
+        .form-control {
+            width: 100%;
+        }
     </style>
 
-    {{-- <div class="top-header" style="padding: 10px">
-        <h1 class="mb10">Manage SubCategory</h1>
-        <a href="{{ url('admin/subcategory') }}">
-            <button type="button" class="btn btn-success">
-                Back
-            </button>
-        </a>
-    </div> --}}
-    <section class="content-main" style="margin-right: 290px; width: 100%">
+    <!-- Begin Page Content -->
+    <section class="content-main">
         <div class="container">
             <!-- Flash message -->
             @if (session()->has('message'))
@@ -60,26 +83,23 @@
                 </div>
             @endif
 
-            <h2>Sub Category</h2>
+            <h2>Manage Sub Category</h2>
             <a href="{{ url('admin/subcategory') }}">
                 <button type="button" class="btn btn-success">Back</button>
             </a>
 
             <div class="form-wrapper">
-                <form action="{{ route('subcategory.manage_subcategory_process') }}" method="post"
-                    enctype="multipart/form-data">
+                <form action="{{ route('subcategory.manage_subcategory_process') }}" method="post" enctype="multipart/form-data">
                     @csrf
 
                     <div class="form-group">
                         <label for="subcategory_name">Sub Category Name</label>
-                        <input id="subcategory_name" value="{{ $subcategory_name }}" name="subcategory_name" type="text"
-                            class="form-control" style="background-color: white" required>
+                        <input id="subcategory_name" value="{{ $subcategory_name }}" name="subcategory_name" type="text" class="form-control" style="background-color: white" required>
                     </div>
 
                     <div class="form-group">
                         <label for="subcategory_slug">Sub Category Slug</label>
-                        <input id="subcategory_slug" value="{{ $subcategory_slug }}" name="subcategory_slug" type="text"
-                            class="form-control" style="background-color: white" required>
+                        <input id="subcategory_slug" value="{{ $subcategory_slug }}" name="subcategory_slug" type="text" class="form-control" style="background-color: white" required>
                     </div>
 
                     <div class="form-group">

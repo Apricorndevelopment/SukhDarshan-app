@@ -21,7 +21,7 @@ use App\Http\Controllers\Admin\InvoiceController;
 
 Route::get('/', function () {
     $subcategory = SubCategory::all();
-    $is_top = Product::where('is_top', 1)->get();
+    $is_top = Product::where('is_top', 1)->take(9)->get();
     $is_tren = Product::where('is_trending', 1)->take(4)->get();
     $blog = Blog::all()->take(2);
     $recentBlogs = Blog::orderBy('created_at', 'desc')->take(3)->get();
@@ -84,7 +84,10 @@ Route::get('admin/product/manage_product/{id}', [ProductController::class, 'mana
 Route::post('admin/product/manage_product_process', [ProductController::class, 'manage_product_process'])->name('product.manage_product_process');
 Route::get('admin/product/delete/{id}', [ProductController::class, 'delete']);
 Route::get('admin/product/status/{status}/{id}', [ProductController::class, 'status']);
-Route::get('/shop/{slug}', [ProductController::class, 'productdetails']);
+// Route::get('/shop/{slug}', [ProductController::class, 'productdetails']);
+Route::get('/product-details/{id}', [ProductController::class, 'productdetails'])->name('product.details');
+
+
 // Blogs------------
 Route::get('/admin/blog', [BlogController::class, 'index'])->name('admin.blog');
 Route::get('/admin/manage_blog/{id?}', [BlogController::class, 'manage_blog'])->name('blog.manage_blog');
@@ -106,7 +109,7 @@ Route::post('/wishlist/store', [WishlistController::class, 'store'])->name('wish
 // cart----------
 Route::get('/carthome', [CartController::class, 'index'])->name('carthome');
 Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('cart.add');
-Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.view');
+// Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.view');
 Route::post('/cart/update', [CartController::class, 'updateCart'])->name('cart.update');
 Route::post('/cart/remove', [CartController::class, 'removeFromCart'])->name('cart.remove');
 // checkout-----

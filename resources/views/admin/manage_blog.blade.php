@@ -2,7 +2,6 @@
 @section('page_title', 'Manage_Blog')
 @section('container')
 
-
     <style>
         .form-label {
             font-weight: 600;
@@ -18,6 +17,11 @@
             align-items: center;
             margin-bottom: 30px;
         }
+
+        .container-fluid {
+            padding-left: 30px;
+            padding-right: 30px;
+        }
     </style>
 
     @if ($id > 0)
@@ -30,7 +34,7 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-8 offset-lg-2">
+            <div class="col-lg-11 offset-lg-1">
 
                 <div class="top-header">
                     <h1 class="h3">Manage Blog</h1>
@@ -79,7 +83,6 @@
                                 @enderror
                             </div>
 
-
                             <div class="form-group mb-3">
                                 <label for="blog_shortdesc" class="form-label">Blog Short Desc</label>
                                 <textarea id="blog_shortdesc" name="blog_shortdesc" class="form-control" required>{{ $blog_shortdesc }}</textarea>
@@ -90,13 +93,10 @@
                                 <textarea id="blog_desc" name="blog_desc" class="form-control" required>{{ $blog_desc }}</textarea>
                             </div>
 
-
                             <div class="form-group mb-3">
                                 <label for="post_by" class="form-label">Post By</label>
                                 <textarea id="post_by" name="post_by" class="form-control" required>{{ $post_by }}</textarea>
                             </div>
-
-
 
                             <input type="hidden" name="id" value="{{ $id }}" />
                             <button type="submit" class="btn btn-info w-100 mt-3">Submit</button>
@@ -109,9 +109,9 @@
     </div>
 
     <script>
-        CKEDITOR.replace('product_shortdesc');
-        CKEDITOR.replace('product_desc');
-        CKEDITOR.replace('technical_specification');
+        CKEDITOR.replace('blog_shortdesc');
+        CKEDITOR.replace('blog_desc');
+        CKEDITOR.replace('post_by');
     </script>
 
 @endsection

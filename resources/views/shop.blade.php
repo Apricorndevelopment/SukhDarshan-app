@@ -1,6 +1,127 @@
 @extends('layouts/layout')
 @section('page_title', 'Shop')
 @section('container')
+
+    <style>
+        /* PRODUCT BOX STYLING */
+        .ayur-tpro-box {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-radius: 12px;
+            overflow: hidden;
+            background-color: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            padding: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .ayur-tpro-box:hover {
+            transform: translateY(-5px);
+        }
+
+        /* PRODUCT IMAGE WRAPPER */
+        .ayur-tpro-img {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        /* PRODUCT IMAGE */
+        .ayur-tpro-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        /* LIKE BUTTON AREA */
+        .ayur-tpro-like {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .ayur-tpro-like img {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+        }
+
+        /* PRODUCT TEXT */
+        .ayur-tpro-text {
+            padding-top: 15px;
+            text-align: center;
+        }
+
+        .ayur-tpro-text h3 {
+            font-size: 16px;
+            font-weight: 600;
+            height: 45px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .ayur-tpro-text a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .ayur-tpro-text a:hover {
+            color: #5cb85c;
+        }
+
+        /* PRODUCT PRICE & RATING */
+        .ayur-tpro-price {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+        }
+
+        .ayur-tpro-price del {
+            color: #999;
+        }
+
+        .ayur-tpro-price p {
+            color: #e74c3c;
+            font-weight: bold;
+            margin-bottom: 0;
+        }
+
+        .ayur-tpro-star {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 13px;
+            color: #f39c12;
+        }
+
+        /* PRODUCT BUTTON */
+        .ayur-tpro-btn {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .ayur-tpro-btn a {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #5cb85c;
+            color: #fff;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .ayur-tpro-btn a:hover {
+            background-color: #4cae4c;
+        }
+    </style>
     <div class="ayur-bread-section">
         <div class="ayur-breadcrumb-wrapper">
             <div class="container">
@@ -10,7 +131,7 @@
                             <h2>Shop</h2>
                             <div class="ayur-bread-list">
                                 <span>
-                                    <a href="index.html">Home</a>
+                                    <a href="/">Home</a>
                                 </span>
                                 <span class="ayur-active-page">Shop</span>
                             </div>
@@ -73,37 +194,17 @@
                                 @endforeach
                             </div>
                         </div>
-                        {{-- <div class="ayur-widget ayur-shop-tag">
-                            <h3>Tag Clouds</h3>
-                            <ul>
-                                <li>
-                                    <a href="javascript:void(0)">Products</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)">Ayurveda</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)">Pure</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)">Trending</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)">Herbal</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)">Healthy</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)">Products</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)">Ayurveda</a>
-                                </li>
-                            </ul>
-                        </div> --}}
+
                     </div>
                 </div>
+
+                {{-- @php
+                    $currentAction = class_basename(Route::currentRouteAction());
+                    [$controller, $method] = explode('@', $currentAction);
+                @endphp
+
+                Controller: {{ $controller }} <br> wire:
+                Method: {{ $method }} --}}
                 <div class="col-lg-8 col-md-6 col-sm-12">
                     <div class="ayur-shopsin-products">
                         <div class="row">
@@ -116,11 +217,7 @@
                                             <div class="ayur-tpro-sale">
                                                 {{-- <p>Sale</p> --}}
                                                 <div class="ayur-tpro-like">
-                                                    {{-- <a href="javascript:void(0)" class="ayur-tpor-click">
-                                                        <img src="{{ asset('assets/images/like.svg') }}" class="unlike" />
-                                                        <img src="{{ asset('assets/images/like-fill.svg') }}"
-                                                            class="like" />
-                                                    </a> --}}
+
 
                                                     <a href="javascript:void(0)" class="ayur-tpor-click"
                                                         data-product-id="{{ $product->id }}">
@@ -139,7 +236,7 @@
                                                     href="{{ url('/shop/' . $product->product_slug) }}">{{ $product->product_name }}</a>
                                             </h3>
                                             <div class="ayur-tpro-price">
-                                                <p><del>Rs{{ $product->mrp }}</del>Rs{{ $product->price }}</p>
+                                                {{-- <p><del>Rs{{ $product->mrp }}</del>Rs{{ $product->price }}</p> --}}
                                                 <div class="ayur-tpro-star">
                                                     <img src="../assets/images/star-icon.png" alt="star">
                                                     <p>4.5/5</p>
@@ -147,7 +244,8 @@
                                             </div>
 
                                             <div class="ayur-tpro-btn">
-                                                <a href="{{ url('/shop/' . $product->product_slug) }}" class="ayur-btn ">
+                                                <a href="{{ route('product.details', ['id' => $product->id]) }}"
+                                                    class="ayur-btn ">
                                                     <span>
                                                         <svg width="20" height="19" viewBox="0 0 20 19"
                                                             fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -164,6 +262,10 @@
                                     </div>
                                 </div>
                             @endforeach
+
+                            <div class="d-flex justify-content-end">
+                                {{ $data->links('pagination::bootstrap-4') }}
+                            </div>
 
                         </div>
                     </div>
@@ -194,7 +296,6 @@
                             <div class="ayur-tpro-img">
                                 <img src="{{ asset($list->product_image) }}" alt="img">
                                 <div class="ayur-tpro-sale">
-                                    {{-- <p>Sale</p> --}}
                                     <div class="ayur-tpro-like">
                                         <a href="javascript:void(0)" class="ayur-tpor-click"
                                             data-product-id="{{ $list->id }}">
@@ -224,7 +325,6 @@
                                                     fill="white" />
                                             </svg>
                                         </span>
-                                        {{-- Add to Cart --}}
                                         View Product Details
                                     </a>
                                 </div>
@@ -232,6 +332,9 @@
                         </div>
                     </div>
                 @endforeach
+                <div class="d-flex justify-content-end">
+                    {{ $is_trending->links('pagination::bootstrap-4') }}
+                </div>
             </div>
         </div>
         <div class="ayur-bgshape ayur-trenpro-bgshape">

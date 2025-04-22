@@ -19,8 +19,8 @@ class PageController extends Controller
     public function shop()
     {
 
-        $data = Product::all();
-        $is_trending = Product::where('is_trending', 1)->get();
+        $data = Product::paginate(6);
+        $is_trending = Product::where('is_trending', 1)->paginate(4);
         // $recentproduct = Product::orderBy('created_at', 'desc')->take(3)->get();
         $is_promo = Product::where('is_promo', 1)->take(4)->get();
         $recentBlogs = Blog::orderBy('created_at', 'desc')->take(3)->get();

@@ -3,9 +3,14 @@
 @section('container')
 
     <style>
+        /* General CSS for full-width */
         .form-wrapper {
-            max-width: 600px;
-            margin: auto;
+            width: 100%;
+            /* Full width */
+            margin: 0;
+            /* Centering removed */
+            padding: 0 20px;
+            /* Padding for inner spacing */
         }
 
         .form-wrapper .form-group {
@@ -16,6 +21,8 @@
         .form-wrapper input[type="file"] {
             margin-bottom: 15px;
             padding: 10px;
+            width: 100%;
+            /* Full width for input fields */
         }
 
         .form-wrapper label {
@@ -30,8 +37,16 @@
         .form-wrapper button[type="submit"] {
             margin-top: 20px;
             width: 100%;
+            /* Full width for submit button */
         }
 
+        .content-main {
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            margin-right: 0;
+            /* Full width content */
+        }
 
         .top-header {
             display: flex;
@@ -48,19 +63,9 @@
             margin-bottom: 20px;
             text-align: left;
         }
-
-        
     </style>
 
-    {{-- <div class="top-header">
-        <h1 class="mb10">Manage Category</h1>
-        <a href="{{ url('admin/category') }}">
-            <button type="button" class="btn btn-success">
-                Back
-            </button>
-        </a>
-    </div> --}}
-    <section class="content-main" style="margin-right: 290px">
+    <section class="content-main">
         <div class="container">
             <!-- Flash message -->
             @if (session()->has('message'))

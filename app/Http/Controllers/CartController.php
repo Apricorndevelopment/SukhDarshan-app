@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Blog;
+use App\Models\ProductVariant;
 
 class CartController extends Controller
 {
@@ -18,18 +19,20 @@ class CartController extends Controller
     // public function addToCart(Request $request)
     // {
     //     $product = Product::findOrFail($request->product_id);
+    //     $quantity = (int) $request->input('quantity', 1);
 
     //     $cart = session()->get('cart', []);
 
     //     if (isset($cart[$product->id])) {
-    //         $cart[$product->id]['quantity']++;
+    //         $cart[$product->id]['quantity'] += $quantity;
     //     } else {
     //         $cart[$product->id] = [
+    //             "serial" => count($cart) + 1, // 👈 Serial number
     //             "product_id" => $product->id,
     //             "name" => $product->product_name,
     //             "price" => $product->price,
     //             "image" => $product->product_image,
-    //             "quantity" => 1
+    //             "quantity" => $quantity
     //         ];
     //     }
 
@@ -41,21 +44,44 @@ class CartController extends Controller
     {
         $product = Product::findOrFail($request->product_id);
         $quantity = (int) $request->input('quantity', 1);
+        $variantId = $request->input('variant_id');
+
+        $price = $product->price;
+        $sku = $product->sku;
+        $variantName = null;
+
+        // If variant is selected
+        if ($variantId) {
+            $variant = ProductVariant::find($variantId);
+            if ($variant) {
+                $price = $variant->price;
+                $sku = $variant->sku;
+                $variantName = $variant->variant ?? null;
+            }
+        }
 
         $cart = session()->get('cart', []);
 
-        if (isset($cart[$product->id])) {
-            $cart[$product->id]['quantity'] += $quantity;
+        // Use a unique key for product+variant to avoid conflicts
+        $cartKey = $product->id . '_' . ($variantId ?? '0');
+
+        if (isset($cart[$cartKey])) {
+            $existingQty = is_numeric($cart[$cartKey]['quantity']) ? (int)$cart[$cartKey]['quantity'] : 0;
+            $cart[$cartKey]['quantity'] = $existingQty + $quantity;
         } else {
-            $cart[$product->id] = [
-                "serial" => count($cart) + 1, // 👈 Serial number
+            $cart[$cartKey] = [
+                "serial" => count($cart) + 1,
                 "product_id" => $product->id,
+                "variant_id" => $variantId,
+                "variant_name" => $variantName ?? '',
                 "name" => $product->product_name,
-                "price" => $product->price,
+                "price" => $price,
+                "sku" => $sku,
                 "image" => $product->product_image,
                 "quantity" => $quantity
             ];
         }
+
 
         session()->put('cart', $cart);
 

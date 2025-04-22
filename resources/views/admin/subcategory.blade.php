@@ -1,6 +1,5 @@
 @extends('admin/layout')
 @section('page_title', 'SubCategory')
-{{-- @section('category_select', 'active') --}}
 @section('container')
     <style>
         /* General table styling */
@@ -44,13 +43,15 @@
             border-radius: 4px;
         }
 
-        /* Section styling */
+        /* Full-width content-main section */
         .content-main {
             background: #ffffff;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             margin-top: 20px;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .content-main h1 {
@@ -64,17 +65,16 @@
             padding: 8px 12px;
         }
 
+        /* Responsive table */
         .table-responsive {
             overflow-x: auto;
             margin-top: 20px;
+            width: 100%;
         }
     </style>
 
-
     <!-- Begin Page Content -->
-
-
-    <section class="content-main" style="margin-right: 80px;">
+    <section class="content-main">
         <div class="container">
             <!-- Flash message -->
             @if (session()->has('message'))
@@ -99,7 +99,6 @@
                             <th>Sub Category Name</th>
                             <th>Sub Category Slug</th>
                             <th>Sub Category Image</th>
-
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -109,14 +108,12 @@
                                 <td>{{ $list->id }}</td>
                                 <td>{{ $list->subcategory_name }}</td>
                                 <td>{{ $list->subcategory_slug }}</td>
-                                {{-- <td>{{ $list->categoriep_name }}</td> --}}
                                 <td>
                                     @if ($list->subcategory_image)
                                         <img src="{{ asset($list->subcategory_image) }}" width="50">
                                     @endif
                                 </td>
                                 <td>
-
                                     <a href="{{ url('admin/subcategory/manage_subcategory/') }}/{{ $list->id }}">
                                         <button type="button" class="btn btn-success">Edit</button>
                                     </a>
@@ -133,7 +130,6 @@
                                             <button type="button" class="btn btn-warning">Deactive</button>
                                         </a>
                                     @endif
-
                                 </td>
                             </tr>
                         @endforeach
@@ -142,6 +138,4 @@
             </div>
         </div>
     </section>
-
-
 @endsection

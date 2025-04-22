@@ -12,7 +12,7 @@ class AuthController extends Controller
 {
     public function index()
     {
-        $users = User::where('role', 'user')->get();
+        $users = User::where('role', 'user')->paginate(10);
         return view('admin.users', compact('users'));
     }
 
@@ -39,6 +39,7 @@ class AuthController extends Controller
         $request->validate([
             'full_name' => 'required|string|max:255',
             'email' => 'required|email|unique:users',
+            'phone' => 'required|string|max:15',
             'password' => 'required|min:8|confirmed',
         ]);
 
@@ -46,10 +47,11 @@ class AuthController extends Controller
             'name' => $request->full_name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'phone' => $request->phone,
             'role' => 'user',
         ]);
 
-        return redirect()->route('Auth.login')->with('success', 'Registration successful. Please login.');
+        return redirect()->route('login')->with('success', 'Registration successful. Please login.');
     }
 
     public function login(Request $request)
@@ -79,7 +81,8 @@ class AuthController extends Controller
             $request->session()->regenerate();
 
             if (Auth::user()->role === 'user') {
-                return redirect()->intended(route('user.dashboard')); // 👈 this sends user back to cart or previous page
+                // return redirect()->intended(route('user.dashboard'));
+                return redirect()->intended(route('carthome'));
             } else {
                 Auth::logout();
                 return back()->withErrors(['Invalid user role.']);

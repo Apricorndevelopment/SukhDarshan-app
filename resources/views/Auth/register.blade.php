@@ -98,7 +98,7 @@
         <div class="row" style="margin-top: 149px">
             <div
                 class="authfy-container col-xs-12 col-sm-10 col-md-8 col-lg-6 col-sm-offset-1 col-md-offset-2 col-lg-offset-3">
-                <div class="col-sm-5 authfy-panel-left">
+                <div class="col-sm-5 authfy-panel-left" style="height: 630px">
                     <div class="brand-col">
                         <div class="headline">
                             <!-- brand-logo start -->
@@ -132,7 +132,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-7 authfy-panel-right">
+                <div class="col-sm-7 authfy-panel-right" style="height: 630px">
                     <!-- authfy-login start -->
                     <div class="authfy-login">
                         <!-- panel-login start -->
@@ -144,37 +144,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12">
-                                    {{-- <form name="signupForm" class="signupForm" action="#" method="POST">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" name="full_name"
-                                                placeholder="Full Name" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="email" class="form-control email" name="email"
-                                                placeholder="Email address" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="pwdMask">
-                                                <input type="password" class="form-control password" name="password"
-                                                    placeholder="Password" required>
-                                                <span class="fa fa-eye-slash pwd-toggle"></span>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="pwdMask">
-                                                <input type="password" class="form-control password"
-                                                    name="confirm_password" placeholder="Confirm Password" required>
-                                                <span class="fa fa-eye-slash pwd-toggle"></span>
-                                            </div>
-                                        </div>
 
-                                        <div class="form-group">
-                                            <button class="btn btn-lg btn-primary btn-block" type="submit"
-                                                style="border-radius: 10px">Sign
-                                                Up</button>
-                                        </div>
-
-                                    </form> --}}
                                     <form name="signupForm" class="signupForm" action="{{ route('register.submit') }}"
                                         method="POST">
                                         @csrf
@@ -182,73 +152,52 @@
                                             <input type="text" class="form-control" name="full_name"
                                                 placeholder="Full Name" required>
                                         </div>
+
                                         <div class="form-group">
                                             <input type="email" class="form-control email" name="email"
                                                 placeholder="Email address" required>
                                         </div>
 
                                         <div class="form-group">
-                                            <div class="pwdMask">
-                                                <input type="password" class="form-control password" name="password"
-                                                    placeholder="Password" required>
-                                            </div>
+                                            <input type="text" class="form-control" name="phone"
+                                                placeholder="Phone Number" required>
                                         </div>
+
+                       
                                         <div class="form-group">
-                                            <div class="pwdMask">
-                                                <input type="password" class="form-control password"
-                                                    name="password_confirmation" placeholder="Confirm Password" required>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="pwdMask">
+                                                        <input type="password" class="form-control password"
+                                                            name="password" placeholder="Password" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="pwdMask">
+                                                        <input type="password" class="form-control password"
+                                                            name="password_confirmation" placeholder="Confirm Password"
+                                                            required>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
+
                                         <div class="form-group">
                                             <button class="btn btn-lg btn-primary btn-block" type="submit"
-                                                style="border-radius: 10px">Sign Up</button>
+                                                style="border-radius: 10px">
+                                                Sign Up
+                                            </button>
                                         </div>
                                     </form>
 
 
 
+
                                 </div>
                             </div>
-                        </div> <!-- ./panel-login -->
-                        <!-- panel-signup start -->
-                        <div class="authfy-panel panel-signup text-center">
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-12">
-                                    <div class="authfy-heading">
-                                        <h3 class="auth-title">Sign up for free!</h3>
-                                    </div>
-                                    <form name="signupForm" class="signupForm" action="#" method="POST">
-                                        <div class="form-group">
-                                            <input type="email" class="form-control" name="username"
-                                                placeholder="Email address">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" name="fullname"
-                                                placeholder="Full name">
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="pwdMask">
-                                                <input type="password" class="form-control" name="password"
-                                                    placeholder="Password">
-                                                <span class="fa fa-eye-slash pwd-toggle"></span>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <p class="term-policy text-muted small">I agree to the <a
-                                                    href="#">privacy policy</a> and <a href="#">terms of
-                                                    service</a>.</p>
-                                        </div>
-                                        <div class="form-group">
-                                            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up with
-                                                email</button>
-                                        </div>
-                                    </form>
-                                    <a class="lnk-toggler" data-panel=".panel-login" href="#">Already have an
-                                        account?</a>
-                                </div>
-                            </div>
-                        </div> <!-- ./panel-signup -->
-                        <!-- panel-forget start -->
+                        </div><!-- ./panel-login -->
+
                         <div class="authfy-panel panel-forgot">
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12">
@@ -284,9 +233,4 @@
         </div> <!-- ./row -->
     </div>
 
-    <div id="snell">
-
-
-
-    </div>
 @endsection

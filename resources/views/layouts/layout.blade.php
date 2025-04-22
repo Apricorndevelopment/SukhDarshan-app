@@ -241,7 +241,7 @@
                             <h4>Recent Blog</h4>
                             <ul class="ayur-recent-blog">
 
-                                @foreach ($recentBlogs as $blog)
+                                {{-- @foreach ($recentBlogs as $blog)
                                     <li class="ayur-recentblog-box">
                                         <div class="ayur-recentblog-boximg">
                                             <img src="{{ asset($blog->blog_image) }}" alt="image">
@@ -252,7 +252,7 @@
                                             </h3>
                                         </div>
                                     </li>
-                                @endforeach
+                                @endforeach --}}
 
                                 {{-- <li class="ayur-recentblog-box">
                                     <div class="ayur-recentblog-boximg">

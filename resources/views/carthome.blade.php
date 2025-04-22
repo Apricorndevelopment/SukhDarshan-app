@@ -22,14 +22,17 @@
                             @php $total = 0; @endphp
                             @foreach ($cartItems as $index => $item)
                                 @php
-                                    $itemTotal = $item['price'] * $item['quantity'];
+                                    $price = is_numeric($item['price']) ? (float) $item['price'] : 0;
+                                    $quantity = is_numeric($item['quantity']) ? (int) $item['quantity'] : 0;
+                                    $itemTotal = $price * $quantity;
                                     $total += $itemTotal;
                                 @endphp
+
                                 <tr>
                                     <td>{{ $index + 1 }}</td>
                                     {{-- <td>{{ $item['serial'] }}</td> --}}
                                     <td><img src="{{ asset($item['image']) }}" alt="Product Image" width="60"></td>
-                                    <td>{{ $item['name'] }}</td>
+                                    <td>{{ $item['variant_name'] }}</td>
                                     <td>Rs{{ $item['price'] }}</td>
                                     <td>
                                         <form method="POST" action="{{ route('cart.update') }}">
