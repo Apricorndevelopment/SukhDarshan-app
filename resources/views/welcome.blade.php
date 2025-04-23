@@ -131,7 +131,7 @@
                         <p>True wellness begins with balance and nature provides the path.
                             Through time-tested Ayurvedic practices, mindful living, and natural remedies,
                             you can restore harmony within your body and mind.</p>
-                        <a href="shop.html" class="ayur-btn">Shop Now</a>
+                        <a href="{{ route('shop') }}" class="ayur-btn">Shop Now</a>
                     </div>
                 </div>
             </div>
@@ -269,15 +269,27 @@
                             <div class="ayur-tpro-text">
                                 <h3><a href="shop-single.html">{{ $data->product_name }}</a></h3>
                                 <div class="ayur-tpro-price">
-                                    {{-- <p><del>${{ $data->mrp }}</del>${{ $data->price }}</p> --}}
+
                                     <div class="ayur-tpro-star">
-                                        <img src="assets/images/star-icon.png" alt="star">
-                                        <p>4.5/5</p>
+                                        @if ($data->firstVariant)
+                                            <div class="ayur-tpro-price">
+                                                <p><del>Rs{{ $data->firstVariant->mrp }}</del>
+                                                    Rs{{ $data->firstVariant->price }}</p>
+                                                <div class="ayur-tpro-star">
+                                                    <img src="../assets/images/star-icon.png" alt="star">
+                                                    <p>4.5/5</p>
+                                                </div>
+                                            </div>
+                                        @else
+                                            <div class="ayur-tpro-price">
+                                                <p>Price not available</p>
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
 
                                 <div class="ayur-tpro-btn">
-                                    <a href="{{ url('/shop/' . $data->product_slug) }}" class="ayur-btn ">
+                                    <a href="{{ route('product.details', ['id' => $data->id]) }}" class="ayur-btn ">
                                         <span>
                                             <svg width="20" height="19" viewBox="0 0 20 19" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -412,11 +424,6 @@
                                 <div class="ayur-tpro-sale">
                                     {{-- <p>Sale</p> --}}
                                     <div class="ayur-tpro-like">
-                                        {{-- <a href="javascript:void(0)" class="ayur-tpor-click">
-                                            <img src="{{ asset('assets/images/like.svg') }}" class="unlike" />
-                                            <img src="{{ asset('assets/images/like-fill.svg') }}" class="like" />
-                                        </a> --}}
-
                                         <a href="javascript:void(0)" class="ayur-tpor-click"
                                             data-product-id="{{ $tren->id }}">
                                             <img src="{{ asset('assets/images/like.svg') }}" class="unlike" />
@@ -429,14 +436,28 @@
                             <div class="ayur-tpro-text">
                                 <h3><a href="shop-single.html">{{ $tren->product_name }}</a></h3>
                                 <div class="ayur-tpro-price">
-                                    <p><del>Rs{{ $tren->mrp }}</del>${{ $tren->mrp }}</p>
+                                    {{-- <p><del>Rs{{ $tren->mrp }}</del>${{ $tren->mrp }}</p> --}}
                                     <div class="ayur-tpro-star">
-                                        <img src="assets/images/star-icon.png" alt="star">
-                                        <p>4.5/5</p>
+                                        {{-- <img src="assets/images/star-icon.png" alt="star">
+                                        <p>4.5/5</p> --}}
+                                        @if ($tren->firstVariant)
+                                            <div class="ayur-tpro-price">
+                                                <p><del>Rs{{ $tren->firstVariant->mrp }}</del>
+                                                    Rs{{ $tren->firstVariant->price }}</p>
+                                                <div class="ayur-tpro-star">
+                                                    <img src="../assets/images/star-icon.png" alt="star">
+                                                    <p>4.5/5</p>
+                                                </div>
+                                            </div>
+                                        @else
+                                            <div class="ayur-tpro-price">
+                                                <p>Price not available</p>
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="ayur-tpro-btn">
-                                    <a href="{{ url('/shop/' . $tren->product_slug) }}" class="ayur-btn ">
+                                    <a href="{{ route('product.details', ['id' => $tren->id]) }}" class="ayur-btn ">
                                         <span>
                                             <svg width="20" height="19" viewBox="0 0 20 19" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">

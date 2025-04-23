@@ -123,7 +123,7 @@
                             <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
                                 aria-labelledby="nav-home-tab" tabindex="0">
                                 <div class="ayur-product-desc">
-                                    <p>{{ $product->prodcut_desc }}</p>
+                                    <p>{{ $product->product_desc }}</p>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"

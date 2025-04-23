@@ -108,39 +108,18 @@
                                 <img src="{{ asset('../adminassets/images/SDP LOGO.png') }}" alt="brand-logo">
                             </div><!-- ./brand-logo -->
                             <p>Login using social media to get quick access</p>
-                            <!-- social login buttons start -->
-                            {{-- <div class="row social-buttons">
-                                <div class="col-xs-4 col-sm-4 col-md-12">
-                                    <a href="#" class="btn btn-block btn-facebook">
-                                        <i class="fa fa-facebook"></i> <span class="hidden-xs hidden-sm">Signin with
-                                            facebook</span>
-                                    </a>
-                                </div>
-                                <div class="col-xs-4 col-sm-4 col-md-12">
-                                    <a href="#" class="btn btn-block btn-twitter">
-                                        <i class="fa fa-twitter"></i> <span class="hidden-xs hidden-sm">Signin with
-                                            twitter</span>
-                                    </a>
-                                </div>
-                                <div class="col-xs-4 col-sm-4 col-md-12">
-                                    <a href="#" class="btn btn-block btn-google">
-                                        <i class="fa fa-google-plus"></i> <span class="hidden-xs hidden-sm">Signin with
-                                            google</span>
-                                    </a>
-                                </div>
-                            </div> --}}
+
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-7 authfy-panel-right">
-                    <!-- authfy-login start -->
+
                     <div class="authfy-login">
-                        <!-- panel-login start -->
+
                         <div class="authfy-panel panel-login text-center active">
                             <div class="authfy-heading">
                                 <h3 class="auth-title">Login to your account</h3>
-                                {{-- <p>Don’t have an account? <a class="lnk-toggler" data-panel=".panel-signup"
-                                        href="{{ route('Auth.register') }}">Sign Up </a></p> --}}
+
                             </div>
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12">
@@ -159,7 +138,9 @@
                                             </div>
                                         </div>
 
-
+                                        <a style="display: flex; justify-content: end" class="lnk-toggler"
+                                            data-panel=".panel-signup" href="{{ route('Auth.register') }}">Forget password
+                                        </a>
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-lg btn-primary btn-block"
                                                 style="border-radius: 10px">Login</button>
@@ -169,8 +150,8 @@
 
                                 </div>
                             </div>
-                        </div> <!-- ./panel-login -->
-                        <!-- panel-signup start -->
+                        </div>
+
                         <div class="authfy-panel panel-signup text-center">
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12">

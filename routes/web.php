@@ -21,8 +21,8 @@ use App\Http\Controllers\Admin\InvoiceController;
 
 Route::get('/', function () {
     $subcategory = SubCategory::all();
-    $is_top = Product::where('is_top', 1)->take(9)->get();
-    $is_tren = Product::where('is_trending', 1)->take(4)->get();
+    $is_top = Product::with('firstVariant')->where('is_top', 1)->take(9)->get();
+    $is_tren = Product::with('firstVariant')->where('is_trending', 1)->take(4)->get();
     $blog = Blog::all()->take(2);
     $recentBlogs = Blog::orderBy('created_at', 'desc')->take(3)->get();
 
@@ -103,7 +103,9 @@ Route::view('send-email', 'contact');
 Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist');
 Route::post('/wishlist/add', [WishlistController::class, 'store'])->name('wishlist.add');
 Route::get('/wishlist/remove/{id}', [WishlistController::class, 'destroy'])->name('wishlist.remove');
-Route::get('/wishlist/cart/{id}', [WishlistController::class, 'addToCart'])->name('wishlist.addtocart');
+// Route::get('/wishlist/cart/{id}', [WishlistController::class, 'addToCart'])->name('wishlist.addtocart');
+Route::post('/wishlist/add-to-cart', [WishlistController::class, 'addToCart'])->name('wishlist.addtocart');
+
 Route::post('/wishlist/store', [WishlistController::class, 'store'])->name('wishlist.store');
 
 // cart----------

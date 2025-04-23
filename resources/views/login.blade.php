@@ -119,8 +119,7 @@
                         <div class="authfy-panel panel-login text-center active">
                             <div class="authfy-heading">
                                 <h3 class="auth-title">Login to your account</h3>
-                                <p>Don’t have an account? <a class="lnk-toggler" data-panel=".panel-signup"
-                                        href="{{ route('Auth.register') }}">Sign Up </a></p>
+
                             </div>
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12">
@@ -138,12 +137,16 @@
                                                     placeholder="Password" required>
                                             </div>
                                         </div>
-
+                                        <a style="display: flex; justify-content: end" class="lnk-toggler"
+                                            data-panel=".panel-signup" href="{{ route('Auth.register') }}">Forget password
+                                        </a>
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-lg btn-primary btn-block"
                                                 style="border-radius: 10px">Login</button>
                                         </div>
                                     </form>
+                                    <p>Don’t have an account? <a class="lnk-toggler" data-panel=".panel-signup"
+                                            href="{{ route('Auth.register') }}">Sign Up </a> </p>
 
 
 

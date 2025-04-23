@@ -16,14 +16,14 @@ class PageController extends Controller
         return view('about', compact('recentBlogs'));
     }
 
+
     public function shop()
     {
-
-        $data = Product::paginate(6);
-        $is_trending = Product::where('is_trending', 1)->paginate(4);
-        // $recentproduct = Product::orderBy('created_at', 'desc')->take(3)->get();
-        $is_promo = Product::where('is_promo', 1)->take(4)->get();
+        $data = Product::with('firstVariant')->paginate(6);
+        $is_trending = Product::with('firstVariant')->where('is_trending', 1)->paginate(4);
+        $is_promo = Product::with('firstVariant')->where('is_promo', 1)->take(4)->get();
         $recentBlogs = Blog::orderBy('created_at', 'desc')->take(3)->get();
+
         return view('shop', compact('data', 'recentBlogs', 'is_trending', 'is_promo'));
     }
 

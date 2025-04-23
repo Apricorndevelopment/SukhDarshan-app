@@ -237,10 +237,24 @@
                                             </h3>
                                             <div class="ayur-tpro-price">
                                                 {{-- <p><del>Rs{{ $product->mrp }}</del>Rs{{ $product->price }}</p> --}}
-                                                <div class="ayur-tpro-star">
+                                                @if ($product->firstVariant)
+                                                    <div class="ayur-tpro-price">
+                                                        <p><del>Rs{{ $product->firstVariant->mrp }}</del>
+                                                            Rs{{ $product->firstVariant->price }}</p>
+                                                        <div class="ayur-tpro-star">
+                                                            <img src="../assets/images/star-icon.png" alt="star">
+                                                            <p>4.5/5</p>
+                                                        </div>
+                                                    </div>
+                                                @else
+                                                    <div class="ayur-tpro-price">
+                                                        <p>Price not available</p>
+                                                    </div>
+                                                @endif
+                                                {{-- <div class="ayur-tpro-star">
                                                     <img src="../assets/images/star-icon.png" alt="star">
                                                     <p>4.5/5</p>
-                                                </div>
+                                                </div> --}}
                                             </div>
 
                                             <div class="ayur-tpro-btn">
@@ -308,15 +322,29 @@
                             <div class="ayur-tpro-text">
                                 <h3><a href="shop-single.html">{{ $list->product_name }}</a></h3>
                                 <div class="ayur-tpro-price">
-                                    <p><del>{{ $list->mrp }}</del>{{ $list->price }}</p>
-                                    <div class="ayur-tpro-star">
+                                    {{-- <p><del>{{ $list->mrp }}</del>{{ $list->price }}</p> --}}
+                                    @if ($product->firstVariant)
+                                        <div class="ayur-tpro-price">
+                                            <p><del>Rs{{ $product->firstVariant->mrp }}</del>
+                                                Rs{{ $product->firstVariant->price }}</p>
+                                            <div class="ayur-tpro-star">
+                                                <img src="../assets/images/star-icon.png" alt="star">
+                                                <p>4.5/5</p>
+                                            </div>
+                                        </div>
+                                    @else
+                                        <div class="ayur-tpro-price">
+                                            <p>Price not available</p>
+                                        </div>
+                                    @endif
+                                    {{-- <div class="ayur-tpro-star">
                                         <img src="assets/images/star-icon.png" alt="star">
                                         <p>4.5/5</p>
-                                    </div>
+                                    </div> --}}
                                 </div>
 
                                 <div class="ayur-tpro-btn">
-                                    <a href="{{ url('/shop/' . $product->product_slug) }}" class="ayur-btn ">
+                                    <a href="{{ route('product.details', ['id' => $list->id]) }}" class="ayur-btn ">
                                         <span>
                                             <svg width="20" height="19" viewBox="0 0 20 19" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">

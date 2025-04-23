@@ -94,14 +94,39 @@ class CartController extends Controller
         return view('cart', compact('cartItems'));
     }
 
+    // public function updateCart(Request $request)
+    // {
+    //     $quantities = $request->quantities;
+    //     $cart = session()->get('cart', []);
+
+    //     foreach ($quantities as $productId => $qty) {
+    //         if (isset($cart[$productId])) {
+    //             $cart[$productId]['quantity'] = $qty;
+    //         }
+    //     }
+
+    //     session()->put('cart', $cart);
+    //     return redirect()->back()->with('success', 'Cart updated');
+    // }
+
+    // public function removeFromCart(Request $request)
+    // {
+    //     $cart = session()->get('cart', []);
+    //     $productId = $request->product_id;
+
+    //     unset($cart[$productId]);
+    //     session()->put('cart', $cart);
+
+    //     return redirect()->back()->with('success', 'Product removed');
+    // }
     public function updateCart(Request $request)
     {
         $quantities = $request->quantities;
         $cart = session()->get('cart', []);
 
-        foreach ($quantities as $productId => $qty) {
-            if (isset($cart[$productId])) {
-                $cart[$productId]['quantity'] = $qty;
+        foreach ($quantities as $cartKey => $qty) {
+            if (isset($cart[$cartKey])) {
+                $cart[$cartKey]['quantity'] = (int) $qty;
             }
         }
 
@@ -112,10 +137,12 @@ class CartController extends Controller
     public function removeFromCart(Request $request)
     {
         $cart = session()->get('cart', []);
-        $productId = $request->product_id;
+        $cartKey = $request->input('cart_key');
 
-        unset($cart[$productId]);
-        session()->put('cart', $cart);
+        if (isset($cart[$cartKey])) {
+            unset($cart[$cartKey]);
+            session()->put('cart', $cart);
+        }
 
         return redirect()->back()->with('success', 'Product removed');
     }

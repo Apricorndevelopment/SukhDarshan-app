@@ -20,6 +20,41 @@
                         </thead>
                         <tbody>
                             @php $total = 0; @endphp
+                            @foreach ($cartItems as $key => $item)
+                                @php
+                                    $price = is_numeric($item['price']) ? (float) $item['price'] : 0;
+                                    $quantity = is_numeric($item['quantity']) ? (int) $item['quantity'] : 0;
+                                    $itemTotal = $price * $quantity;
+                                    $total += $itemTotal;
+                                @endphp
+
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td><img src="{{ asset($item['image']) }}" alt="Product Image" width="60"></td>
+                                    <td>{{ $item['name'] }}</td>
+                                    <td>Rs{{ $item['price'] }}</td>
+                                    <td>
+                                        <form method="POST" action="{{ route('cart.update') }}">
+                                            @csrf
+                                            <input type="number" name="quantities[{{ $key }}]"
+                                                value="{{ $item['quantity'] }}" min="1">
+                                            <button type="submit">Update</button>
+                                        </form>
+                                    </td>
+                                    <td>Rs{{ $itemTotal }}</td>
+                                    <td>
+                                        <form method="POST" action="{{ route('cart.remove') }}">
+                                            @csrf
+                                            <input type="hidden" name="cart_key" value="{{ $key }}">
+                                            <button type="submit">Remove</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+
+                        {{-- <tbody>
+                            @php $total = 0; @endphp
                             @foreach ($cartItems as $index => $item)
                                 @php
                                     $price = is_numeric($item['price']) ? (float) $item['price'] : 0;
@@ -29,10 +64,11 @@
                                 @endphp
 
                                 <tr>
-                                    <td>{{ $index + 1 }}</td>
-                                    {{-- <td>{{ $item['serial'] }}</td> --}}
+                                    <td>{{ $loop->iteration }}</td>
+
                                     <td><img src="{{ asset($item['image']) }}" alt="Product Image" width="60"></td>
-                                    <td>{{ $item['variant_name'] }}</td>
+
+                                    <td>{{ $item['product_id'] }}</td>
                                     <td>Rs{{ $item['price'] }}</td>
                                     <td>
                                         <form method="POST" action="{{ route('cart.update') }}">
@@ -52,7 +88,7 @@
                                     </td>
                                 </tr>
                             @endforeach
-                        </tbody>
+                        </tbody> --}}
                     </table>
 
                     <div class="cart-total">
