@@ -139,7 +139,8 @@
                                         </div>
 
                                         <a style="display: flex; justify-content: end" class="lnk-toggler"
-                                            data-panel=".panel-signup" href="{{ route('Auth.register') }}">Forget password
+                                            data-panel=".panel-signup"
+                                            href="{{ route('forgetpassword.forgetpassword') }}">Forget password
                                         </a>
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-lg btn-primary btn-block"

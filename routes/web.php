@@ -11,13 +11,15 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\UserController;
 use App\Models\Customer;
 use App\Models\Product;
 use App\Models\Blog;
 use App\Models\SubCategory;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\OrderController;
-use App\Http\Controllers\Admin\InvoiceController;
+
 
 Route::get('/', function () {
     $subcategory = SubCategory::all();
@@ -56,6 +58,13 @@ Route::post('/admin/login', [AuthController::class, 'login'])->name('admin.login
 // Dashboards
 Route::get('/admin/dashboard', [AuthController::class, 'dashboard'])->name('admin.dashboard');
 Route::get('/user/dashboard', [AuthController::class, 'dashboard'])->name('user.dashboard');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/user/profile', [UserController::class, 'profile'])->name('user.profile');
+    Route::put('/user/profile/update', [UserController::class, 'updateProfile'])->name('user.profile.update');
+});
+Route::get('/my-orders', [UserController::class, 'myOrders'])->name('user.orders')->middleware('auth');
+
+// for fetching all user
 Route::get('admin/users', [AuthController::class, 'index'])->name('admin.users');
 // category routes---------
 Route::get('/admin/category', [CategoryController::class, 'index'])->name('admin.category');
@@ -86,19 +95,15 @@ Route::get('admin/product/delete/{id}', [ProductController::class, 'delete']);
 Route::get('admin/product/status/{status}/{id}', [ProductController::class, 'status']);
 // Route::get('/shop/{slug}', [ProductController::class, 'productdetails']);
 Route::get('/product-details/{id}', [ProductController::class, 'productdetails'])->name('product.details');
-
-
 // Blogs------------
 Route::get('/admin/blog', [BlogController::class, 'index'])->name('admin.blog');
 Route::get('/admin/manage_blog/{id?}', [BlogController::class, 'manage_blog'])->name('blog.manage_blog');
 Route::post('/admin/manage_blog_process', [BlogController::class, 'manage_blog_process'])->name('blog.manage_blog_process');
 Route::get('/admin/blog/delete/{id}', [BlogController::class, 'delete'])->name('blog.delete');
 Route::get('/blog/{slug}', [BlogController::class, 'blog_details']);
-
 // MailController
 Route::post('send-email', [MailController::class, 'sendEmail']);
 Route::view('send-email', 'contact');
-
 // wishlist---------
 Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist');
 Route::post('/wishlist/add', [WishlistController::class, 'store'])->name('wishlist.add');
@@ -122,7 +127,7 @@ Route::middleware(['auth'])->group(function () {
 });
 Route::get('/thank-you', function () {
     return view('thankyou');
-})->name('thankyou.page');
+})->name('thankyou');
 
 Route::get('/admin/order', [OrderController::class, 'index'])->name('admin.order');
 Route::get('/admin/orderitem', [OrderController::class, 'orderitem'])->name('admin.orderitem');
@@ -132,9 +137,8 @@ Route::get('/admin/ordercancelled', [OrderController::class, 'ordercancelled'])-
 Route::put('admin/order-item/status/{id}', [OrderController::class, 'updateOrderItemStatus'])->name('admin.updateOrderItemStatus');
 Route::delete('admin/order-item/delete/{id}', [OrderController::class, 'deleteOrderItem'])->name('admin.deleteOrderItem');
 
-// invoices-------
-// Route::prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(function () {
-Route::get('/admin/invoices', [InvoiceController::class, 'index'])->name('invoices.index');
-Route::get('/admin/invoices/generate/{orderId}', [InvoiceController::class, 'generate'])->name('invoices.generate');
-Route::get('/admin/invoices/download/{id}', [InvoiceController::class, 'download'])->name('invoices.download');
-// });
+// forgetpassword----------
+Route::get('/forgetpassword', [AuthController::class, 'forgetpasswordform'])->name('forgetpassword.forgetpassword');
+Route::post('/forgetpassword', [AuthController::class, 'submitforgetpasswordform'])->name('forgetpassword.submitforgetpassword');
+Route::get('/reset-password/{token}', [AuthController::class, 'showresettpasswordform'])->name('forgetpassword.resetpassword');
+Route::post('/reset-password', [AuthController::class, 'submitresetpasswordform'])->name('forgetpassword.submitresetpassword');

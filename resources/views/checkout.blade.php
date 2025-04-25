@@ -132,7 +132,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="ayur-checkout-table-wrapper">
-                        <form class="ayur-checkout-form" action="#" method="POST">
+                        <form class="ayur-checkout-form" id="checkout-form" action="#" method="POST">
                             @csrf
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-12">
@@ -247,7 +247,9 @@
 
                                         <div class="col-lg-12 col-md-12 col-sm-12">
                                             <div class="ayur-checkout-order">
-                                                <button type="button" class="ayur-btn" id="rzp-button1">Place
+                                                {{-- <button type="button" class="ayur-btn" id="rzp-button1">Place
+                                                    Order</button> --}}
+                                                <button type="button" id="place-order-btn" class="btn btn-primary">Place
                                                     Order</button>
                                             </div>
                                         </div>
@@ -260,7 +262,76 @@
             </div>
         </div>
     </div>
+    <!-- Razorpay Script -->
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        document.getElementById('place-order-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+
+            let formData = new FormData(document.getElementById('checkout-form'));
+
+            fetch('{{ route('place.order') }}', {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    body: formData
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.error) {
+                        alert(data.error);
+                        return;
+                    }
+
+                    const options = {
+                        "key": "{{ env('RAZORPAY_KEY') }}",
+                        "amount": data.amount,
+                        "currency": "INR",
+                        "name": "Your Shop Name",
+                        "description": "Order Payment",
+                        "order_id": data.razorpay_order_id,
+                        "handler": function(response) {
+                            // After payment success
+                            fetch('{{ route('payment.success') }}', {
+                                    method: 'POST',
+                                    headers: {
+                                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify({
+                                        razorpay_order_id: data.razorpay_order_id,
+                                        razorpay_payment_id: response.razorpay_payment_id,
+                                        razorpay_signature: response.razorpay_signature
+                                    })
+                                })
+                                .then(res => res.json())
+                                .then(response => {
+                                    alert(response.message || "Payment completed!");
+                                    window.location.href =
+                                        '{{ route('thankyou') }}'; // Redirect to thank you or order success page
+                                });
+                        },
+                        "prefill": {
+                            "name": data.user_name,
+                            "email": data.email,
+                            "contact": data.contact
+                        },
+                        "theme": {
+                            "color": "#3399cc"
+                        }
+                    };
+                    const rzp = new Razorpay(options);
+                    rzp.open();
+                })
+                .catch(err => {
+                    console.error(err);
+                    alert('Something went wrong. Please try again.');
+                });
+        });
+    </script>
+
+    {{-- <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script>
         document.getElementById("rzp-button1").addEventListener("click", function() {
             console.log("Place Order button clicked");
@@ -327,5 +398,5 @@
                     console.error('Error:', error);
                 });
         });
-    </script>
+    </script> --}}
 @endsection

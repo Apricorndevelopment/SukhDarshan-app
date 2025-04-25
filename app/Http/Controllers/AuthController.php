@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+use App\Models\Blog;
+use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use App\Models\User;
-use App\Models\Blog;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Password;
 
 class AuthController extends Controller
 {
@@ -81,8 +86,8 @@ class AuthController extends Controller
             $request->session()->regenerate();
 
             if (Auth::user()->role === 'user') {
-                // return redirect()->intended(route('user.dashboard'));
-                return redirect()->intended(route('carthome'));
+                return redirect()->intended(route('user.dashboard'));
+                // return redirect()->intended(route('carthome'));
             } else {
                 Auth::logout();
                 return back()->withErrors(['Invalid user role.']);
@@ -115,5 +120,65 @@ class AuthController extends Controller
         }
 
         return redirect()->route('Auth.login');
+    }
+
+    public function forgetpasswordform()
+    {
+        return view('forgetpassword.forgetpassword');
+    }
+
+    public function submitforgetpasswordform(Request $request)
+    {
+
+        $request->validate([
+            'email' => 'required|email|exists:users'
+        ]);
+
+        $token = Str::random(64);
+        DB::table('password_reset_tokens')->where('email', $request->email)->delete();
+        DB::table('password_reset_tokens')->insert([
+            'email' => $request->email,
+            'token' => $token,
+            'created_at' => Carbon::now(),
+        ]);
+
+        Mail::send('forgetpassword.email', ['token' => $token], function ($message) use ($request) {
+            $message->to($request->email);
+            $message->subject('Reset Password');
+        });
+        return redirect()->route('login');
+    }
+
+
+
+    public function showresettpasswordform($token)
+    {
+        return view('forgetpassword.resetpassword', ['token' => $token]);
+    }
+
+    public function submitresetpasswordform(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email|exists:users',
+            'password' => 'required|string|min:6|confirmed',
+            'password_confirmation' => 'required',
+        ]);
+
+        $updatepassword = DB::table('password_reset_tokens')->where([
+            'email' => $request->email,
+            'token' => $request->token,
+        ])->first();
+
+        if (!$updatepassword) {
+            return back()->withInput()->with('error', 'Invalid Token');
+        }
+
+        User::where('email', $request->email)->update([
+            'password' => Hash::make($request->password)
+        ]);
+
+        DB::table('password_reset_tokens')->where(['email' => $request->email])->delete();
+
+        return redirect()->route('login')->with('status', 'Password has been successfully reset!');
     }
 }
