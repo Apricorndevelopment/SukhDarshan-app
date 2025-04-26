@@ -42,8 +42,15 @@
             <div class="row align-items-center">
                 <div class="col-lg-2 col-md-4 col-sm-5 col-6">
                     <div class="ayur-menu-logo">
+                        {{-- <a href="/"><img style="height: 60px; width:60%"
+                                src="{{ asset('adminassets/images/SDP LOGO.png') }}"></a> --}}
                         <a href="/"><img style="height: 60px; width:60%"
-                                src="{{ asset('../adminassets/images/SDP LOGO.png') }}"></a>
+                                src="{{ asset($logo->logo ?? 'uploads/logos/defaultlogo.png') }}" alt="Company Logo">
+                        </a>
+                        {{-- <div>
+                            <img src="{{ public_path('adminassets/images/SDP LOGO.png') }}" alt="Logo"
+                                class="logo">
+                        </div> --}}
                     </div>
                 </div>
                 <div class="col-lg-10 col-md-8 col-sm-7 col-6">
@@ -147,7 +154,7 @@
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="ayur-footer-logosec">
                             <div class="ayur-footer-logo">
-                                <img src="{{ asset('../adminassets/images/SDP LOGO.png') }}" style="height:100px;"
+                                <img src="{{ asset('../adminassets/images/SDPfooter.png') }}" style="height:100px;"
                                     alt="logo" />
                             </div>
                             <p>our mission is to promote natural healing and holistic wellness. We offer authentic
@@ -241,7 +248,7 @@
                             <h4>Recent Blog</h4>
                             <ul class="ayur-recent-blog">
 
-                                {{-- @foreach ($recentBlogs as $blog)
+                                @foreach ($recentBlogs as $blog)
                                     <li class="ayur-recentblog-box">
                                         <div class="ayur-recentblog-boximg">
                                             <img src="{{ asset($blog->blog_image) }}" alt="image">
@@ -252,7 +259,7 @@
                                             </h3>
                                         </div>
                                     </li>
-                                @endforeach --}}
+                                @endforeach
 
                                 {{-- <li class="ayur-recentblog-box">
                                     <div class="ayur-recentblog-boximg">

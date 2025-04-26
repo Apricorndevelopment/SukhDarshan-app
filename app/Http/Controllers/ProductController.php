@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use App\Models\ProductVariant;
+use App\Models\Companylogo;
+use Illuminate\Support\Str;
 use App\Models\ProductImage;
 use Illuminate\Http\Request;
+use App\Models\ProductVariant;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
@@ -16,7 +17,9 @@ class ProductController extends Controller
     public function index()
     {
         $result['data'] = Product::paginate(30);
+        $logo = Companylogo::first();
         return view('admin.product', $result);
+        // return view('admin.product', compact('data', 'logo'));
     }
 
     public function manage_product(Request $request, $id = '')
@@ -68,6 +71,7 @@ class ProductController extends Controller
 
         $result['subcategory'] = DB::table('sub_categories')->where(['status' => 1])->get();
         $result['variants'] = ProductVariant::where('product_id', $id)->get();
+        $logo = Companylogo::first();
 
         return view('admin/manage_product', $result);
     }
@@ -153,7 +157,8 @@ class ProductController extends Controller
         }
 
         session()->flash('message', $msg);
-        return redirect('admin/product');
+        // $logo = Companylogo::first();
+        return redirect('admin/product', compact('logo'));
     }
 
 
@@ -179,7 +184,8 @@ class ProductController extends Controller
         } else {
             session()->flash('message', 'Product not found');
         }
-        return redirect('admin/product');
+        $logo = Companylogo::first();
+        return redirect('admin/product', compact('logo'));
     }
 
 
@@ -188,7 +194,8 @@ class ProductController extends Controller
         $product = Product::with('variants')->findOrFail($id); // Will throw 404 if not found
 
         $product_images = ProductImage::where('product_id', $id)->get();
+        $logo = Companylogo::first();
 
-        return view('product-details', compact('product', 'product_images'));
+        return view('product-details', compact('product', 'product_images', 'compact'));
     }
 }

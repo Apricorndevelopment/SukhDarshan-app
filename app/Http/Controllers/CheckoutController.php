@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Order;
-use App\Models\OrderItem;
 use Razorpay\Api\Api;
+use App\Models\OrderItem;
+use App\Models\Companylogo;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -15,12 +16,13 @@ class CheckoutController extends Controller
     {
         $cartItems = session()->get('cart', []);
         $totalAmount = 0;
+        $logo = Companylogo::first();
 
         foreach ($cartItems as $item) {
             $totalAmount += $item['price'] * $item['quantity'];
         }
 
-        return view('checkout', compact('cartItems', 'totalAmount'));
+        return view('checkout', compact('cartItems', 'totalAmount', 'logo'));
     }
 
     // public function placeOrder(Request $request)

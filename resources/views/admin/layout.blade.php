@@ -47,9 +47,17 @@
         </button>
         <div>
             <a href="{{ route('admin.dashboard') }}" class="sidebar-logo">
-                <img src="{{ asset('adminassets/images/SDP LOGO.png') }}" alt="site logo" class="light-logo">
-                <img src="{{ asset('adminassets/images/SDP LOGO.png') }}" alt="site logo" class="dark-logo">
-                <img src="{{ asset('adminassets/images/SDP LOGO.png') }}" alt="site logo" class="logo-icon">
+                {{-- <img src="{{ asset('adminassets/images/SDP LOGO.png') }}" alt="site logo" class="light-logo"> --}}
+                <img src="{{ asset($logo->logo ?? 'uploads/logos/defaultlogo.png') }}" alt="Company Logo"
+                    class="light-logo">
+                <img src="{{ asset($logo->logo ?? 'uploads/logos/defaultlogo.png') }}" alt="Company Logo"
+                    class="dark-logo">
+                <img src="{{ asset($logo->logo ?? 'uploads/logos/defaultlogo.png') }}" alt="Company Logo"
+                    class="logo-icon">
+
+
+                {{-- <img src="{{ asset('adminassets/images/SDP LOGO.png') }}" alt="site logo" class="dark-logo"> --}}
+                {{-- <img src="{{ asset('adminassets/images/SDP LOGO.png') }}" alt="site logo" class="logo-icon"> --}}
             </a>
         </div>
         <div class="sidebar-menu-area">
@@ -90,7 +98,7 @@
                 <li>
                     <a href="{{ route('admin.order') }}">
                         <iconify-icon icon="mage:email" class="menu-icon"></iconify-icon>
-                        <span>Order</span>
+                        <span>Abandonment Cart</span>
                     </a>
                 </li>
                 <li class="dropdown">
@@ -178,17 +186,42 @@
                     </a>
                     <ul class="sidebar-submenu">
                         <li>
-                            <a href="{{ route('invoices.index') }}"><i
-                                    class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
-                                All Invoices</a>
+                            <a href="{{ route('admin.invoices.index') }}">
+                                <i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
+                                All Invoices
+                            </a>
                         </li>
-                        {{-- <li>
-                            <a href="#"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
-                                Create New Invoices</a>
-                        </li> --}}
-
+                        <li>
+                            <a href="{{ route('admin.invoices.create') }}">
+                                <i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
+                                Create Invoices
+                            </a>
+                        </li>
                     </ul>
                 </li>
+
+
+                <li class="dropdown">
+                    <a href="javascript:void(0)">
+                        <iconify-icon icon="icon-park-outline:setting-two" class="menu-icon"></iconify-icon>
+                        <span>Settings</span>
+                    </a>
+                    <ul class="sidebar-submenu">
+                        <li>
+                            <a href="{{ route('companylogo') }}"><i
+                                    class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
+                                Company</a>
+                        </li>
+
+
+                        <li>
+                            <a href="{{ route('admin.paymentgateway') }}"><i
+                                    class="ri-circle-fill circle-icon text-danger-main w-auto"></i>
+                                Payment Gateway</a>
+                        </li>
+                    </ul>
+                </li>
+
 
 
 

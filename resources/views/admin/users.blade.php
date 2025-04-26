@@ -35,13 +35,7 @@
             font-size: 12px;
         }
     </style>
-    {{-- @php
-        $currentAction = class_basename(Route::currentRouteAction());
-        [$controller, $method] = explode('@', $currentAction);
-    @endphp
 
-    Controller: {{ $controller }} <br> wire:
-    Method: {{ $method }} --}}
     <div class="container mt-4">
         <div class="top-header">
             <h1 class="h4 mb-2">User List</h1>
@@ -95,13 +89,11 @@
         </div>
     </div>
 
-    {{-- Scripts --}}
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 
     <script>
-        // Search Function
         $('#searchInput').on('keyup', function() {
             var value = $(this).val().toLowerCase();
             $('#userTableBody tr').filter(function() {
@@ -109,7 +101,6 @@
             });
         });
 
-        // CSV Download
         $('#downloadCsv').click(function(e) {
             e.preventDefault();
             let csv = [];
@@ -133,7 +124,6 @@
             downloadLink.click();
         });
 
-        // Excel Download
         $('#downloadExcel').click(function(e) {
             e.preventDefault();
             let ws_data = [];

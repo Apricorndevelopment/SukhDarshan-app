@@ -2,39 +2,45 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Models\Order;
 use Razorpay\Api\Api;
 use App\Models\OrderItem;
+use App\Models\Companylogo;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
     public function index()
     {
         $orders = Order::all();
-        return view('admin.order', compact('orders'));
+        $logo = Companylogo::first();
+        return view('admin.order', compact('orders', 'logo'));
     }
     public function orderaccepted()
     {
         $orderItems = OrderItem::where('status', 'Accepted')->paginate(10);
-        return view('admin.orderaccepte', compact('orderItems'));
+        $logo = Companylogo::first();
+        return view('admin.orderaccepte', compact('orderItems', 'logo'));
     }
     public function orderpending()
     {
         $orderItems = OrderItem::where('status', 'Pending')->paginate(10);
-        return view('admin.orderpending', compact('orderItems'));
+        $logo = Companylogo::first();
+        return view('admin.orderpending', compact('orderItems', 'logo'));
     }
     public function ordercancelled()
     {
         $orderItems = OrderItem::where('status', 'Cancelled')->paginate(10);
-        return view('admin.ordercancelled', compact('orderItems'));
+        $logo = Companylogo::first();
+        return view('admin.ordercancelled', compact('orderItems', 'logo'));
     }
 
     public function orderitem()
     {
         $orderItems = OrderItem::with('product', 'order')->paginate(10); // assuming relationships
-        return view('admin.orderitem', compact('orderItems'));
+        $logo = Companylogo::first();
+        return view('admin.orderitem', compact('orderItems', 'logo'));
     }
 
     public function updateOrderItemStatus(Request $request, $id)

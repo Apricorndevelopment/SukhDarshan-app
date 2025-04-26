@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Wishlist;
-use App\Models\Product;
 use App\Models\Blog;
+use App\Models\Product;
+use App\Models\Wishlist;
+use App\Models\Companylogo;
+use Illuminate\Http\Request;
 
 class WishlistController extends Controller
 {
@@ -14,7 +15,8 @@ class WishlistController extends Controller
         $ip = request()->ip();
         $wishlistItems = Wishlist::with('product.firstVariant')->where('ip_address', $ip)->get();
         $recentBlogs = Blog::orderBy('created_at', 'desc')->take(3)->get();
-        return view('wishlist', compact('wishlistItems', 'recentBlogs'));
+        $logo = Companylogo::first();
+        return view('wishlist', compact('wishlistItems', 'recentBlogs', 'logo'));
     }
 
     public function store(Request $request)

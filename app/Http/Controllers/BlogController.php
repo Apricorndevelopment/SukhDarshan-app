@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Companylogo;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -11,8 +12,9 @@ class BlogController extends Controller
     public function index()
     {
         // $data = Blog::orderBy('desc')->paginate(10);
+        $logo = Companylogo::first();
         $data = Blog::paginate(10);
-        return view('admin.blog', compact('data'));
+        return view('admin.blog', compact('data', 'logo'));
         // $result['data'] = Blog::all();
         // return view('admin.blog', $result);
     }
@@ -41,6 +43,7 @@ class BlogController extends Controller
         }
 
         $result['id'] = $id;
+        $logo = Companylogo::first();
         return view('admin/manage_blog', $result);
     }
 
@@ -86,7 +89,8 @@ class BlogController extends Controller
         $model->save();
 
         session()->flash('message', $msg);
-        return redirect('admin/blog');
+        $logo = Companylogo::first();
+        return redirect('admin/blog', compact('logo'));
     }
 
 
@@ -108,8 +112,8 @@ class BlogController extends Controller
     {
         $blog = Blog::where('blog_slug', $slug)->firstOrFail();
         $recentBlogs = Blog::orderBy('created_at', 'desc')->take(3)->get();
-        // return view('blogdetails', ['blog' => $blog]);
-        return view('blogdetails', [
+        $logo = Companylogo::first();
+        return view('blogdetails', compact('logo'), [
             'blog' => $blog,
             'recentBlogs' => $recentBlogs
         ]);

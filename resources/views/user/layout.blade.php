@@ -78,7 +78,7 @@
                 </li>
 
 
-                <li class="dropdown">
+                {{-- <li class="dropdown">
                     <a href="javascript:void(0)">
                         <iconify-icon icon="solar:bill-list-broken" class="menu-icon"></iconify-icon>
                         <span>Invoice</span>
@@ -90,7 +90,22 @@
                         </li>
 
                     </ul>
+                </li> --}}
+                <li class="dropdown">
+                    <a href="javascript:void(0)">
+                        <iconify-icon icon="solar:bill-list-broken" class="menu-icon"></iconify-icon>
+                        <span>Invoice</span>
+                    </a>
+                    <ul class="sidebar-submenu">
+                        <li>
+                            <a href="{{ route('user.invoices') }}">
+                                <i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
+                                All Invoices
+                            </a>
+                        </li>
+                    </ul>
                 </li>
+
 
 
 

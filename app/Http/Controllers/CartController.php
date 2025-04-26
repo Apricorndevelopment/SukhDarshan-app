@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Product;
 use App\Models\Blog;
+use App\Models\Product;
+use App\Models\Companylogo;
+use Illuminate\Http\Request;
 use App\Models\ProductVariant;
 
 class CartController extends Controller
@@ -13,7 +14,8 @@ class CartController extends Controller
     {
         $cartItems = session('cart', []);
         $recentBlogs = Blog::orderBy('created_at', 'desc')->take(3)->get();
-        return view('carthome', compact('cartItems', 'recentBlogs'));
+        $logo = Companylogo::first();
+        return view('carthome', compact('cartItems', 'recentBlogs', 'logo'));
     }
     public function addToCart(Request $request)
     {
@@ -66,7 +68,8 @@ class CartController extends Controller
     public function viewCart()
     {
         $cartItems = session('cart', []);
-        return view('cart', compact('cartItems'));
+        $logo = Companylogo::first();
+        return view('cart', compact('cartItems', 'logo'));
     }
 
     public function updateCart(Request $request)

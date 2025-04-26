@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Companylogo;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 
@@ -12,9 +13,9 @@ class SubCategoryController extends Controller
     {
 
         $data = SubCategory::all();
+        $logo = Companylogo::first();
 
-
-        return view('admin.subcategory', compact('data'));
+        return view('admin.subcategory', compact('data', 'logo'));
     }
 
 
@@ -38,6 +39,7 @@ class SubCategoryController extends Controller
         }
 
         $result['sub_categories_from_categories'] = Category::all();
+        // $logo = Companylogo::first();
 
         return view('admin/manage_subcategory', $result);
     }

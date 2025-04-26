@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\Blog;
 use App\Models\User;
+use App\Models\Companylogo;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -18,25 +19,29 @@ class AuthController extends Controller
     public function index()
     {
         $users = User::where('role', 'user')->paginate(10);
-        return view('admin.users', compact('users'));
+        $logo = Companylogo::first();
+        return view('admin.users', compact('users', 'logo'));
     }
 
     public function showloginform()
     {
         $recentBlogs = Blog::orderBy('created_at', 'desc')->take(3)->get();
-        return view('login', compact('recentBlogs'));
+        $logo = Companylogo::first();
+        return view('login', compact('recentBlogs', 'logo'));
     }
 
     public function showAdminLoginForm()
     {
         $recentBlogs = Blog::orderBy('created_at', 'desc')->take(3)->get();
-        return view('admin.adminlogin', compact('recentBlogs'));
+        $logo = Companylogo::first();
+        return view('admin.adminlogin', compact('recentBlogs', 'logo'));
     }
 
     public function showregisterform()
     {
         $recentBlogs = Blog::orderBy('created_at', 'desc')->take(3)->get();
-        return view('Auth.register', compact('recentBlogs'));
+        $logo = Companylogo::first();
+        return view('Auth.register', compact('recentBlogs', 'logo'));
     }
 
     public function register(Request $request)
@@ -113,18 +118,21 @@ class AuthController extends Controller
 
     public function dashboard()
     {
+
+        $logo = Companylogo::first();
         if (session('admin_logged_in')) {
-            return view('admin.dashboard');
+            return view('admin.dashboard', compact('logo'));
         } elseif (Auth::check() && Auth::user()->role === 'user') {
-            return view('user.dashboard');
+            return view('user.dashboard', compact('logo'));
         }
 
-        return redirect()->route('Auth.login');
+        return redirect()->route('Auth.login', compact('logo'));
     }
 
     public function forgetpasswordform()
     {
-        return view('forgetpassword.forgetpassword');
+        $logo = Companylogo::first();
+        return view('forgetpassword.forgetpassword', compact('logo'));
     }
 
     public function submitforgetpasswordform(Request $request)
@@ -153,7 +161,8 @@ class AuthController extends Controller
 
     public function showresettpasswordform($token)
     {
-        return view('forgetpassword.resetpassword', ['token' => $token]);
+        $logo = Companylogo::first();
+        return view('forgetpassword.resetpassword', ['token' => $token], compact('logo'));
     }
 
     public function submitresetpasswordform(Request $request)

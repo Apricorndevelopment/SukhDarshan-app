@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Companylogo;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -18,6 +19,8 @@ class CategoryController extends Controller
     public function index()
     {
         $result['data'] = Category::all();
+        // $logo = Companylogo::first();
+        // return view('admin/category', compact('result', 'logo'));
         return view('admin/category', $result);
     }
 
@@ -37,6 +40,7 @@ class CategoryController extends Controller
         }
 
         $result['category'] = $category; // Pass the object separately
+        // $logo = Companylogo::first();
         return view('admin/manage_category', $result);
     }
 

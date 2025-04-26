@@ -1,25 +1,27 @@
 <?php
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\BlogController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\SubCategoryController;
-use App\Http\Controllers\PageController;
-use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\WishlistController;
-use App\Http\Controllers\MailController;
-use App\Http\Controllers\CartController;
-use App\Http\Controllers\UserController;
-use App\Models\Customer;
-use App\Models\Product;
 use App\Models\Blog;
+use App\Models\Product;
+use App\Models\Customer;
+use App\Models\Companylogo;
 use App\Models\SubCategory;
 use Illuminate\Support\Facades\Mail;
-use App\Http\Controllers\CheckoutController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\MailController;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
-
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\SubCategoryController;
+use App\Http\Controllers\Admin\InvoiceController;
+use App\Http\Controllers\PaymentgatewayController;
 
 Route::get('/', function () {
     $subcategory = SubCategory::all();
@@ -27,8 +29,9 @@ Route::get('/', function () {
     $is_tren = Product::with('firstVariant')->where('is_trending', 1)->take(4)->get();
     $blog = Blog::all()->take(2);
     $recentBlogs = Blog::orderBy('created_at', 'desc')->take(3)->get();
+    $logo = Companylogo::first();
 
-    return view('welcome', compact('subcategory', 'blog', 'is_top', 'is_tren', 'recentBlogs'));
+    return view('welcome', compact('logo', 'subcategory', 'blog', 'is_top', 'is_tren', 'recentBlogs'));
 });
 // PageController---------------
 Route::get('about', [PageController::class, 'about'])->name('about');
@@ -142,3 +145,23 @@ Route::get('/forgetpassword', [AuthController::class, 'forgetpasswordform'])->na
 Route::post('/forgetpassword', [AuthController::class, 'submitforgetpasswordform'])->name('forgetpassword.submitforgetpassword');
 Route::get('/reset-password/{token}', [AuthController::class, 'showresettpasswordform'])->name('forgetpassword.resetpassword');
 Route::post('/reset-password', [AuthController::class, 'submitresetpasswordform'])->name('forgetpassword.submitresetpassword');
+
+// -------------
+// Admin routes
+// Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
+Route::get('/admin/invoices', [InvoiceController::class, 'index'])->name('admin.invoices.index');
+Route::get('/admin/invoices/create', [InvoiceController::class, 'create'])->name('admin.invoices.create');
+Route::get('/admin/invoices/{id}', [InvoiceController::class, 'show'])->name('admin.invoices.show');
+Route::get('/admin/invoices/{id}/download', [InvoiceController::class, 'download'])->name('admin.invoices.download');
+Route::get('admin/orders/{id}/generate-invoice', [InvoiceController::class, 'generate'])->name('admin.invoices.generate');
+// });
+
+// User routes
+Route::middleware('auth')->group(function () {
+    Route::get('/my-invoices', [\App\Http\Controllers\User\InvoiceController::class, 'index'])->name('user.invoices');
+    Route::get('/my-invoices/{id}/download', [\App\Http\Controllers\User\InvoiceController::class, 'download'])->name('user.invoices.download');
+});
+
+Route::get('/admin/paymentgatewaye', [PaymentgatewayController::class, 'index'])->name('admin.paymentgateway');
+Route::get('/admin/companylogo', [PaymentgatewayController::class, 'companylogo'])->name('companylogo');
+Route::post('/admin/companylogo/update', [PaymentgatewayController::class, 'updatecompanylogo'])->name('updatecompanylogo');

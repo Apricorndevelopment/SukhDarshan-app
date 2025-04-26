@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\Invoice;
+use App\Models\Companylogo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -48,18 +49,8 @@ class UserController extends Controller
             ->orderBy('created_at', 'desc')
             ->get();
 
-        return view('user.orders', compact('orders'));
-    }
+        $logo = Companylogo::first();
 
-    public function myInvoices()
-    {
-        $user = Auth::user();
-
-        $invoices = Invoice::with('order')
-            ->where('user_id', $user->id)
-            ->latest()
-            ->get();
-
-        return view('user.invoices.index', compact('invoices'));
+        return view('user.orders', compact('orders', 'logo'));
     }
 }

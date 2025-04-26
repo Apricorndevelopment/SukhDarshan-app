@@ -72,6 +72,25 @@ namespace App\Models{
  * 
  *
  * @property int $id
+ * @property string|null $logo
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Companylogo newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Companylogo newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Companylogo query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Companylogo whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Companylogo whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Companylogo whereLogo($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Companylogo whereUpdatedAt($value)
+ */
+	class Companylogo extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
  * @property string $name
  * @property string $email
  * @property string $customer_number
@@ -95,22 +114,22 @@ namespace App\Models{
  * 
  *
  * @property int $id
- * @property string|null $user_id
  * @property int $order_id
+ * @property int $user_id
  * @property string $invoice_number
- * @property string $file_path
+ * @property string $total
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Order $order
- * @property-read \App\Models\User|null $user
+ * @property-read \App\Models\User $user
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice query()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice whereFilePath($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice whereInvoiceNumber($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice whereOrderId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice whereTotal($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice whereUserId($value)
  */
@@ -204,6 +223,31 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|OrderItem whereUpdatedAt($value)
  */
 	class OrderItem extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property string $environment
+ * @property string $currency
+ * @property string $secret_key
+ * @property string $publics_key
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Paymentgatway newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Paymentgatway newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Paymentgatway query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Paymentgatway whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Paymentgatway whereCurrency($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Paymentgatway whereEnvironment($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Paymentgatway whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Paymentgatway wherePublicsKey($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Paymentgatway whereSecretKey($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Paymentgatway whereUpdatedAt($value)
+ */
+	class Paymentgatway extends \Eloquent {}
 }
 
 namespace App\Models{
