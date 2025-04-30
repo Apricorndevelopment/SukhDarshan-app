@@ -19,9 +19,9 @@ class CategoryController extends Controller
     public function index()
     {
         $result['data'] = Category::all();
-        // $logo = Companylogo::first();
+        $logo = Companylogo::first();
         // return view('admin/category', compact('result', 'logo'));
-        return view('admin/category', $result);
+        return view('admin/category', $result, compact('logo'));
     }
 
     public function manage_category(Request $request, $id = '')
@@ -40,8 +40,8 @@ class CategoryController extends Controller
         }
 
         $result['category'] = $category; // Pass the object separately
-        // $logo = Companylogo::first();
-        return view('admin/manage_category', $result);
+        $logo = Companylogo::first();
+        return view('admin/manage_category', $result, compact('logo'));
     }
 
     public function manage_category_process(Request $request)

@@ -95,6 +95,12 @@
 
                     </ul>
                 </li>
+                {{-- <li>
+                    <a href="{{ route('admin.bulkupload') }}">
+                        <iconify-icon icon="mage:email" class="menu-icon"></iconify-icon>
+                        <span>Product Bulk Uploading</span>
+                    </a>
+                </li> --}}
                 <li>
                     <a href="{{ route('admin.order') }}">
                         <iconify-icon icon="mage:email" class="menu-icon"></iconify-icon>
@@ -159,6 +165,11 @@
                         <li>
                             <a href=" {{ url('admin/manage_product') }}"><i
                                     class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Add Product</a>
+                        </li>
+                        <li>
+                            <a href=" {{ url('admin.bulkupload') }}"><i
+                                    class="ri-circle-fill circle-icon text-warning-main w-auto"></i>Product Bulk
+                                uploading</a>
                         </li>
 
                     </ul>
@@ -337,8 +348,11 @@
                         <div class="dropdown">
                             <button class="d-flex justify-content-center align-items-center rounded-circle"
                                 type="button" data-bs-toggle="dropdown">
-                                <img src="{{ asset('adminassets/images/SDP LOGO.png') }}" alt="image"
-                                    class="w-40-px h-40-px object-fit-cover rounded-circle">
+                                {{-- <img src="{{ asset('adminassets/images/SDP LOGO.png') }}" alt="image"
+                                    class="w-40-px h-40-px object-fit-cover rounded-circle"> --}}
+                                <img src="{{ Auth::user()->profile_image ? asset('storage/' . Auth::user()->profile_image) : asset('adminassets/images/SDP LOGO.png') }}"
+                                    alt="image" class="w-40-px h-40-px object-fit-cover rounded-circle">
+
                             </button>
                             <div class="dropdown-menu to-top dropdown-menu-sm">
                                 <div
@@ -347,10 +361,21 @@
                                         <h6 class="text-lg text-primary-light fw-semibold mb-2">Sukh Darshan</h6>
                                         <span class="text-secondary-light fw-medium text-sm">Admin</span>
                                     </div>
+
                                     <button type="button" class="hover-text-danger">
                                         <iconify-icon icon="radix-icons:cross-1" class="icon text-xl"></iconify-icon>
                                     </button>
                                 </div>
+                                <ul class="to-top-list">
+
+                                    <li>
+                                        <a class="dropdown-item text-black px-0 py-8 hover-bg-transparent hover-text-danger d-flex align-items-center gap-3"
+                                            href="{{ route('admin.profile') }}">
+                                            <iconify-icon icon="lucide:user" class="icon text-xl"></iconify-icon>
+                                            profile
+                                        </a>
+                                    </li>
+                                </ul>
                                 <ul class="to-top-list">
 
                                     <li>

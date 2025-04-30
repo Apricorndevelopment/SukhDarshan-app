@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use App\Models\Product;
 use App\Models\Companylogo;
 use Illuminate\Support\Str;
@@ -18,7 +19,7 @@ class ProductController extends Controller
     {
         $result['data'] = Product::paginate(30);
         $logo = Companylogo::first();
-        return view('admin.product', $result);
+        return view('admin.product', $result, compact('logo'));
         // return view('admin.product', compact('data', 'logo'));
     }
 
@@ -73,7 +74,7 @@ class ProductController extends Controller
         $result['variants'] = ProductVariant::where('product_id', $id)->get();
         $logo = Companylogo::first();
 
-        return view('admin/manage_product', $result);
+        return view('admin/manage_product', $result, compact('logo'));
     }
 
 
@@ -192,10 +193,10 @@ class ProductController extends Controller
     public function productdetails($id)
     {
         $product = Product::with('variants')->findOrFail($id); // Will throw 404 if not found
-
+        $recentBlogs = Blog::orderBy('created_at', 'desc')->take(3)->get();
         $product_images = ProductImage::where('product_id', $id)->get();
         $logo = Companylogo::first();
 
-        return view('product-details', compact('product', 'product_images', 'compact'));
+        return view('product-details', compact('product', 'product_images', 'logo', 'recentBlogs'));
     }
 }

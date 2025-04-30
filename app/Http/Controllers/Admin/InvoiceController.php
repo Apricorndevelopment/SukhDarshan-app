@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use PDF;
 use App\Models\Order;
 use App\Models\Invoice;
+use App\Models\Companylogo;
 use Illuminate\Support\Str;
-use PDF;
+use App\Http\Controllers\Controller;
 
 class InvoiceController extends Controller
 {
@@ -31,8 +32,9 @@ class InvoiceController extends Controller
         $invoices = Invoice::with('order')->latest()->get();
 
         $ordersWithoutInvoices = Order::doesntHave('invoice')->latest()->get();
+        $logo = Companylogo::first();
 
-        return view('admin.invoices.index', compact('invoices', 'ordersWithoutInvoices'));
+        return view('admin.invoices.index', compact('invoices', 'logo', 'ordersWithoutInvoices'));
     }
 
     public function create()
@@ -40,8 +42,9 @@ class InvoiceController extends Controller
         $invoices = Invoice::with('order')->latest()->get();
 
         $ordersWithoutInvoices = Order::doesntHave('invoice')->latest()->get();
+        $logo = Companylogo::first();
 
-        return view('admin.invoices.create', compact('invoices', 'ordersWithoutInvoices'));
+        return view('admin.invoices.create', compact('invoices', 'ordersWithoutInvoices', 'logo'));
     }
 
     public function show($id)

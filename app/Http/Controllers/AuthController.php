@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Password;
 
 class AuthController extends Controller
@@ -157,8 +158,6 @@ class AuthController extends Controller
         return redirect()->route('login');
     }
 
-
-
     public function showresettpasswordform($token)
     {
         $logo = Companylogo::first();
@@ -189,5 +188,39 @@ class AuthController extends Controller
         DB::table('password_reset_tokens')->where(['email' => $request->email])->delete();
 
         return redirect()->route('login')->with('status', 'Password has been successfully reset!');
+    }
+
+
+    public function profile()
+    {
+        $admin = Auth::user();
+        return view('admin.profile', compact('admin'));
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $admin = Auth::user();
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'profile_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $admin->name = $request->name;
+
+        if ($request->hasFile('profile_image')) {
+            // Delete old image if exists
+            if ($admin->profile_image && Storage::disk('public')->exists($admin->profile_image)) {
+                Storage::disk('public')->delete($admin->profile_image);
+            }
+
+            // Save new image
+            $path = $request->file('profile_image')->store('admin_profiles', 'public');
+            $admin->profile_image = $path;
+        }
+
+        $admin->save();
+
+        return back()->with('success', 'Profile updated successfully.');
     }
 }

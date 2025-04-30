@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use App\Models\Order;
 use Razorpay\Api\Api;
 use App\Models\OrderItem;
@@ -17,86 +18,15 @@ class CheckoutController extends Controller
         $cartItems = session()->get('cart', []);
         $totalAmount = 0;
         $logo = Companylogo::first();
+        $recentBlogs = Blog::orderBy('created_at', 'desc')->take(3)->get();
 
         foreach ($cartItems as $item) {
             $totalAmount += $item['price'] * $item['quantity'];
         }
 
-        return view('checkout', compact('cartItems', 'totalAmount', 'logo'));
+        return view('checkout', compact('cartItems', 'totalAmount', 'logo', 'recentBlogs'));
     }
 
-    // public function placeOrder(Request $request)
-    // {
-    //     $request->validate([
-    //         'first_name' => 'required',
-    //         'last_name' => 'required',
-    //         'billing_address' => 'required',
-    //         'city' => 'required',
-    //         'region' => 'required',
-    //         'zip' => 'required',
-    //         'contact' => 'required',
-    //         'shipping_state' => 'required',
-    //         'shipping_zip' => 'required',
-    //         'shipping_country' => 'required',
-    //     ]);
-
-    //     $cartItems = session()->get('cart', []);
-    //     if (empty($cartItems)) {
-    //         return response()->json(['error' => 'Cart is empty'], 400);
-    //     }
-
-    //     $totalAmount = 0;
-    //     foreach ($cartItems as $item) {
-    //         $totalAmount += $item['price'] * $item['quantity'];
-    //     }
-
-    //     $order = Order::create([
-    //         'user_id' => Auth::id(),
-    //         'first_name' => $request->first_name,
-    //         'last_name' => $request->last_name,
-    //         'billing_address' => $request->billing_address,
-    //         'city' => $request->city,
-    //         'region' => $request->region,
-    //         'zip' => $request->zip,
-    //         'contact' => $request->contact,
-    //         'shipping_state' => $request->shipping_state,
-    //         'shipping_zip' => $request->shipping_zip,
-    //         'shipping_country' => $request->shipping_country,
-    //         'total_amount' => $totalAmount,
-    //         'payment_status' => 'pending',
-    //         'payment_method' => 'razorpay'
-    //     ]);
-
-    //     foreach ($cartItems as $item) {
-    //         OrderItem::create([
-    //             'order_id' => $order->id,
-    //             'product_id' => $item['id'],
-    //             'quantity' => $item['quantity'],
-    //             'price' => $item['price']
-    //         ]);
-    //     }
-
-    //     $api = new Api(env('RAZORPAY_KEY'), env('RAZORPAY_SECRET'));
-
-    //     $razorpayOrder = $api->order->create([
-    //         'receipt' => 'order_' . $order->id,
-    //         'amount' => $totalAmount * 100, // in paise
-    //         'currency' => 'INR',
-    //         'payment_capture' => 1
-    //     ]);
-
-    //     $order->razorpay_order_id = $razorpayOrder['id'];
-    //     $order->save();
-
-    //     return response()->json([
-    //         'razorpay_order_id' => $razorpayOrder['id'],
-    //         'amount' => $razorpayOrder['amount'],
-    //         'order_id' => $order->id,
-    //         'user_name' => $order->first_name . ' ' . $order->last_name,
-    //         'email' => Auth::user()->email,
-    //         'contact' => $order->contact
-    //     ]);
-    // }
     public function placeOrder(Request $request)
     {
         $request->validate([

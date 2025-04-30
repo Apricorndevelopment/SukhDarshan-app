@@ -22,6 +22,7 @@ use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\Admin\InvoiceController;
 use App\Http\Controllers\PaymentgatewayController;
+use App\Http\Controllers\UploadCsvController;
 
 Route::get('/', function () {
     $subcategory = SubCategory::all();
@@ -161,7 +162,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/my-invoices', [\App\Http\Controllers\User\InvoiceController::class, 'index'])->name('user.invoices');
     Route::get('/my-invoices/{id}/download', [\App\Http\Controllers\User\InvoiceController::class, 'download'])->name('user.invoices.download');
 });
-
 Route::get('/admin/paymentgatewaye', [PaymentgatewayController::class, 'index'])->name('admin.paymentgateway');
 Route::get('/admin/companylogo', [PaymentgatewayController::class, 'companylogo'])->name('companylogo');
 Route::post('/admin/companylogo/update', [PaymentgatewayController::class, 'updatecompanylogo'])->name('updatecompanylogo');
+// bulk upload------------------
+Route::get('/admin/bulkupload', [UploadCsvController::class, 'index'])->name('admin.bulkupload');
+Route::post('upload-csv', [UploadCsvController::class, 'uploadCsv']);
+
+
+Route::get('/admin/profile', [AuthController::class, 'profile'])->name('admin.profile');
+Route::post('/admin/profile/update', [AuthController::class, 'updateProfile'])->name('admin.profile.update');

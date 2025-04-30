@@ -76,6 +76,7 @@
                                                 fill="#222222" />
                                         </svg>
                                     </span>
+
                                 </a>
                             </div>
                             <div class="ayur-nav-product">
@@ -88,7 +89,10 @@
                                                 fill="#222222" />
                                         </svg>
                                     </span>
-                                    <span class="ayur-nav-provalue">2</span>
+                                    {{-- <span class="ayur-nav-provalue">2</span> --}}
+                                    {{-- <span class="ayur-nav-provalue">
+                                        {{ Auth::check() ? \App\Models\Cart::where('user_id', Auth::id())->count() : (session('cart') ? count(session('cart')) : 0) }}
+                                    </span> --}}
                                 </a>
                             </div>
                             <div class="ayur-nav-user">

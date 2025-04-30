@@ -44,7 +44,7 @@ class BlogController extends Controller
 
         $result['id'] = $id;
         $logo = Companylogo::first();
-        return view('admin/manage_blog', $result);
+        return view('admin/manage_blog', $result, compact('logo'));
     }
 
 
