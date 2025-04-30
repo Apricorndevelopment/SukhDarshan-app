@@ -133,7 +133,8 @@ class AuthController extends Controller
     public function forgetpasswordform()
     {
         $logo = Companylogo::first();
-        return view('forgetpassword.forgetpassword', compact('logo'));
+        $recentBlogs = Blog::orderBy('created_at', 'desc')->take(3)->get();
+        return view('forgetpassword.forgetpassword', compact('logo', 'recentBlogs'));
     }
 
     public function submitforgetpasswordform(Request $request)
@@ -161,7 +162,8 @@ class AuthController extends Controller
     public function showresettpasswordform($token)
     {
         $logo = Companylogo::first();
-        return view('forgetpassword.resetpassword', ['token' => $token], compact('logo'));
+        $recentBlogs = Blog::orderBy('created_at', 'desc')->take(3)->get();
+        return view('forgetpassword.resetpassword', ['token' => $token], compact('logo', 'recentBlogs'));
     }
 
     public function submitresetpasswordform(Request $request)

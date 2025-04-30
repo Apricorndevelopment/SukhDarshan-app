@@ -262,7 +262,7 @@
             </div>
         </div>
     </div>
-    <!-- Razorpay Script -->
+
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script>
         document.getElementById('place-order-btn').addEventListener('click', function(e) {
@@ -285,7 +285,10 @@
                     }
 
                     const options = {
-                        "key": "{{ env('RAZORPAY_KEY') }}",
+                        // "key": "{{ env('RAZORPAY_KEY') }}",
+                        "key": "{{ config('services.razorpay.key') }}",
+
+
                         "amount": data.amount,
                         "currency": "INR",
                         "name": "Your Shop Name",
@@ -330,73 +333,4 @@
                 });
         });
     </script>
-
-    {{-- <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-    <script>
-        document.getElementById("rzp-button1").addEventListener("click", function() {
-            console.log("Place Order button clicked");
-            const formData = new FormData(document.querySelector('.ayur-checkout-form'));
-
-            fetch("{{ route('place.order') }}", {
-                    method: "POST",
-                    body: formData,
-                    headers: {
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    }
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.razorpay_order_id) {
-                        const options = {
-                            "key": "{{ env('RAZORPAY_KEY') }}",
-                            "amount": data.amount,
-                            "currency": "INR",
-                            "name": "Your Store",
-                            "description": "Order Payment",
-                            "order_id": data.razorpay_order_id,
-                            "handler": function(response) {
-                                fetch("{{ route('payment.success') }}", {
-                                        method: "POST",
-                                        headers: {
-                                            "Content-Type": "application/json",
-                                            "X-CSRF-TOKEN": "{{ csrf_token() }}"
-                                        },
-                                        body: JSON.stringify({
-                                            razorpay_order_id: response.razorpay_order_id,
-                                            razorpay_payment_id: response
-                                                .razorpay_payment_id,
-                                            razorpay_signature: response.razorpay_signature
-                                        })
-                                    })
-                                    .then(res => res.json())
-                                    .then(res => {
-                                        alert("Payment Successful!");
-                                        window.location.href =
-                                            "{{ route('thankyou.page') }}"; // Optional redirect
-                                    })
-                                    .catch(err => {
-                                        alert("Payment recorded but failed to update backend.");
-                                        console.error(err);
-                                    });
-                            },
-                            "prefill": {
-                                "name": data.user_name,
-                                "email": data.email,
-                                "contact": data.contact
-                            },
-                            "theme": {
-                                "color": "#0b5ed7"
-                            }
-                        };
-                        const rzp1 = new Razorpay(options);
-                        rzp1.open();
-                    } else {
-                        alert('Error: ' + data.error);
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-        });
-    </script> --}}
 @endsection

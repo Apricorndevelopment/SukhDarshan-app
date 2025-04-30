@@ -47,10 +47,7 @@
                         <a href="/"><img style="height: 60px; width:60%"
                                 src="{{ asset($logo->logo ?? 'uploads/logos/defaultlogo.png') }}" alt="Company Logo">
                         </a>
-                        {{-- <div>
-                            <img src="{{ public_path('adminassets/images/SDP LOGO.png') }}" alt="Logo"
-                                class="logo">
-                        </div> --}}
+
                     </div>
                 </div>
                 <div class="col-lg-10 col-md-8 col-sm-7 col-6">
@@ -89,13 +86,11 @@
                                                 fill="#222222" />
                                         </svg>
                                     </span>
-                                    {{-- <span class="ayur-nav-provalue">2</span> --}}
-                                    {{-- <span class="ayur-nav-provalue">
-                                        {{ Auth::check() ? \App\Models\Cart::where('user_id', Auth::id())->count() : (session('cart') ? count(session('cart')) : 0) }}
-                                    </span> --}}
+                                    <span class="ayur-nav-provalue">2</span>
+
                                 </a>
                             </div>
-                            <div class="ayur-nav-user">
+                            {{-- <div class="ayur-nav-user">
                                 <a href="{{ route('login') }}">
                                     <span class="icon">
                                         <svg width="15" height="17" viewBox="0 0 15 17" fill="none"
@@ -106,7 +101,54 @@
                                         </svg>
                                     </span>
                                 </a>
+                            </div> --}}
+                            <div class="ayur-nav-user">
+                                @guest
+                                    {{-- Login Link (Only for guests) --}}
+                                    {{-- <a href="{{ route('login') }}">
+                                        <span class="icon">
+                                            <!-- Login Icon -->
+                                            <svg width="15" height="17" viewBox="0 0 15 17" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M7.66405 0C10.1737 0 12.2106 2.03684 12.2106 4.54651C12.2106 7.05619 10.1737 9.09302 7.66405 9.09302C5.15438 9.09302 3.11754 7.05619 3.11754 4.54651C3.11754 2.03684 5.15438 0 7.66405 0Z"
+                                                    fill="#222222" />
+                                                <!-- Continue with your full login SVG here -->
+                                            </svg>
+                                        </span>
+                                    </a> --}}
+                                    <a href="{{ route('login') }}">
+                                        <span class="icon">
+                                            <!-- Login User Icon -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                                                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                                                <path fill-rule="evenodd"
+                                                    d="M8 9a5 5 0 0 0-4.546 2.916.5.5 0 0 0 .832.554A4 4 0 0 1 8 10a4 4 0 0 1 3.714 2.47.5.5 0 0 0 .832-.554A5 5 0 0 0 8 9z" />
+                                            </svg>
+                                        </span>
+                                    </a>
+                                    
+                                @endguest
+
+                                @auth
+                                    {{-- Logout Button (Only for authenticated users) --}}
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                        <button type="submit" style="background: none; border: none; cursor: pointer;">
+                                            <span class="icon">
+                                                <!-- Logout Icon -->
+                                                <svg width="15" height="17" viewBox="0 0 15 17" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M2 2L13 13M13 2L2 13" stroke="#222222" stroke-width="2" />
+                                                    <!-- Replace with your preferred logout icon -->
+                                                </svg>
+                                            </span>
+                                        </button>
+                                    </form>
+                                @endauth
                             </div>
+
                         </div>
                         <div class="ayur-toggle-btn">
                             <span></span>

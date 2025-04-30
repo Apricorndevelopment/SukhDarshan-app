@@ -112,7 +112,6 @@ Route::view('send-email', 'contact');
 Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist');
 Route::post('/wishlist/add', [WishlistController::class, 'store'])->name('wishlist.add');
 Route::get('/wishlist/remove/{id}', [WishlistController::class, 'destroy'])->name('wishlist.remove');
-// Route::get('/wishlist/cart/{id}', [WishlistController::class, 'addToCart'])->name('wishlist.addtocart');
 Route::post('/wishlist/add-to-cart', [WishlistController::class, 'addToCart'])->name('wishlist.addtocart');
 
 Route::post('/wishlist/store', [WishlistController::class, 'store'])->name('wishlist.store');
@@ -120,7 +119,6 @@ Route::post('/wishlist/store', [WishlistController::class, 'store'])->name('wish
 // cart----------
 Route::get('/carthome', [CartController::class, 'index'])->name('carthome');
 Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('cart.add');
-// Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.view');
 Route::post('/cart/update', [CartController::class, 'updateCart'])->name('cart.update');
 Route::post('/cart/remove', [CartController::class, 'removeFromCart'])->name('cart.remove');
 // checkout-----
