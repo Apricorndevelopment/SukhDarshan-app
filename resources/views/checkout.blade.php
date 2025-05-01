@@ -76,7 +76,7 @@
                             <h2>Checkout</h2>
                             <div class="ayur-bread-list">
                                 <span>
-                                    <a href="index.html">Home</a>
+                                    <a href="/">Home</a>
                                 </span>
                                 <span class="ayur-active-page">Checkout</span>
                                 <span class="ayur-active-page"><a href="{{ route('logout') }}">Logout</a></span>
@@ -263,7 +263,7 @@
         </div>
     </div>
 
-    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    {{-- <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script>
         document.getElementById('place-order-btn').addEventListener('click', function(e) {
             e.preventDefault();
@@ -332,5 +332,79 @@
                     alert('Something went wrong. Please try again.');
                 });
         });
+    </script> --}}
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        document.getElementById('place-order-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+
+            let form = document.getElementById('checkout-form');
+            let formData = new FormData(form);
+
+            fetch('{{ route('place.order') }}', {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    body: formData
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.error) {
+                        alert(data.error);
+                        return;
+                    }
+
+                    const options = {
+                        "key": "{{ config('services.razorpay.key') }}", // Razorpay key from config/services.php
+                        "amount": data.amount,
+                        "currency": "INR",
+                        "name": "Your Shop Name",
+                        "description": "Order Payment",
+                        "order_id": data.razorpay_order_id,
+                        "handler": function(response) {
+                            // Send the response to Laravel to confirm payment
+                            fetch('{{ route('payment.success') }}', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                                    },
+                                    body: JSON.stringify({
+                                        razorpay_order_id: data.razorpay_order_id,
+                                        razorpay_payment_id: response.razorpay_payment_id,
+                                        razorpay_signature: response.razorpay_signature
+                                    })
+                                })
+                                .then(res => res.json())
+                                .then(finalRes => {
+                                    if (finalRes.message) {
+                                        alert('Payment Successful!');
+                                        window.location.href =
+                                            '/'; // Redirect after success
+                                    } else {
+                                        alert('Something went wrong.');
+                                    }
+                                });
+                        },
+                        "prefill": {
+                            "name": data.user_name,
+                            "email": data.email,
+                            "contact": data.contact
+                        },
+                        "theme": {
+                            "color": "#3399cc"
+                        }
+                    };
+
+                    const rzp = new Razorpay(options);
+                    rzp.open();
+                })
+                .catch(err => {
+                    console.error('Payment error:', err);
+                    alert('Something went wrong.');
+                });
+        });
     </script>
+
 @endsection

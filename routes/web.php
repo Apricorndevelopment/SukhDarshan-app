@@ -34,7 +34,6 @@ Route::get('/', function () {
 
     return view('welcome', compact('logo', 'subcategory', 'blog', 'is_top', 'is_tren', 'recentBlogs'));
 });
-// PageController---------------
 Route::get('about', [PageController::class, 'about'])->name('about');
 Route::get('shop', [PageController::class, 'shop'])->name('shop');
 Route::get('services', [PageController::class, 'services'])->name('services');
@@ -48,8 +47,7 @@ Route::get('privacypolicy', [PageController::class, 'privacypolicy'])->name('pri
 Route::get('faq', [PageController::class, 'faq'])->name('faq');
 Route::get('wishlist', [PageController::class, 'wishlist'])->name('wishlist');
 Route::get('checkout', [PageController::class, 'checkout'])->name('checkout');
-// Authentication--------------
-
+// Authentication-------------
 Route::get('/login', [AuthController::class, 'showloginform'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
 Route::get('/register', [AuthController::class, 'showregisterform'])->name('Auth.register');
@@ -67,7 +65,6 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/user/profile/update', [UserController::class, 'updateProfile'])->name('user.profile.update');
 });
 Route::get('/my-orders', [UserController::class, 'myOrders'])->name('user.orders')->middleware('auth');
-
 // for fetching all user
 Route::get('admin/users', [AuthController::class, 'index'])->name('admin.users');
 // category routes---------
@@ -97,7 +94,6 @@ Route::get('admin/product/manage_product/{id}', [ProductController::class, 'mana
 Route::post('admin/product/manage_product_process', [ProductController::class, 'manage_product_process'])->name('product.manage_product_process');
 Route::get('admin/product/delete/{id}', [ProductController::class, 'delete']);
 Route::get('admin/product/status/{status}/{id}', [ProductController::class, 'status']);
-// Route::get('/shop/{slug}', [ProductController::class, 'productdetails']);
 Route::get('/product-details/{id}', [ProductController::class, 'productdetails'])->name('product.details');
 // Blogs------------
 Route::get('/admin/blog', [BlogController::class, 'index'])->name('admin.blog');
@@ -113,9 +109,7 @@ Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist');
 Route::post('/wishlist/add', [WishlistController::class, 'store'])->name('wishlist.add');
 Route::get('/wishlist/remove/{id}', [WishlistController::class, 'destroy'])->name('wishlist.remove');
 Route::post('/wishlist/add-to-cart', [WishlistController::class, 'addToCart'])->name('wishlist.addtocart');
-
 Route::post('/wishlist/store', [WishlistController::class, 'store'])->name('wishlist.store');
-
 // cart----------
 Route::get('/carthome', [CartController::class, 'index'])->name('carthome');
 Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('cart.add');
@@ -130,7 +124,6 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/thank-you', function () {
     return view('thankyou');
 })->name('thankyou');
-
 Route::get('/admin/order', [OrderController::class, 'index'])->name('admin.order');
 Route::get('/admin/orderitem', [OrderController::class, 'orderitem'])->name('admin.orderitem');
 Route::get('/admin/orderaccepted', [OrderController::class, 'orderaccepted'])->name('admin.orderaccepted');
@@ -138,23 +131,16 @@ Route::get('/admin/orderpending', [OrderController::class, 'orderpending'])->nam
 Route::get('/admin/ordercancelled', [OrderController::class, 'ordercancelled'])->name('admin.ordercancelled');
 Route::put('admin/order-item/status/{id}', [OrderController::class, 'updateOrderItemStatus'])->name('admin.updateOrderItemStatus');
 Route::delete('admin/order-item/delete/{id}', [OrderController::class, 'deleteOrderItem'])->name('admin.deleteOrderItem');
-
 // forgetpassword----------
 Route::get('/forgetpassword', [AuthController::class, 'forgetpasswordform'])->name('forgetpassword.forgetpassword');
 Route::post('/forgetpassword', [AuthController::class, 'submitforgetpasswordform'])->name('forgetpassword.submitforgetpassword');
 Route::get('/reset-password/{token}', [AuthController::class, 'showresettpasswordform'])->name('forgetpassword.resetpassword');
 Route::post('/reset-password', [AuthController::class, 'submitresetpasswordform'])->name('forgetpassword.submitresetpassword');
-
-// -------------
-// Admin routes
-// Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
 Route::get('/admin/invoices', [InvoiceController::class, 'index'])->name('admin.invoices.index');
 Route::get('/admin/invoices/create', [InvoiceController::class, 'create'])->name('admin.invoices.create');
 Route::get('/admin/invoices/{id}', [InvoiceController::class, 'show'])->name('admin.invoices.show');
 Route::get('/admin/invoices/{id}/download', [InvoiceController::class, 'download'])->name('admin.invoices.download');
 Route::get('admin/orders/{id}/generate-invoice', [InvoiceController::class, 'generate'])->name('admin.invoices.generate');
-// });
-
 // User routes
 Route::middleware('auth')->group(function () {
     Route::get('/my-invoices', [\App\Http\Controllers\User\InvoiceController::class, 'index'])->name('user.invoices');
@@ -166,7 +152,5 @@ Route::post('/admin/companylogo/update', [PaymentgatewayController::class, 'upda
 // bulk upload------------------
 Route::get('/admin/bulkupload', [UploadCsvController::class, 'index'])->name('admin.bulkupload');
 Route::post('upload-csv', [UploadCsvController::class, 'uploadCsv']);
-
-
 Route::get('/admin/profile', [AuthController::class, 'profile'])->name('admin.profile');
 Route::post('/admin/profile/update', [AuthController::class, 'updateProfile'])->name('admin.profile.update');

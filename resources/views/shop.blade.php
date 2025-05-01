@@ -122,13 +122,15 @@
             background-color: #4cae4c;
         }
     </style>
-    <div class="ayur-bread-section">
+
+    <div class="ayur-bread-section"
+        style="background-image: url('{{ asset('assets/images/productimg.png') }}'); background-repeat: no-repeat; background-size: cover; background-position: center; padding: 170px 0 100px;">
         <div class="ayur-breadcrumb-wrapper">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12">
                         <div class="ayur-bread-content">
-                            <h2>Shop</h2>
+                            <h2 style="color: black;">Shop</h2>
                             <div class="ayur-bread-list">
                                 <span>
                                     <a href="/">Home</a>

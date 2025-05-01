@@ -3,7 +3,9 @@
 @section('container')
 
     <!------------- Breadcrumb Section start ----------->
-    <div class="ayur-bread-section">
+    {{-- <div class="ayur-bread-section"> --}}
+    <div class="ayur-bread-section"
+        style="background-image: url('{{ asset('assets/images/contact.png') }}'); background-repeat: no-repeat; background-size: cover; background-position: center; padding: 170px 0 100px; ">
         <div class="ayur-breadcrumb-wrapper">
             <div class="container">
                 <div class="row">

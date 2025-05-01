@@ -3,7 +3,9 @@
 @section('container')
 
 
-    <div class="ayur-bread-section">
+    {{-- <div class="ayur-bread-section"> --}}
+    <div class="ayur-bread-section"
+        style="background-image: url('{{ asset('assets/images/about1.png') }}'); background-repeat: no-repeat; background-size: cover; background-position: center; padding: 170px 0 100px; ">
         <div class="ayur-breadcrumb-wrapper">
             <div class="container">
                 <div class="row">
@@ -12,7 +14,7 @@
                             <h2>Blog</h2>
                             <div class="ayur-bread-list">
                                 <span>
-                                    <a href="index.html">Home</a>
+                                    <a href="/">Home</a>
                                 </span>
                                 <span class="ayur-active-page">Blog</span>
                             </div>
