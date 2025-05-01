@@ -95,6 +95,9 @@ Route::post('admin/product/manage_product_process', [ProductController::class, '
 Route::get('admin/product/delete/{id}', [ProductController::class, 'delete']);
 Route::get('admin/product/status/{status}/{id}', [ProductController::class, 'status']);
 Route::get('/product-details/{id}', [ProductController::class, 'productdetails'])->name('product.details');
+// Route::get('/product-details/{slug}', [ProductController::class, 'productdetails'])->name('product.details');
+// Route::get('/product-details/{slug}', [ProductController::class, 'productdetails'])->name('product.details');
+
 // Blogs------------
 Route::get('/admin/blog', [BlogController::class, 'index'])->name('admin.blog');
 Route::get('/admin/manage_blog/{id?}', [BlogController::class, 'manage_blog'])->name('blog.manage_blog');
@@ -154,3 +157,4 @@ Route::get('/admin/bulkupload', [UploadCsvController::class, 'index'])->name('ad
 Route::post('upload-csv', [UploadCsvController::class, 'uploadCsv']);
 Route::get('/admin/profile', [AuthController::class, 'profile'])->name('admin.profile');
 Route::post('/admin/profile/update', [AuthController::class, 'updateProfile'])->name('admin.profile.update');
+Route::get('/category/{id}', [ProductController::class, 'showByCategory'])->name('category.products');

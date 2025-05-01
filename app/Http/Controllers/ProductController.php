@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use App\Models\Product;
+use App\Models\Category;
 use App\Models\Companylogo;
+use App\Models\SubCategory;
 use Illuminate\Support\Str;
 use App\Models\ProductImage;
 use Illuminate\Http\Request;
@@ -198,5 +200,25 @@ class ProductController extends Controller
         $logo = Companylogo::first();
 
         return view('product-details', compact('product', 'product_images', 'logo', 'recentBlogs'));
+    }
+
+
+    // public function showByCategory($id)
+    // {
+    //     $logo = Companylogo::first();
+    //     $recentBlogs = Blog::orderBy('created_at', 'desc')->take(3)->get();
+    //     $products = Product::where('subcategory_id', $id)->paginate(6);
+    //     $subcategory = SubCategory::find($id);
+
+    //     return view('category-products', compact('logo', 'recentBlogs', 'products', 'subcategory'));
+    // }
+    public function showByCategory($id)
+    {
+        $logo = Companylogo::first();
+        $recentBlogs = Blog::orderBy('created_at', 'desc')->take(3)->get();
+        $products = Product::where('subcategory_id', $id)->paginate(6);
+        $subcategory = SubCategory::find($id);
+
+        return view('category-products', compact('logo', 'recentBlogs', 'products', 'subcategory'));
     }
 }

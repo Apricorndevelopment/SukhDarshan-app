@@ -46,6 +46,7 @@ class CheckoutController extends Controller
         if (empty($cartItems)) {
             return response()->json(['error' => 'Cart is empty'], 400);
         }
+        // dd($cartItems);
 
         $totalAmount = 0;
         foreach ($cartItems as $item) {
@@ -73,11 +74,13 @@ class CheckoutController extends Controller
         foreach ($cartItems as $item) {
             OrderItem::create([
                 'order_id' => $order->id,
-                'product_id' => $item['id'],
+                'product_id' => $item['product_id'],
                 'quantity' => $item['quantity'],
                 'price' => $item['price']
             ]);
         }
+
+
 
         try {
             $api = new Api(env('RAZORPAY_KEY'), env('RAZORPAY_SECRET'));
@@ -89,8 +92,11 @@ class CheckoutController extends Controller
                 'payment_capture' => 1
             ]);
 
+
             $order->razorpay_order_id = $razorpayOrder['id'];
             $order->save();
+
+
 
             return response()->json([
                 'razorpay_order_id' => $razorpayOrder['id'],

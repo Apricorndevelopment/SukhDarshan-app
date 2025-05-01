@@ -159,26 +159,22 @@
                         <div class="ayur-widget ayur-shop-categories">
                             <h3>Categories</h3>
                             <ul>
-                                <li>
-                                    <a href="javascript:void(0)"><img src="assets/images/right-arrow.png" alt="arrow">Top
-                                        Products</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)"><img src="assets/images/right-arrow.png"
-                                            alt="arrow">Latest Products</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)"><img src="assets/images/right-arrow.png" alt="arrow">New
-                                        Trending</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)"><img src="assets/images/right-arrow.png" alt="arrow">New
-                                        Arrivals</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)"><img src="assets/images/right-arrow.png"
-                                            alt="arrow">Recently added</a>
-                                </li>
+
+                                @foreach ($subcategory as $list)
+                                    {{-- <li>
+                                        <a href="{{ route('category.products', ['id' => $list->id]) }}">
+                                            <img src="assets/images/right-arrow.png" alt="arrow">
+                                            Top {{ $list->subcategory_name }}
+                                        </a>
+                                    </li> --}}
+                                    <li>
+                                        <a href="{{ route('category.products', ['id' => $list->id]) }}">
+                                            <img src="{{ asset('assets/images/right-arrow.png') }}" alt="arrow">
+                                            Top {{ $list->subcategory_name }}
+                                        </a>
+                                    </li>
+                                @endforeach
+
                             </ul>
                         </div>
                         <div class="ayur-widget ayur-shop-tpro">

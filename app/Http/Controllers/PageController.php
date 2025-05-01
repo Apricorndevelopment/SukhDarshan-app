@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use App\Models\Product;
+use App\Models\Category;
 use App\Models\Companylogo;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -26,8 +28,9 @@ class PageController extends Controller
         $is_promo = Product::with('firstVariant')->where('is_promo', 1)->take(4)->get();
         $recentBlogs = Blog::orderBy('created_at', 'desc')->take(3)->get();
         $logo = Companylogo::first();
+        $subcategory = SubCategory::all();
 
-        return view('shop', compact('data', 'logo', 'recentBlogs', 'is_trending', 'is_promo'));
+        return view('shop', compact('subcategory', 'data', 'logo', 'recentBlogs', 'is_trending', 'is_promo'));
     }
 
     public function services()
