@@ -503,18 +503,7 @@ li.ayur-has-menu a svg {
 .ayur-toggle-btn span:last-child {
     margin-bottom: 0;
 }
-/* navmenu css End */
-/* Banner css Start */
-/* .ayur-banner-section {
-    position: relative;
-    width: 100%;
-    background-image: url("../assets/images/productimg.png");
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    padding: 116px 0 103px;
-    margin-bottom: 207px;
-} */
+
 .ayur-banner-section::before {
     position: absolute;
     content: url("../images/banner-bgleaf.png");

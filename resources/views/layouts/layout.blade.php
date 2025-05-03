@@ -302,15 +302,14 @@
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="ayur-copyright-para">
-                        <p>Copyright © 2024. All Right Reserved. Sukh Darshan</p>
+                        <a href="https://apricornsolutions.com/">
+                            <p>Copyright © 2025. All Right Reserved. Apricorn Solutions</p>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="ayur-bgshape ayur-footer-bgshape">
-            <img src="https://dummyimage.com/325x284/" alt="img" />
-            <img src="../assets/images/footer-right.png" alt="img" />
-        </div>
+
     </div>
     <!------------- footer Section end ----------->
     <!-- custom link  -->

@@ -122,53 +122,49 @@
             background-color: #4cae4c;
         }
     </style>
-    <div class="ayur-banner-section">
-        {{-- <div class="ayur-banner-section"
+    {{-- <div class="ayur-banner-section"> --}}
+    {{-- <div class="ayur-banner-section"
         style="background-image: url('{{ asset('assets/images/productimg.png') }}'); background-position: center; background-size: cover; background-repeat: no-repeat; padding: 116px 0 103px; margin-bottom: 207px;"> --}}
-        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                    aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                    aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                    aria-label="Slide 3"></button>
-            </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="assets/images/1.svg" class="d-block w-100" alt="SVG Image">
-                </div>
-                <div class="carousel-item">
-                    <img src="assets/images/2.svg" class="d-block w-100" alt="SVG Image">
-                </div>
-                <div class="carousel-item">
-                    <img src="assets/images/3.svg" class="d-block w-100" alt="SVG Image">
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
         </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12">
-                    <div class="ayur-banner-heading">
-                        {{-- <h1>We Are Here To Give You The Best <span>Herb Products</span> </h1>
-                        <p>True wellness begins with balance and nature provides the path.
-                            Through time-tested Ayurvedic practices, mindful living, and natural remedies,
-                            you can restore harmony within your body and mind.</p>
-                        <a href="{{ route('shop') }}" class="ayur-btn">Shop Now</a> --}}
-                    </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="assets/images/1.svg" class="d-block w-100" alt="SVG Image">
+            </div>
+            <div class="carousel-item">
+                <img src="assets/images/2.svg" class="d-block w-100" alt="SVG Image">
+            </div>
+            <div class="carousel-item">
+                <img src="assets/images/3.svg" class="d-block w-100" alt="SVG Image">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="ayur-banner-heading">
+
                 </div>
             </div>
-            {{-- <div class="row">
+        </div>
+        {{-- <div class="row">
                 <div class="col-lg-12">
                     <div class="ayur-banner-slider-sec">
                         <div class="swiper ayur-banner-slider" swiper_scale_active>
@@ -219,11 +215,10 @@
                     </div>
                 </div>
             </div> --}}
-        </div>
-        <div class="ayur-ban-leaf">
-            {{-- <img src="assets/images/ban-leafleft.png" alt="leaf-image"> --}}
-            {{-- <img src="assets/images/ban-leafright.png" alt="leaf-image"> --}}
-        </div>
+    </div>
+    <div class="ayur-ban-leaf">
+
+    </div>
     </div>
 
     <div class="ayur-care-slider-wrapper">
@@ -584,7 +579,7 @@
                 <div class="col-lg-6 col-md-12 col-sm-12">
                     <div class="ayur-why-textheading">
                         <h3>Solve Your Problem with The Power of Nature</h3>
-                        <p> Sukhdarshan Pharmacy Pvt. Ltd., we combine the wisdom of ancient Ayurveda with the precision of
+                        {{-- <p> Sukhdarshan Pharmacy Pvt. Ltd., we combine the wisdom of ancient Ayurveda with the precision of
                             modern science to deliver health solutions that are:
                             <br> ✅ Pure & Natural Our products are made from
                             carefully sourced herbs and natural ingredients—free from harmful chemicals or additives.<br> ✅
@@ -595,7 +590,13 @@
                             results.<br> ✅ Experienced Team We are guided by Ayurvedic experts and a dedicated team of
                             professionals with decades of experience in herbal healthcare.<br> ✅ Customer-Centric Approach
                             Your
-                            health is our priority. We listen, improve, and innovate—based on your needs and feedback
+                            health is our priority. We listen, improve, and innovate—based on your needs and feedback --}}
+
+                        At Sukhdarshan Pharmacy Pvt. Ltd., we are passionate about restoring health through the timeless
+                        science of Ayurveda. Established in 2011, we are an ISO 9001:2015 certified Ayurvedic manufacturing
+                        company based in Rai Industrial Area, Sonipat, Haryana. With a commitment to quality, purity, and
+                        authenticity, we offer a wide range of Ayurvedic and herbal healthcare products designed to support
+                        holistic well-being.
                         </p>
                         <ul>
                             <li>
@@ -604,15 +605,15 @@
                             </li>
                             <li>
                                 <img src="assets/images/tick.png" alt="icon">
-                                <p>Quis nostrud was exercitation.</p>
+                                <p>Pure & Natural Our products are made</p>
                             </li>
                             <li>
                                 <img src="assets/images/tick.png" alt="icon">
-                                <p>Quis nostrud was exercitation.</p>
+                                <p>Experienced Team We are guided</p>
                             </li>
                             <li>
                                 <img src="assets/images/tick.png" alt="icon">
-                                <p>Quis nostrud was exercitation.</p>
+                                <p>Customer-Centric Approach</p>
                             </li>
                         </ul>
 
