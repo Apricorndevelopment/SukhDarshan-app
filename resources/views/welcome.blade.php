@@ -317,7 +317,10 @@
                                 </div>
 
                                 <div class="ayur-tpro-btn">
-                                    <a href="{{ route('product.details', ['id' => $data->id]) }}" class="ayur-btn ">
+                                    {{-- <a href="{{ route('product.details', ['id' => $data->id]) }}" class="ayur-btn "> --}}
+                                    <a href="{{ route('product.details', ['slug' => $data->product_slug]) }}"
+                                        class="ayur-btn">
+
                                         <span>
                                             <svg width="20" height="19" viewBox="0 0 20 19" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -362,7 +365,7 @@
                     <div class="ayur-heading-wrap ayur-about-head">
                         <h5>Who We Are</h5>
                         <h3>The Natural Way To Achieving Balance And Optimal Health</h3>
-                        <p>At Sukhdarshan Pharmacy Pvt. Ltd., we are passionate about restoring health through the timeless
+                        <p>At Sukhdarshan Pharmacy., we are passionate about restoring health through the timeless
                             science of Ayurveda. Established in 2011, we are an ISO 9001:2015 certified Ayurvedic
                             manufacturing company based in Rai Industrial Area, Sonipat, Haryana. With a commitment to
                             quality, purity, and authenticity, we offer a wide range of Ayurvedic and herbal healthcare
@@ -494,7 +497,10 @@
                                     </div>
                                 </div>
                                 <div class="ayur-tpro-btn">
-                                    <a href="{{ route('product.details', ['id' => $tren->id]) }}" class="ayur-btn ">
+                                    {{-- <a href="{{ route('product.details', ['id' => $tren->id]) }}" class="ayur-btn "> --}}
+                                    <a href="{{ route('product.details', ['slug' => $tren->product_slug]) }}"
+                                        class="ayur-btn">
+
                                         <span>
                                             <svg width="20" height="19" viewBox="0 0 20 19" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -579,18 +585,6 @@
                 <div class="col-lg-6 col-md-12 col-sm-12">
                     <div class="ayur-why-textheading">
                         <h3>Solve Your Problem with The Power of Nature</h3>
-                        {{-- <p> Sukhdarshan Pharmacy Pvt. Ltd., we combine the wisdom of ancient Ayurveda with the precision of
-                            modern science to deliver health solutions that are:
-                            <br> ✅ Pure & Natural Our products are made from
-                            carefully sourced herbs and natural ingredients—free from harmful chemicals or additives.<br> ✅
-                            Trusted Quality With ISO 9001:2015 certification and strict GMP-compliant processes, we ensure
-                            safety, efficacy, and consistency in every batch.<br> ✅ Proven Effectiveness Backed by
-                            traditional
-                            Ayurvedic formulations and ongoing R&D, our products are crafted to deliver real, visible
-                            results.<br> ✅ Experienced Team We are guided by Ayurvedic experts and a dedicated team of
-                            professionals with decades of experience in herbal healthcare.<br> ✅ Customer-Centric Approach
-                            Your
-                            health is our priority. We listen, improve, and innovate—based on your needs and feedback --}}
 
                         At Sukhdarshan Pharmacy Pvt. Ltd., we are passionate about restoring health through the timeless
                         science of Ayurveda. Established in 2011, we are an ISO 9001:2015 certified Ayurvedic manufacturing

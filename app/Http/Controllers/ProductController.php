@@ -192,22 +192,23 @@ class ProductController extends Controller
     }
 
 
-    public function productdetails($id)
+    public function productdetails($slug)
     {
-        $product = Product::with('variants')->findOrFail($id); // Will throw 404 if not found
+        $product = Product::with('variants')->where('product_slug', $slug)->firstOrFail();
         $recentBlogs = Blog::orderBy('created_at', 'desc')->take(3)->get();
-        $product_images = ProductImage::where('product_id', $id)->get();
+        $product_images = ProductImage::where('product_id', $product->id)->get();
         $logo = Companylogo::first();
 
         return view('product-details', compact('product', 'product_images', 'logo', 'recentBlogs'));
     }
 
-    public function showByCategory($id)
+
+    public function showByCategory($slug)
     {
         $logo = Companylogo::first();
         $recentBlogs = Blog::orderBy('created_at', 'desc')->take(3)->get();
-        $products = Product::where('subcategory_id', $id)->paginate(6);
-        $subcategory = SubCategory::find($id);
+        $subcategory = SubCategory::where('subcategory_slug', $slug)->firstOrFail();
+        $products = Product::where('subcategory_id', $subcategory->id)->paginate(6);
 
         return view('category-products', compact('logo', 'recentBlogs', 'products', 'subcategory'));
     }

@@ -157,7 +157,7 @@
                             <p class="card-text">{{ Str::limit($product->product_shortdesc, 100) }}</p>
 
                             {{-- <a href="{{ route('product.details', ['id' => $product->id]) }}" class="ayur-btn "> --}}
-                            <a href="{{ route('product.details', ['id' => $product->id]) }}" class="ayur-btn">
+                            <a href="{{ route('product.details', ['slug' => $product->product_slug]) }}" class="ayur-btn">
                                 View Product
                             </a>
 

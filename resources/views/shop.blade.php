@@ -161,14 +161,10 @@
                             <ul>
 
                                 @foreach ($subcategory as $list)
-                                    {{-- <li>
-                                        <a href="{{ route('category.products', ['id' => $list->id]) }}">
-                                            <img src="assets/images/right-arrow.png" alt="arrow">
-                                            Top {{ $list->subcategory_name }}
-                                        </a>
-                                    </li> --}}
                                     <li>
-                                        <a href="{{ route('category.products', ['id' => $list->id]) }}">
+                                        {{-- <a href="{{ route('category.products', ['id' => $list->id]) }}"> --}}
+                                        <a href="{{ route('category.products', ['slug' => $list->subcategory_slug]) }}">
+
                                             <img src="{{ asset('assets/images/right-arrow.png') }}" alt="arrow">
                                             Top {{ $list->subcategory_name }}
                                         </a>
@@ -256,7 +252,7 @@
                                             </div>
 
                                             <div class="ayur-tpro-btn">
-                                                <a href="{{ route('product.details', ['id' => $product->id]) }}"
+                                                <a href="{{ route('product.details', ['slug' => $product->product_slug]) }}"
                                                     class="ayur-btn ">
                                                     <span>
                                                         <svg width="20" height="19" viewBox="0 0 20 19"
@@ -335,14 +331,12 @@
                                             <p>Price not available</p>
                                         </div>
                                     @endif
-                                    {{-- <div class="ayur-tpro-star">
-                                        <img src="assets/images/star-icon.png" alt="star">
-                                        <p>4.5/5</p>
-                                    </div> --}}
+
                                 </div>
 
                                 <div class="ayur-tpro-btn">
-                                    <a href="{{ route('product.details', ['id' => $list->id]) }}" class="ayur-btn ">
+                                    <a href="{{ route('product.details', ['slug' => $list->product_slug]) }}"
+                                        class="ayur-btn ">
                                         <span>
                                             <svg width="20" height="19" viewBox="0 0 20 19" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
