@@ -26,8 +26,6 @@
     <div class="ayur-bgcover ayur-shopsin-section">
         <div class="container">
             <div class="row align-items-start">
-
-                {{-- Left Section --}}
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="ayur-shopsin-img mb-3">
                         <img src="{{ asset($product->product_image) }}" alt="image" class="img-fluid" />
@@ -42,11 +40,12 @@
                         @endforeach
                     </div>
                 </div>
-
-                {{-- Right Section --}}
                 <div class="col-lg-6 col-md-6 col-sm-12">
+                    <h3> <b>{{ $product->product_name }}</b> </h3>
+                    <p><strong>SKU:</strong> <span id="sku-display">{{ $product->variants[0]->sku ?? $product->sku }}</span>
+                    </p>
                     <div class="ayur-shopsin-details">
-                        {{-- Variant Selector --}}
+
                         @if ($product->variants->count())
                             <div class="mb-3">
                                 <label><strong>Choose Variant:</strong></label>
@@ -61,18 +60,17 @@
                             </div>
                         @endif
 
-                        {{-- Price & SKU --}}
+
                         <div class="ayur-tpro-price">
                             <p>
-                                <del>Rs<span id="mrp-display">{{ $product->variants[0]->mrp ?? $product->mrp }}</span></del>
+                                <del>Rs <span
+                                        id="mrp-display">{{ $product->variants[0]->mrp ?? $product->mrp }}</span></del>
                                 Rs<span id="price-display">{{ $product->variants[0]->price ?? $product->price }}</span>
                             </p>
                         </div>
-                        <p><strong>SKU:</strong> <span
-                                id="sku-display">{{ $product->variants[0]->sku ?? $product->sku }}</span></p>
 
                         <div class="ayur-shopsin-heaing">
-                            <h3>{{ $product->product_name }}</h3>
+
                             <div class="ayur-tpro-star">
                                 <img src="../assets/images/star-icon.png" alt="star">
                                 <img src="../assets/images/star-icon.png" alt="star">

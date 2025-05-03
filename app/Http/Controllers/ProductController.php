@@ -202,16 +202,6 @@ class ProductController extends Controller
         return view('product-details', compact('product', 'product_images', 'logo', 'recentBlogs'));
     }
 
-
-    // public function showByCategory($id)
-    // {
-    //     $logo = Companylogo::first();
-    //     $recentBlogs = Blog::orderBy('created_at', 'desc')->take(3)->get();
-    //     $products = Product::where('subcategory_id', $id)->paginate(6);
-    //     $subcategory = SubCategory::find($id);
-
-    //     return view('category-products', compact('logo', 'recentBlogs', 'products', 'subcategory'));
-    // }
     public function showByCategory($id)
     {
         $logo = Companylogo::first();

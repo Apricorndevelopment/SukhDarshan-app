@@ -21,7 +21,7 @@ html {
     overflow-x: hidden;
 }
 :root {
-    --ayur-primary-color: #cd8973;
+    --ayur-primary-color: #2d6b37;
     --ayur-white-color: #ffffff;
     --ayur-primary-light: #d6cdca;
     --ayur-banheading-color: #222222;
@@ -505,16 +505,16 @@ li.ayur-has-menu a svg {
 }
 /* navmenu css End */
 /* Banner css Start */
-.ayur-banner-section {
+/* .ayur-banner-section {
     position: relative;
     width: 100%;
-    background-image: url("../images/banner-bg.png");
+    background-image: url("../assets/images/productimg.png");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     padding: 116px 0 103px;
     margin-bottom: 207px;
-}
+} */
 .ayur-banner-section::before {
     position: absolute;
     content: url("../images/banner-bgleaf.png");
