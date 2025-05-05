@@ -1,9 +1,7 @@
 @extends('layouts/layout')
 @section('page_tile', 'Login_page')
 @section('container')
-
     <div class="dust-paarticle">
-
         <svg width="100%" id="dust-paarticle" height="100%" viewBox="0 0 885 455" fill="none"
             xmlns="http://www.w3.org/2000/svg">
             <path
@@ -91,9 +89,7 @@
                 stroke="#9E3FB7" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"
                 stroke-linejoin="round" />
         </svg>
-
     </div>
-
     <div class="container-fluid">
         <div class="row" style="margin-top: 149px">
             <div
@@ -101,63 +97,23 @@
                 <div class="col-sm-5 authfy-panel-left">
                     <div class="brand-col">
                         <div class="headline">
-                            <!-- brand-logo start -->
-                            <div class="brand-logo">
-                                {{-- <img src="https://1.bp.blogspot.com/-3he0CGCSWHA/XyqopZcixRI/AAAAAAAAVM8/Mdfk_mPQa0Ydb7IAH0Iir8F4Ge7xxF0ygCLcBGAsYHQ/s0/logo.png"
-                                    width="150" alt="brand-logo"> --}}
-                                <img src="{{ asset('../adminassets/images/SDP LOGO.png') }}" alt="brand-logo">
-                            </div><!-- ./brand-logo -->
-                            <p>Login using social media to get quick access</p>
 
+                            <div class="brand-logo">
+
+                                <img src="{{ asset('../adminassets/images/SDP LOGO.png') }}" alt="brand-logo">
+                            </div>
+                            <p>Login using social media to get quick access</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-7 authfy-panel-right">
-                    <!-- authfy-login start -->
                     <div class="authfy-login">
-                        <!-- panel-login start -->
                         <div class="authfy-panel panel-login text-center active">
                             <div class="authfy-heading">
                                 <h3 class="auth-title">Login to your account</h3>
-
                             </div>
-                            {{-- <div class="row">
-                                <div class="col-xs-12 col-sm-12">
-
-                                    <form name="loginForm" class="loginForm" action="{{ route('login.submit') }}"
-                                        method="POST">
-                                        @csrf
-                                        <div class="form-group">
-                                            <input type="email" class="form-control email" name="email"
-                                                placeholder="Email address" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="pwdMask">
-                                                <input type="password" class="form-control password" name="password"
-                                                    placeholder="Password" required>
-                                            </div>
-                                        </div>
-                                        <a style="display: flex; justify-content: end" class="lnk-toggler"
-                                            data-panel=".panel-signup"
-                                            href="{{ route('forgetpassword.forgetpassword') }}">Forget
-                                            password
-                                        </a>
-                                        <div class="form-group">
-                                            <button type="submit" class="btn btn-lg btn-primary btn-block"
-                                                style="border-radius: 10px">Login</button>
-                                        </div>
-                                    </form>
-                                    <p>Don’t have an account? <a class="lnk-toggler" data-panel=".panel-signup"
-                                            href="{{ route('Auth.register') }}">Sign Up </a> </p>
-
-
-
-                                </div>
-                            </div> --}}
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12">
-
-                                    {{-- Error Messages --}}
                                     @if ($errors->any())
                                         <div class="alert alert-danger">
                                             <ul class="mb-0">
@@ -167,7 +123,6 @@
                                             </ul>
                                         </div>
                                     @endif
-
                                     <form name="loginForm" class="loginForm" action="{{ route('login.submit') }}"
                                         method="POST">
                                         @csrf
@@ -181,27 +136,21 @@
                                                     placeholder="Password" required>
                                             </div>
                                         </div>
-
                                         <a style="display: flex; justify-content: end" class="lnk-toggler"
                                             href="{{ route('forgetpassword.forgetpassword') }}">
                                             Forget password
                                         </a>
-
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-lg btn-primary btn-block"
                                                 style="border-radius: 10px">Login</button>
                                         </div>
                                     </form>
-
                                     <p>Don’t have an account?
                                         <a class="lnk-toggler" href="{{ route('Auth.register') }}">Sign Up</a>
                                     </p>
-
                                 </div>
                             </div>
-
-                        </div> <!-- ./panel-login -->
-                        <!-- panel-signup start -->
+                        </div>
                         <div class="authfy-panel panel-signup text-center">
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12">
@@ -238,8 +187,7 @@
                                         account?</a>
                                 </div>
                             </div>
-                        </div> <!-- ./panel-signup -->
-                        <!-- panel-forget start -->
+                        </div>
                         <div class="authfy-panel panel-forgot">
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12">
@@ -257,8 +205,6 @@
                                             <button class="btn btn-lg btn-primary btn-block" type="submit">Recover your
                                                 password</button>
                                         </div>
-
-
                                         <div class="form-group">
                                             <a class="lnk-toggler" data-panel=".panel-login" href="#">Already have
                                                 an account?</a>
@@ -270,21 +216,14 @@
                                     </form>
                                 </div>
                             </div>
-                        </div> <!-- ./panel-forgot -->
-                    </div> <!-- ./authfy-login -->
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div> <!-- ./row -->
+        </div>
     </div>
-
     <div id="snell">
-
-
-
     </div>
-
-    <!-- Include Anime.js before your loginform.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <script src="{{ asset('js/loginform.js') }}"></script>
-
 @endsection

@@ -134,7 +134,7 @@
                 </div>
                 <div class="col-sm-7 authfy-panel-right" style="height: 630px">
                     <!-- authfy-login start -->
-                    <div class="authfy-login">
+                    <div class="authfy-login" style="height: 630px;">
                         <!-- panel-login start -->
                         <div class="authfy-panel panel-login text-center active">
                             <div class="authfy-heading">
