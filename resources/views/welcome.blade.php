@@ -381,7 +381,7 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-12 col-sm-12">
                         <div class="ayur-about-img">
-                            <img src="{{ asset('assets/images/about12.jpg') }}" alt="img" data-tilt
+                            <img src="{{ asset('assets/images/About us.jpg') }}" alt="img" data-tilt
                                 data-tilt-max="10" data-tilt-speed="1000" data-tilt-perspective="1000" />
                             <div class="ayur-about-exp">
                                 <p>10</p>
