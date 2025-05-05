@@ -5,7 +5,7 @@
     <!------------- Breadcrumb Section start ----------->
     {{-- <div class="ayur-bread-section"> --}}
     <div class="ayur-bread-section"
-        style="background-image: url('{{ asset('assets/images/contact.png') }}'); background-repeat: no-repeat; background-size: cover; background-position: center; padding: 170px 0 100px; ">
+        style="background-image: url('{{ asset('assets/images/about12.jpg') }}'); background-repeat: no-repeat; background-size: cover; background-position: center; padding: 170px 0 100px; ">
         <div class="ayur-breadcrumb-wrapper">
             <div class="container">
                 <div class="row">
@@ -14,7 +14,7 @@
                             <h2>About Us</h2>
                             <div class="ayur-bread-list">
                                 <span>
-                                    <a href="/">Home</a>
+                                    <a href="/" style="color: black;">Home</a>
                                 </span>
                                 <span class="ayur-active-page">About Us</span>
                             </div>
@@ -32,12 +32,12 @@
                 <div class="col-lg-6 col-md-12 col-sm-12">
                     <div class="ayur-about-img">
                         {{-- src="https://dummyimage.com/561x348/.png" --}}
-                        <img src="{{ asset('assets/images/ayurveda.jpeg') }}" style="width: 561px; height: 348px;"
+                        <img src="{{ asset('assets/images/About us.jpg ') }}" style="width: 561px; height: 348px;"
                             alt="img" data-tilt data-tilt-max="10" data-tilt-speed="1000"
                             data-tilt-perspective="1000" />
                         <div class="ayur-about-exp">
-                            <p>15</p>
-                            <p>Years of Experience</p>
+                            {{-- <p>15</p>
+                            <p>Years of Experience</p> --}}
                         </div>
                     </div>
                 </div>
@@ -76,7 +76,7 @@
                     <div class="ayur-heading-wrap ayur-about-head">
                         <h5>Why Choose Sukhdarshan Pharmacy</h5>
                         <h3>Ancient Ayurveda for Modern Wellness</h3>
-                        <p>Sukhdarshan Pharmacy Pvt. Ltd. is committed to promoting natural healing through the timeless
+                        <p>Sukhdarshan Pharmacy . is committed to promoting natural healing through the timeless
                             science of Ayurveda. Our carefully formulated herbal products are designed to restore balance,
                             enhance vitality, and nurture your overall well-being — naturally and effectively.</p>
                         <div class="ayur-whycho-boxwrapper">
@@ -109,7 +109,7 @@
                 </div>
                 <div class="col-lg-6 col-md-12 col-sm-12">
                     <div class="ayur-about-img">
-                        <img src="{{ asset('assets/images/aboutmid.jpg') }}" style="width: 561px; height: 394px;"
+                        <img src="{{ asset('assets/images/about.png') }}" style="width: 561px; height: 394px;"
                             alt="img" data-tilt data-tilt-max="8" data-tilt-speed="1000"
                             data-tilt-perspective="1000" />
                     </div>

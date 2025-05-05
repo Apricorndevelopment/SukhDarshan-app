@@ -26,7 +26,7 @@ use App\Http\Controllers\UploadCsvController;
 
 Route::get('/', function () {
     $subcategory = SubCategory::all();
-    $is_top = Product::with('firstVariant')->where('is_top', 1)->take(9)->get();
+    $is_top = Product::with('firstVariant')->where('is_top', 1)->take(12)->get();
     $is_tren = Product::with('firstVariant')->where('is_trending', 1)->take(4)->get();
     $blog = Blog::all()->take(2);
     $recentBlogs = Blog::orderBy('created_at', 'desc')->take(3)->get();

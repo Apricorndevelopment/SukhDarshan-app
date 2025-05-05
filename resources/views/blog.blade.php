@@ -5,7 +5,7 @@
 
     {{-- <div class="ayur-bread-section"> --}}
     <div class="ayur-bread-section"
-        style="background-image: url('{{ asset('assets/images/about1.png') }}'); background-repeat: no-repeat; background-size: cover; background-position: center; padding: 170px 0 100px; ">
+        style="background-image: url('{{ asset('assets/images/about12.jpg') }}'); background-repeat: no-repeat; background-size: cover; background-position: center; padding: 170px 0 100px; ">
         <div class="ayur-breadcrumb-wrapper">
             <div class="container">
                 <div class="row">
@@ -14,7 +14,7 @@
                             <h2>Blog</h2>
                             <div class="ayur-bread-list">
                                 <span>
-                                    <a href="/">Home</a>
+                                    <a href="/" style="color: black;">Home</a>
                                 </span>
                                 <span class="ayur-active-page">Blog</span>
                             </div>
@@ -36,12 +36,11 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-
+            <div class="row g-4">
                 @foreach ($data as $list)
                     <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="ayur-blog-box">
-                            <div class="ayur-blog-img">
+                        <div class="ayur-blog-box" style="border: 1px solid #ccc;">
+                            <div class="ayur-blog-img" style="background-color: #eee; ">
                                 <img src="{{ asset($list->blog_image) }}" alt="image">
                             </div>
                             <div class="ayur-blog-text">

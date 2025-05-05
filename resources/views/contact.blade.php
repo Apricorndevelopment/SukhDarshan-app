@@ -4,7 +4,7 @@
     {{-- <div class="ayur-bread-section"> --}}
 
     <div class="ayur-bread-section"
-        style="background-image: url('{{ asset('assets/images/contact1.png') }}'); background-repeat: no-repeat; background-size: cover; background-position: center; padding: 170px 0 100px;">
+        style="background-image: url('{{ asset('assets/images/about12.jpg') }}'); background-repeat: no-repeat; background-size: cover; background-position: center; padding: 170px 0 100px;">
         <div class="ayur-breadcrumb-wrapper">
             <div class="container">
                 <div class="row">
@@ -13,7 +13,7 @@
                             <h2>Contact us</h2>
                             <div class="ayur-bread-list">
                                 <span>
-                                    <a href="/"> Home</a>
+                                    <a href="/" style="color: black;"> Home</a>
                                 </span>
                                 <span class="ayur-active-page">Contact</span>
                             </div>

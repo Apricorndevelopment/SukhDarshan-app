@@ -23,7 +23,7 @@ class PageController extends Controller
 
     public function shop()
     {
-        $data = Product::with('firstVariant')->paginate(6);
+        $data = Product::with('firstVariant')->paginate(9);
         $is_trending = Product::with('firstVariant')->where('is_trending', 1)->paginate(4);
         $is_promo = Product::with('firstVariant')->where('is_promo', 1)->take(4)->get();
         $recentBlogs = Blog::orderBy('created_at', 'desc')->take(3)->get();
@@ -42,7 +42,7 @@ class PageController extends Controller
 
     public function blog()
     {
-        $data  = Blog::paginate(3);
+        $data  = Blog::paginate(9);
         $recentBlogs = Blog::orderBy('created_at', 'desc')->take(3)->get();
         $logo = Companylogo::first();
         return view('blog', compact('data', 'recentBlogs', 'logo'));

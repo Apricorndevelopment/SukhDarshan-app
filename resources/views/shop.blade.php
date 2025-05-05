@@ -124,7 +124,7 @@
     </style>
 
     <div class="ayur-bread-section"
-        style="background-image: url('{{ asset('assets/images/productimg.png') }}'); background-repeat: no-repeat; background-size: cover; background-position: center; padding: 170px 0 100px;">
+        style="background-image: url('{{ asset('assets/images/about12.jpg') }}'); background-repeat: no-repeat; background-size: cover; background-position: center; padding: 170px 0 100px;">
         <div class="ayur-breadcrumb-wrapper">
             <div class="container">
                 <div class="row">
@@ -133,7 +133,7 @@
                             <h2 style="color: black;">Shop</h2>
                             <div class="ayur-bread-list">
                                 <span>
-                                    <a href="/">Home</a>
+                                    <a href="/" style="color: black;">Home</a>
                                 </span>
                                 <span class="ayur-active-page">Shop</span>
                             </div>
@@ -203,7 +203,7 @@
                         <div class="row">
 
                             @foreach ($data as $product)
-                                <div class="col-lg-6 col-md-12 col-sm-6">
+                                <div class="col-lg-4 col-md-12 col-sm-6">
                                     <div class="ayur-tpro-box ayur-shoppro-sing">
                                         <div class="ayur-tpro-img">
                                             <img src="{{ asset($product->product_image) }}" alt="img">
@@ -244,10 +244,7 @@
                                                         <p>Price not available</p>
                                                     </div>
                                                 @endif
-                                                {{-- <div class="ayur-tpro-star">
-                                                    <img src="../assets/images/star-icon.png" alt="star">
-                                                    <p>4.5/5</p>
-                                                </div> --}}
+
                                             </div>
 
                                             <div class="ayur-tpro-btn">
