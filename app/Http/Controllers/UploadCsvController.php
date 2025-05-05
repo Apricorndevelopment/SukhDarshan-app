@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Companylogo;
 use Illuminate\Http\Request;
 
 class UploadCsvController extends Controller
 {
     public function index()
     {
-        return view('admin.bulkupload');
+        $logo = Companylogo::first();
+        return view('admin.bulkupload', compact('logo'));
     }
 
     public function uploadCsv(Request $request)

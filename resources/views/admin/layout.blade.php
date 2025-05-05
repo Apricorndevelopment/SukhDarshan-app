@@ -167,7 +167,7 @@
                                     class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Add Product</a>
                         </li>
                         <li>
-                            <a href=" {{ url('admin.bulkupload') }}"><i
+                            <a href=" {{ url('admin/bulkupload') }}"><i
                                     class="ri-circle-fill circle-icon text-warning-main w-auto"></i>Product Bulk
                                 uploading</a>
                         </li>
