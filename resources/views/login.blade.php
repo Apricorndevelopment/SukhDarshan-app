@@ -121,7 +121,7 @@
                                 <h3 class="auth-title">Login to your account</h3>
 
                             </div>
-                            <div class="row">
+                            {{-- <div class="row">
                                 <div class="col-xs-12 col-sm-12">
 
                                     <form name="loginForm" class="loginForm" action="{{ route('login.submit') }}"
@@ -153,7 +153,53 @@
 
 
                                 </div>
+                            </div> --}}
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12">
+
+                                    {{-- Error Messages --}}
+                                    @if ($errors->any())
+                                        <div class="alert alert-danger">
+                                            <ul class="mb-0">
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
+
+                                    <form name="loginForm" class="loginForm" action="{{ route('login.submit') }}"
+                                        method="POST">
+                                        @csrf
+                                        <div class="form-group">
+                                            <input type="email" class="form-control email" name="email"
+                                                placeholder="Email address" value="{{ old('email') }}" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="pwdMask">
+                                                <input type="password" class="form-control password" name="password"
+                                                    placeholder="Password" required>
+                                            </div>
+                                        </div>
+
+                                        <a style="display: flex; justify-content: end" class="lnk-toggler"
+                                            href="{{ route('forgetpassword.forgetpassword') }}">
+                                            Forget password
+                                        </a>
+
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-lg btn-primary btn-block"
+                                                style="border-radius: 10px">Login</button>
+                                        </div>
+                                    </form>
+
+                                    <p>Don’t have an account?
+                                        <a class="lnk-toggler" href="{{ route('Auth.register') }}">Sign Up</a>
+                                    </p>
+
+                                </div>
                             </div>
+
                         </div> <!-- ./panel-login -->
                         <!-- panel-signup start -->
                         <div class="authfy-panel panel-signup text-center">

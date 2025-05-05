@@ -142,7 +142,7 @@
                                 <p>Already have an account? <a class="lnk-toggler" data-panel=".panel-login"
                                         href="{{ route('login') }}">Login</a></p>
                             </div>
-                            <div class="row">
+                            {{-- <div class="row">
                                 <div class="col-xs-12 col-sm-12">
 
                                     <form name="signupForm" class="signupForm" action="{{ route('register.submit') }}"
@@ -195,7 +195,74 @@
 
 
                                 </div>
+                            </div> --}}
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12">
+
+                                    {{-- Success/Error Messages --}}
+                                    @if (session('success'))
+                                        <div class="alert alert-success">
+                                            {{ session('success') }}
+                                        </div>
+                                    @endif
+
+                                    @if ($errors->any())
+                                        <div class="alert alert-danger">
+                                            <ul class="mb-0">
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
+
+                                    <form name="signupForm" class="signupForm" action="{{ route('register.submit') }}"
+                                        method="POST">
+                                        @csrf
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="full_name"
+                                                placeholder="Full Name" value="{{ old('full_name') }}" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="email" class="form-control email" name="email"
+                                                placeholder="Email address" value="{{ old('email') }}" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="phone"
+                                                placeholder="Phone Number" value="{{ old('phone') }}" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="pwdMask">
+                                                        <input type="password" class="form-control password"
+                                                            name="password" placeholder="Password" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="pwdMask">
+                                                        <input type="password" class="form-control password"
+                                                            name="password_confirmation" placeholder="Confirm Password"
+                                                            required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <button class="btn btn-lg btn-primary btn-block" type="submit"
+                                                style="border-radius: 10px">
+                                                Sign Up
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
+
                         </div><!-- ./panel-login -->
 
                         <div class="authfy-panel panel-forgot">

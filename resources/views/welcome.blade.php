@@ -384,7 +384,7 @@
                             <img src="{{ asset('assets/images/About us.jpg') }}" alt="img" data-tilt
                                 data-tilt-max="10" data-tilt-speed="1000" data-tilt-perspective="1000" />
                             <div class="ayur-about-exp">
-                                <p>10</p>
+                                <p >10</p>
                                 <p>Years of Experience</p>
                             </div>
                         </div>

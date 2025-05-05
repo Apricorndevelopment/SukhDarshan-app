@@ -45,13 +45,41 @@ class AuthController extends Controller
         return view('Auth.register', compact('recentBlogs', 'logo'));
     }
 
+    // public function register(Request $request)
+    // {
+    //     $request->validate([
+    //         'full_name' => 'required|string|max:255',
+    //         'email' => 'required|email|unique:users',
+    //         'phone' => 'required|string|max:15',
+    //         'password' => 'required|min:8|confirmed',
+    //     ]);
+
+    //     User::create([
+    //         'name' => $request->full_name,
+    //         'email' => $request->email,
+    //         'password' => Hash::make($request->password),
+    //         'phone' => $request->phone,
+    //         'role' => 'user',
+    //     ]);
+
+    //     return redirect()->route('login')->with('success', 'Registration successful. Please login.');
+    // }
     public function register(Request $request)
     {
         $request->validate([
             'full_name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users',
+            'email' => 'required|email|unique:users,email',
             'phone' => 'required|string|max:15',
-            'password' => 'required|min:8|confirmed',
+            'password' => 'required|string|min:8|confirmed',
+        ], [
+            'full_name.required' => 'Full name is required.',
+            'email.required' => 'Email is required.',
+            'email.email' => 'Please enter a valid email.',
+            'email.unique' => 'This email is already registered.',
+            'phone.required' => 'Phone number is required.',
+            'password.required' => 'Password is required.',
+            'password.min' => 'Password must be at least 8 characters.',
+            'password.confirmed' => 'Password confirmation does not match.',
         ]);
 
         User::create([
