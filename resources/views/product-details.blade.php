@@ -111,11 +111,11 @@
                                     data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
                                     aria-selected="true">Product Description</button>
                             </li>
-                            <li class="nav-item" role="presentation">
+                            {{-- <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab"
                                     data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile"
                                     aria-selected="false">Customer Reviews</button>
-                            </li>
+                            </li> --}}
                         </ul>
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="nav-home" role="tabpanel"

@@ -208,7 +208,7 @@ class ProductController extends Controller
         $logo = Companylogo::first();
         $recentBlogs = Blog::orderBy('created_at', 'desc')->take(3)->get();
         $subcategory = SubCategory::where('subcategory_slug', $slug)->firstOrFail();
-        $products = Product::where('subcategory_id', $subcategory->id)->paginate(6);
+        $products = Product::where('subcategory_id', $subcategory->id)->paginate(9);
 
         return view('category-products', compact('logo', 'recentBlogs', 'products', 'subcategory'));
     }

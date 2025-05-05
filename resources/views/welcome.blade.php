@@ -122,9 +122,7 @@
             background-color: #4cae4c;
         }
     </style>
-    {{-- <div class="ayur-banner-section"> --}}
-    {{-- <div class="ayur-banner-section"
-        style="background-image: url('{{ asset('assets/images/productimg.png') }}'); background-position: center; background-size: cover; background-repeat: no-repeat; padding: 116px 0 103px; margin-bottom: 207px;"> --}}
+
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
@@ -164,57 +162,7 @@
                 </div>
             </div>
         </div>
-        {{-- <div class="row">
-                <div class="col-lg-12">
-                    <div class="ayur-banner-slider-sec">
-                        <div class="swiper ayur-banner-slider" swiper_scale_active>
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="ayur-ban-slide">
-                                        <img src="{{ asset('assets/images/ban-head-Image.png') }}" alt="headerimage">
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="ayur-ban-slide">
-                                        <img src="{{ asset('assets/images/ban-head-Image.png') }}" alt="headerimage">
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="ayur-ban-slide">
-                                        <img src="{{ asset('assets/images/ban-head-Image.png') }}" alt="headerimage">
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="ayur-ban-slide">
-                                        <img src="{{ asset('assets/images/ban-head-Image.png') }}" alt="headerimage">
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="ayur-ban-slide">
-                                        <img src="{{ asset('assets/images/ban-head-Image.png') }}" alt="headerimage">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-button-prev">
-                                <svg width="46" height="22" viewBox="0 0 46 22" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M0.520424 9.74414L0.522022 9.74245L9.79254 0.51664C10.4871 -0.174498 11.6104 -0.171926 12.3017 0.522671C12.9929 1.21718 12.9903 2.34051 12.2958 3.03174L6.07152 9.22581H43.6452C44.6251 9.22581 45.4194 10.0201 45.4194 11C45.4194 11.9799 44.6251 12.7742 43.6452 12.7742H6.07161L12.2957 18.9683C12.9902 19.6595 12.9928 20.7828 12.3016 21.4773C11.6103 22.172 10.4869 22.1744 9.79245 21.4834L0.521931 12.2575L0.520336 12.2559C-0.17453 11.5623 -0.17231 10.4354 0.520424 9.74414Z"
-                                        fill="#F6F1ED" />
-                                </svg>
-                            </div>
-                            <div class="swiper-button-next">
-                                <svg width="46" height="22" viewBox="0 0 46 22" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M44.899 9.74414L44.8974 9.74245L35.6269 0.51664C34.9324 -0.174498 33.8091 -0.171926 33.1177 0.522671C32.4265 1.21718 32.4292 2.34051 33.1237 3.03174L39.3479 9.22581H1.77419C0.794307 9.22581 0 10.0201 0 11C0 11.9799 0.794307 12.7742 1.77419 12.7742H39.3478L33.1238 18.9683C32.4293 19.6595 32.4266 20.7828 33.1178 21.4773C33.8091 22.172 34.9326 22.1744 35.627 21.4834L44.8975 12.2575L44.8991 12.2559C45.594 11.5623 45.5917 10.4354 44.899 9.74414Z"
-                                        fill="white" />
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
+
     </div>
     <div class="ayur-ban-leaf">
 
@@ -234,7 +182,10 @@
                                         <img src="{{ asset($list->subcategory_image) }}" alt="img"
                                             class="w-full h-full object-cover">
                                     </div>
-                                    <h3>{{ $list->subcategory_name }}</h3>
+                                    <h3>
+                                        <a
+                                            href="{{ route('category.products', ['slug' => $list->subcategory_slug]) }}">{{ $list->subcategory_name }}</a>
+                                    </h3>
                                 </div>
                             </div>
                         @endforeach
@@ -317,7 +268,6 @@
                                 </div>
 
                                 <div class="ayur-tpro-btn">
-                                    {{-- <a href="{{ route('product.details', ['id' => $data->id]) }}" class="ayur-btn "> --}}
                                     <a href="{{ route('product.details', ['slug' => $data->product_slug]) }}"
                                         class="ayur-btn">
 
@@ -329,7 +279,7 @@
                                                     fill="white" />
                                             </svg>
                                         </span>
-                                        {{-- Add to Cart --}}
+
                                         View Product Details
                                     </a>
                                 </div>
@@ -476,10 +426,7 @@
                             <div class="ayur-tpro-text">
                                 <h3><a href="shop-single.html">{{ $tren->product_name }}</a></h3>
                                 <div class="ayur-tpro-price">
-                                    {{-- <p><del>Rs{{ $tren->mrp }}</del>${{ $tren->mrp }}</p> --}}
                                     <div class="ayur-tpro-star">
-                                        {{-- <img src="assets/images/star-icon.png" alt="star">
-                                        <p>4.5/5</p> --}}
                                         @if ($tren->firstVariant)
                                             <div class="ayur-tpro-price">
                                                 <p><del>Rs{{ $tren->firstVariant->mrp }}</del>
@@ -497,10 +444,8 @@
                                     </div>
                                 </div>
                                 <div class="ayur-tpro-btn">
-                                    {{-- <a href="{{ route('product.details', ['id' => $tren->id]) }}" class="ayur-btn "> --}}
                                     <a href="{{ route('product.details', ['slug' => $tren->product_slug]) }}"
                                         class="ayur-btn">
-
                                         <span>
                                             <svg width="20" height="19" viewBox="0 0 20 19" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -509,7 +454,6 @@
                                                     fill="white" />
                                             </svg>
                                         </span>
-                                        {{-- Add to Cart --}}
                                         View Product Details
                                     </a>
                                 </div>
@@ -517,9 +461,6 @@
                         </div>
                     </div>
                 @endforeach
-
-
-
             </div>
         </div>
         <div class="ayur-bgshape ayur-trenpro-bgshape">
@@ -527,8 +468,6 @@
             <img src="assets/images/bg-leaf3.png" alt="img" />
         </div>
     </div>
-    <!------------- Trending Product Section end ----------->
-    <!------------- Why Section start ----------->
     <div class="ayur-bgcover ayur-why-sec">
         <div class="container">
             <div class="row">
@@ -612,7 +551,7 @@
                         </ul>
 
                         <div class="ayur-why-btn">
-                            <a href="services.html" class="ayur-btn">Read More</a>
+                            <a href="{{ route('about') }}" class="ayur-btn">Read More</a>
                         </div>
                     </div>
                 </div>

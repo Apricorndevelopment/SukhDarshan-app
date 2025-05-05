@@ -42,7 +42,7 @@ class PageController extends Controller
 
     public function blog()
     {
-        $data  = Blog::all();
+        $data  = Blog::paginate(3);
         $recentBlogs = Blog::orderBy('created_at', 'desc')->take(3)->get();
         $logo = Companylogo::first();
         return view('blog', compact('data', 'recentBlogs', 'logo'));

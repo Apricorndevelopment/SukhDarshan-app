@@ -144,7 +144,8 @@
         </div>
     </div>
 
-    <h2 style="display: flex; justify-content: center; padding: 10px;">Products in {{ $subcategory->subcategory_name }}</h2>
+    <h2 class="btn btn-success" style="display: flex; justify-content: center; padding: 10px;">Products in
+        {{ $subcategory->subcategory_name }}</h2>
     <div class="container my-4">
         <div class="row">
             @foreach ($products as $product)
@@ -169,7 +170,7 @@
                                         fill="white" />
                                 </svg>
                             </span>
-                            View Product Details
+                            {{-- View Product Details --}}
                             </a>
                         </div>
                     </div>

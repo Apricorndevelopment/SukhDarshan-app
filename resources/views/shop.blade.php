@@ -162,7 +162,6 @@
 
                                 @foreach ($subcategory as $list)
                                     <li>
-                                        {{-- <a href="{{ route('category.products', ['id' => $list->id]) }}"> --}}
                                         <a href="{{ route('category.products', ['slug' => $list->subcategory_slug]) }}">
 
                                             <img src="{{ asset('assets/images/right-arrow.png') }}" alt="arrow">

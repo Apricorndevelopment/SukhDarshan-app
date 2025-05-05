@@ -36,7 +36,7 @@
                             alt="img" data-tilt data-tilt-max="10" data-tilt-speed="1000"
                             data-tilt-perspective="1000" />
                         <div class="ayur-about-exp">
-                            <p>10</p>
+                            <p>15</p>
                             <p>Years of Experience</p>
                         </div>
                     </div>
@@ -45,11 +45,19 @@
                     <div class="ayur-heading-wrap ayur-about-head">
                         <h5>Who We Are</h5>
                         <h3>The Natural Way To Achieving Balance And Optimal Health</h3>
-                        <p>True wellness begins with balance—and nature provides the path. Through time-tested Ayurvedic
-                            practices, mindful living, and natural remedies, you can restore harmony within your body and
-                            mind. By aligning with nature’s rhythms, you support your body’s natural ability to heal,
-                            energize, and thrive. Embrace a lifestyle that nurtures your well-being the natural way—for
-                            health that’s lasting, balanced, and deeply rooted in tradition</p>
+                        <p>At Sukhdarshan Pharmacy., we are passionate about restoring health through the timeless
+                            science of Ayurveda. Established in 2011, we are an ISO 9001:2015 certified Ayurvedic
+                            manufacturing company based in Rai Industrial Area, Sonipat, Haryana. With a commitment to
+                            quality, purity, and authenticity, we offer a wide range of Ayurvedic and herbal healthcare
+                            products designed to support holistic well-being.
+
+                            Over the years, we’ve earned the trust of thousands of customers by consistently delivering
+                            safe, natural, and effective remedies rooted in traditional Indian medicine. Our in-house R&D
+                            team, modern manufacturing facility, and adherence to GMP standards ensure that every product we
+                            create meets the highest quality benchmarks.
+
+                            We believe in the power of nature to heal, and it is our mission to make that power accessible
+                            to every household.</p>
                         <a href="{{ route('about') }}" class="ayur-btn">Know More</a>
                     </div>
                 </div>
@@ -66,22 +74,21 @@
             <div class="row">
                 <div class="col-lg-6 col-md-12 col-sm-12">
                     <div class="ayur-heading-wrap ayur-about-head">
-                        <h5>Why Choose Us</h5>
-                        <h3>Nature's secret for your truly health</h3>
-                        <p>Discover the power of nature in nurturing your well-being. Our Ayurvedic products harness the
-                            wisdom of ancient traditions, offering you a holistic approach to health. Experience the harmony
-                            of natural ingredients that promote balance, vitality, and overall wellness.</p>
+                        <h5>Why Choose Sukhdarshan Pharmacy</h5>
+                        <h3>Ancient Ayurveda for Modern Wellness</h3>
+                        <p>Sukhdarshan Pharmacy Pvt. Ltd. is committed to promoting natural healing through the timeless
+                            science of Ayurveda. Our carefully formulated herbal products are designed to restore balance,
+                            enhance vitality, and nurture your overall well-being — naturally and effectively.</p>
                         <div class="ayur-whycho-boxwrapper">
                             <div class="ayur-whycho-box">
                                 <div class="ayur-whycho-boximg">
                                     <img src="assets/images/checkmark.png" alt="checkmark">
                                 </div>
                                 <div class="ayur-whycho-boxtext">
-                                    <h3>100% Organic Herbal Products</h3>
-                                    <p>Experience the purity of nature with our 100% organic herbal offerings. Each product
-                                        is carefully crafted to ensure you receive the highest quality, free from harmful
-                                        additives. Embrace the natural path to wellness and enjoy the benefits of holistic
-                                        healing.</p>
+                                    <h3>100% Ayurvedic & Natural Ingredients</h3>
+                                    <p>We use only the purest herbs and natural extracts, ensuring every product supports
+                                        your health without side effects. No chemicals, no compromises — just nature’s best.
+                                    </p>
                                 </div>
                             </div>
                             <div class="ayur-whycho-box">
@@ -131,7 +138,7 @@
                                 <img src="assets/images/achieve-icon1.png" alt="icon">
                             </div>
                             <div class="ayur-achieve-text">
-                                <h2 class="ayur-counting" data-to="25">25</h2>
+                                <h2 class="ayur-counting" data-to="15">15</h2>
                                 <p>Years Experience</p>
                             </div>
                         </div>
@@ -140,7 +147,7 @@
                                 <img src="assets/images/achieve-icon2.png" alt="icon">
                             </div>
                             <div class="ayur-achieve-text">
-                                <h2 class="ayur-counting" data-to="60">60 +</h2>
+                                <h2 class="ayur-counting" data-to="1000">1000+</h2>
                                 <p>Happy Customers</p>
                             </div>
                         </div>
@@ -167,8 +174,6 @@
             </div>
         </div>
     </div>
-    <!------------- Achievment Section end ----------->
-    <!------------- Why Section start ----------->
     <div class="ayur-bgcover ayur-why-sec ayur-why-single">
         <div class="container">
             <div class="row">
@@ -188,8 +193,7 @@
                             </div>
                             <div class="ayur-why-boxtext">
                                 <h4>100% Organic</h4>
-                                <p>Our products are crafted from 100% organic ingredients, ensuring that you receive the
-                                    purest and most natural solutions for your health and wellness.</p>
+                                <p>our products are made with ingredients grown without synthetic pesticides.</p>
                             </div>
                         </div>
                         <div class="ayur-why-box">
@@ -198,8 +202,8 @@
                             </div>
                             <div class="ayur-why-boxtext">
                                 <h4>Best Quality</h4>
-                                <p>We prioritize excellence in every product, ensuring that you receive only the finest
-                                    organic ingredients for your health and wellness.</p>
+                                <p>Most natural products—crafted with care, backed by tradition, and trusted for their
+                                    purity.</p>
                             </div>
                         </div>
                         <div class="ayur-why-box">
@@ -208,8 +212,7 @@
                             </div>
                             <div class="ayur-why-boxtext">
                                 <h4>Hygienic Products</h4>
-                                <p>Our products are manufactured under strict hygiene standards, guaranteeing safety and
-                                    purity for your peace of mind.</p>
+                                <p>Stay protected with our hygienic products, designed to promote cleanliness.</p>
                             </div>
                         </div>
                         <div class="ayur-why-box">
@@ -226,54 +229,41 @@
                 </div>
                 <div class="col-lg-6 col-md-12 col-sm-12">
                     <div class="ayur-why-textheading">
-                        <h3>Harness the Power of Nature to Solve Your Health Problems</h3>
-                        <p>Discover how nature's remedies can address your health concerns. Our Ayurvedic solutions are
-                            designed to promote balance and well-being, utilizing the wisdom of ancient practices.
-                            Experience the transformative effects of natural ingredients that work in harmony with your
-                            body.</p>
+                        <h3>Solve Your Problem with The Power of Nature</h3>
+                        <p>
+                            At Sukhdarshan Pharmacy Pvt. Ltd., we are passionate about restoring health through the timeless
+                            science of Ayurveda. Established in 2011, we are an ISO 9001:2015 certified Ayurvedic
+                            manufacturing
+                            company based in Rai Industrial Area, Sonipat, Haryana. With a commitment to quality, purity,
+                            and
+                            authenticity, we offer a wide range of Ayurvedic and herbal healthcare products designed to
+                            support
+                            holistic well-being.</p>
                         <ul>
                             <li>
                                 <img src="assets/images/tick.png" alt="icon">
-                                <p>Personalized wellness solutions tailored to your needs.</p>
+                                <p>Drawn from nature to help you.</p>
                             </li>
                             <li>
                                 <img src="assets/images/tick.png" alt="icon">
-                                <p>Natural ingredients that support holistic health.</p>
+                                <p>Pure & Natural Our products are made.</p>
                             </li>
                             <li>
                                 <img src="assets/images/tick.png" alt="icon">
-                                <p>Expert guidance from trained Ayurvedic practitioners.</p>
+                                <p>Experienced Team We are guided.</p>
                             </li>
                             <li>
                                 <img src="assets/images/tick.png" alt="icon">
-                                <p>Commitment to quality and sustainability in every product.</p>
+                                <p>Customer-Centric Approach.</p>
                             </li>
                         </ul>
                         <p>Join us on a journey to better health through the power of nature. Our products are crafted with
-                            care, ensuring you receive the best that Ayurveda has to offer.</p>
+                            care, ensuring you receive the best that Sukhdarshan Pharmacy has to offer.</p>
                         <div class="ayur-why-btn">
-                            <a href="services.html" class="ayur-btn">Read More</a>
+                            <a href="{{ route('about') }}" class="ayur-btn">Read More</a>
                         </div>
                     </div>
                 </div>
-                {{-- <div class="col-lg-12 col-md-12 col-sm-12">
-                    <div class="ayur-video-section">
-                        <div class="ayur-video-img">
-                            <img src="https://dummyimage.com/1146x380/" alt="img">
-                            <a href="javascript:void(0)" class="ayur-video-playicon" id="popup">
-
-                                <img src="assets/images/play-icon.svg" alt="icon">
-                            </a>
-                            <div id="videoPopup1" class="ayur-popup">
-                                <div class="ayur-popup-content">
-                                    <span class="close" id="close">×</span>
-                                    <iframe src="https://www.youtube.com/embed/_eq7kgVsliE" frameborder="0"
-                                        allowfullscreen=""></iframe>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
             </div>
         </div>
         <div class="ayur-bgshape ayur-why-bgshape">
