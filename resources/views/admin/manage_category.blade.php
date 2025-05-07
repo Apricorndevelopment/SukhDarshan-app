@@ -104,7 +104,8 @@
                                                     required>
 
                                                 <label>Category Image</label>
-                                                <input type="file" name="category_image">
+                                                <input type="file" name="category_image"
+                                                    accept=".jpg,.jpeg,.png,.gif,.svg">
 
                                                 @if ($id > 0 && !empty($category_image))
                                                     <img src="{{ asset($category_image) }}" width="100">

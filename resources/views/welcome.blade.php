@@ -247,7 +247,7 @@
         </div>
         </div>
 
-        <div class="ayur-care-slider-wrapper">
+        <div class="ayur-care-slider-wrapper" style="margin-top: 30px;">
             <div class="container-fluid">
                 <div class="ayur-care-slider-sec">
                     <div class="swiper ayur-care-slider">
@@ -384,7 +384,7 @@
                             <img src="{{ asset('assets/images/About us.jpg') }}" alt="img" data-tilt
                                 data-tilt-max="10" data-tilt-speed="1000" data-tilt-perspective="1000" />
                             <div class="ayur-about-exp">
-                                <p >10</p>
+                                <p>10</p>
                                 <p>Years of Experience</p>
                             </div>
                         </div>

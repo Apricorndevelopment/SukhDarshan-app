@@ -20,6 +20,65 @@ class SubCategoryController extends Controller
 
 
 
+    // public function manage_subcategory(Request $request, $id = '')
+    // {
+    //     if ($id > 0) {
+    //         $arr = SubCategory::where(['id' => $id])->get();
+
+    //         $result['subcategory_name'] = $arr[0]->subcategory_name;
+    //         $result['subcategory_slug'] = $arr[0]->subcategory_slug;
+    //         $result['category_id'] = $arr[0]->category_id;
+    //         $result['subcategory_image'] = $arr[0]->subcategory_image;
+    //         $result['id'] = $arr[0]->id;
+    //     } else {
+    //         $result['subcategory_name'] = '';
+    //         $result['subcategory_slug'] = '';
+    //         $result['category_id'] = '';
+    //         $result['subcategory_image'] = '';
+    //         $result['id'] = 0;
+    //     }
+
+    //     $result['sub_categories_from_categories'] = Category::all();
+    //     // $logo = Companylogo::first();
+
+    //     return view('admin/manage_subcategory', $result);
+    // }
+
+    // public function manage_subcategory_process(Request $request)
+    // {
+    //     $request->validate([
+    //         'subcategory_name' => 'required',
+    //         'subcategory_slug' => 'required|unique:categories,category_slug,' . $request->post('id'),
+    //         // 'subcategory_image' => 'mimes:jpeg,jpg,png,gif,svg|max:2048',
+    //         'subcategory_image' => 'mimetypes:image/jpeg,image/png,image/gif,image/svg+xml|max:2048',
+
+    //     ]);
+
+    //     if ($request->post('id') > 0) {
+    //         $model = SubCategory::find($request->post('id'));
+    //         $msg = "SubCategory updated";
+    //     } else {
+    //         $model = new SubCategory();
+    //         $msg = "SubCategory inserted";
+    //     }
+
+
+
+    //     $model->subcategory_name = $request->post('subcategory_name');
+    //     $model->subcategory_slug = $request->post('subcategory_slug');
+    //     $model->category_id = $request->post('category_id');
+    //     $model->status = 1;
+
+
+    //     if ($request->hasFile('subcategory_image')) {
+    //         $image = $request->file('subcategory_image');
+    //         $image_name = time() . '.' . $image->getClientOriginalExtension();
+    //         $image->move(public_path('uploads/subcategory'), $image_name);
+    //         $model->subcategory_image = 'uploads/subcategory/' . $image_name;
+    //     }
+    //     $model->save();
+    //     return redirect('admin/subcategory')->with('message', $msg);
+    // }
     public function manage_subcategory(Request $request, $id = '')
     {
         if ($id > 0) {
@@ -39,17 +98,18 @@ class SubCategoryController extends Controller
         }
 
         $result['sub_categories_from_categories'] = Category::all();
-        // $logo = Companylogo::first();
+        $logo = Companylogo::first();
 
-        return view('admin/manage_subcategory', $result);
+
+        return view('admin/manage_subcategory', $result, compact('logo'));
     }
 
     public function manage_subcategory_process(Request $request)
     {
         $request->validate([
             'subcategory_name' => 'required',
-            'subcategory_slug' => 'required|unique:categories,category_slug,' . $request->post('id'),
-            'subcategory_image' => 'mimes:jpeg,jpg,png,gif|max:2048',
+            'subcategory_slug' => 'required|unique:sub_categories,subcategory_slug,' . $request->post('id'),
+            'subcategory_image' => 'nullable|mimes:jpeg,jpg,png,gif,svg,svg+xml|max:2048',
         ]);
 
         if ($request->post('id') > 0) {
@@ -60,23 +120,30 @@ class SubCategoryController extends Controller
             $msg = "SubCategory inserted";
         }
 
-
-
         $model->subcategory_name = $request->post('subcategory_name');
         $model->subcategory_slug = $request->post('subcategory_slug');
         $model->category_id = $request->post('category_id');
         $model->status = 1;
 
-
         if ($request->hasFile('subcategory_image')) {
             $image = $request->file('subcategory_image');
-            $image_name = time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('uploads/subcategory'), $image_name);
-            $model->subcategory_image = 'uploads/subcategory/' . $image_name;
+            $extension = $image->getClientOriginalExtension();
+
+            $allowed_extensions = ['jpeg', 'jpg', 'png', 'gif', 'svg', 'svg+xml'];
+            if (in_array($extension, $allowed_extensions)) {
+                $image_name = time() . '.' . $extension;
+                $image->move(public_path('uploads/subcategory'), $image_name);
+                $model->subcategory_image = 'uploads/subcategory/' . $image_name;
+            }
         }
+
         $model->save();
+
         return redirect('admin/subcategory')->with('message', $msg);
     }
+
+
+
 
     public function delete(Request $request, $id)
     {

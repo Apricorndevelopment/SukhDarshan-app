@@ -83,23 +83,33 @@
                 </div>
             @endif
 
+
             <h2>Manage Sub Category</h2>
             <a href="{{ url('admin/subcategory') }}">
                 <button type="button" class="btn btn-success">Back</button>
             </a>
 
             <div class="form-wrapper">
-                <form action="{{ route('subcategory.manage_subcategory_process') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('subcategory.manage_subcategory_process') }}" method="post"
+                    enctype="multipart/form-data">
                     @csrf
 
                     <div class="form-group">
                         <label for="subcategory_name">Sub Category Name</label>
-                        <input id="subcategory_name" value="{{ $subcategory_name }}" name="subcategory_name" type="text" class="form-control" style="background-color: white" required>
+                        <input id="subcategory_name" value="{{ $subcategory_name }}" name="subcategory_name" type="text"
+                            class="form-control" style="background-color: white" required>
+                        @if ($errors->has('subcategory_name'))
+                            <div class="text-danger">{{ $errors->first('subcategory_name') }}</div>
+                        @endif
                     </div>
 
                     <div class="form-group">
                         <label for="subcategory_slug">Sub Category Slug</label>
-                        <input id="subcategory_slug" value="{{ $subcategory_slug }}" name="subcategory_slug" type="text" class="form-control" style="background-color: white" required>
+                        <input id="subcategory_slug" value="{{ $subcategory_slug }}" name="subcategory_slug" type="text"
+                            class="form-control" style="background-color: white" required>
+                        @if ($errors->has('subcategory_name'))
+                            <div class="text-danger">{{ $errors->first('subcategory_name') }}</div>
+                        @endif
                     </div>
 
                     <div class="form-group">
@@ -112,11 +122,18 @@
                                 </option>
                             @endforeach
                         </select>
+                        @if ($errors->has('subcategory_name'))
+                            <div class="text-danger">{{ $errors->first('subcategory_name') }}</div>
+                        @endif
                     </div>
 
                     <div class="from-group">
                         <label>Sub Category Image</label>
-                        <input type="file" name="subcategory_image" class="form-control">
+                        <input type="file" name="subcategory_image" accept=".jpg,.jpeg,.png,.gif,.svg"
+                            class="form-control">
+                        @if ($errors->has('subcategory_name'))
+                            <div class="text-danger">{{ $errors->first('subcategory_name') }}</div>
+                        @endif
 
                         @if ($id > 0 && !empty($subcategory_image))
                             <div class="mt-2">
