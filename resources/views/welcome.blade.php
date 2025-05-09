@@ -142,11 +142,25 @@
             margin-bottom: 40px;
         }
 
+
         .services-container {
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 30px;
+            gap: 10px;
+            overflow-x: auto;
+            padding: 10px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .services-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .services-container {
+            -ms-overflow-style: none;
+            /* IE/Edge */
+            scrollbar-width: none;
+            /* Firefox */
         }
 
         .service-box {
@@ -179,9 +193,12 @@
             opacity: 0.2;
         }
 
-        .service-box img {
-            width: 40px;
-            margin-bottom: 10px;
+
+        .services-container img {
+            flex: 0 0 auto;
+            width: 45%;
+            /* show 2 images roughly */
+            scroll-snap-align: start;
         }
 
         .service-title {
@@ -191,9 +208,21 @@
             padding: 0 10px;
         }
 
-        @media (max-width: 576px) {
-            .carousel-inner {
-                margin-top: 88px;
+        /* @media (max-width: 576px) {
+                                                            .carousel-inner {
+                                                                margin-top: 88px;
+                                                            }
+                                                        } */
+        @media (min-width: 768px) {
+            .services-container {
+                flex-wrap: wrap;
+                overflow-x: unset;
+                justify-content: space-between;
+            }
+
+            .services-container img {
+                width: 18%;
+                /* fit all 5 in row for desktop */
             }
         }
     </style>
@@ -384,8 +413,8 @@
                             <img src="{{ asset('assets/images/About us.jpg') }}" alt="img" data-tilt
                                 data-tilt-max="10" data-tilt-speed="1000" data-tilt-perspective="1000" />
                             <div class="ayur-about-exp">
-                                <p>10</p>
-                                <p>Years of Experience</p>
+                                {{-- <p>10</p>
+                                <p>Years of Experience</p> --}}
                             </div>
                         </div>
                     </div>

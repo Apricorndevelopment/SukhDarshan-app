@@ -32,7 +32,7 @@
     <!------------- Loader start ----------->
     <div class="ayur-loader">
         <div class="ayur-spin">
-            <img src="{{ asset('assets/images/loader.gif') }}" alt="loader">
+            <img src="{{ asset('adminassets/images/SDP LOGO.png') }}" alt="loader">
         </div>
     </div>
     <!------------- Loader End ----------->

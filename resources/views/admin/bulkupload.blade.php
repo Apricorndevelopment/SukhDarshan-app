@@ -54,8 +54,63 @@
     <div class="center-wrapper">
         <form id="productupload" action="{{ url('upload-csv') }}" method="POST" enctype="multipart/form-data">
             @csrf
-            <label><strong>Upload File:</strong></label><br><br>
+            <label><strong>Upload CSV File:</strong></label><br><br>
             <input type="file" name="product_file" id="upload_file"><br><br>
+
+            <label><strong>Upload Image ZIP Folder:</strong></label><br><br>
+            <input type="file" name="image_zip" id="upload_zip"><br><br>
+
+            <input class="btn btn-danger" type="submit" name="save" value="Save">
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $("#productupload").on("submit", function(e) {
+            e.preventDefault();
+            var upload_file = $("#upload_file").val();
+            if (upload_file === "") {
+                alert("Please select a file");
+                return false;
+            }
+
+            var formData = new FormData(this);
+            formData.append('_token', '{{ csrf_token() }}');
+
+            $.ajax({
+                method: "POST",
+                url: "{{ url('upload-csv') }}",
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                dataType: "json",
+
+                beforeSend: function() {
+                    $('.overlay').show();
+                },
+                success: function(response) {
+                    alert(response.msg);
+                },
+                error: function(xhr) {
+                    alert('Something went wrong!');
+                },
+                complete: function() {
+                    $('.overlay').hide();
+                }
+            });
+        });
+    </script>
+
+    {{-- <div class="center-wrapper">
+        <form id="productupload" action="{{ url('upload-csv') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <label><strong>Upload CSV File:</strong></label><br><br>
+            <input type="file" name="product_file" id="upload_file"><br><br>
+
+            <label><strong>Upload Image ZIP Folder:</strong></label><br><br>
+            <input type="file" name="image_zip" id="upload_zip"><br><br>
+
             <input class="btn btn-danger" type="submit" name="save" value="Save">
         </form>
     </div>
@@ -97,5 +152,5 @@
                 }
             });
         });
-    </script>
+    </script> --}}
 @endsection
